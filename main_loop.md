@@ -64,16 +64,19 @@ remove_due_cars(current_time, parking_lot):
     FOR j IN 0 TO PARK_NUM_SPACES:
         Car car = parking_lot[j];
 
+        // Skip empty parking spaces
         if is_empty(car):
             CONTINUE
         end if
 
         float time_park = current_time - car.time_arrival;
 
+        // Skip if car is not due to leave yet
         if time_park < car.time_park_duration:
             CONTINUE
         end if
 
+        // Have the car leave the lot
         car_leave(car);
         parking_lot[j] = NULL
         FREE car;
