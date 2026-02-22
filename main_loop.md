@@ -102,5 +102,4 @@ park_waiting_cars(parking_lot, waiting_cars):
         car_arrive(new_car);
         parking_lot[available_spot] = new_car;
     END WHILE
-
 ```
