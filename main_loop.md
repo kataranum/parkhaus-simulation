@@ -31,6 +31,13 @@ struct Car {
 
 ### Hauptschleife
 
+Noch nicht definierte Funktionen:
+
+- `get_new_cars_arriving()` - Randomly enqueue new cars to the queue (also modify statistics)
+- `room_available()` - Check if there are free spots in the parking lot
+- `car_leave()` - Save car leaving in statistics
+- `car_arrive()` - Save car arriving in statistics
+
 ```
 PSEUDOCODE
 
@@ -88,6 +95,7 @@ park_waiting_cars(parking_lot, waiting_cars):
         new_car.time_arrival = current_time;
 
         int available_spot = find_empty_space(&parking_lot);
+        car_arrive(new_car);
         parking_lot[available_spot] = new_car;
     END WHILE
 
