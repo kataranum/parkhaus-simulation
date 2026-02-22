@@ -61,9 +61,11 @@ FOR i IN 0 TO num_time_steps:
 
     // Fill as many cars into the parking lot from the queue as possible
     park_waiting_cars(&parking_lot, &waiting_cars);
+
+    output_timestep_statistics();
 END FOR
 
-output_statistics();
+output_total_statistics();
 
 FREE waiting_cars
 FREE parking_lot
