@@ -16,3 +16,15 @@ werden. Hier eine kurze beschreibung der Parameter:
 - `TOTAL_SIM_TIME` Gesamte Simulationszeit
 - `TIME_STEP` Zeitspanne eines einzigen Simulationsschritts
 - `RNG_SEED` Seed für `rand()`
+
+### `Car` struct
+
+Im Pseudocode muss ein struct `Car` verwendet werden, hier die Definition:
+
+```
+struct Car {
+    unsigned int id;
+    float time_arrival;
+    float time_park_duration;
+};
+```
