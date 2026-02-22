@@ -47,7 +47,20 @@ FOR i IN 0 TO num_time_steps:
     // Enqueue new cars arriving this timestep
     get_new_cars_arriving(&waiting_cars);
 
-    // Make cars leave the parking lot if they should
+    // Have all cars that are due to leave actually leave the lot
+    remove_due_cars(current_time, &parking_lot);
+
+    // Fill as many cars into the parking lot from the queue as possible
+    park_waiting_cars(&parking_lot, &waiting_cars);
+END FOR
+
+output_statistics();
+
+FREE waiting_cars
+FREE parking_lot
+EXIT
+
+remove_due_cars(current_time, parking_lot):
     FOR j IN 0 TO PARK_NUM_SPACES:
         Car car = parking_lot[j];
 
@@ -63,7 +76,7 @@ FOR i IN 0 TO num_time_steps:
         END_IF
     END FOR
 
-    // Fill as many cars into the parking lot from the queue as possible
+park_waiting_cars(parking_lot, waiting_cars):
     WHILE room_available(&parking_lot) AND !waiting_cars.is_empty():
         Car new_car = waiting_cars.dequeue();
         new_car.time_arrival = current_time;
@@ -71,11 +84,5 @@ FOR i IN 0 TO num_time_steps:
         int available_spot = find_empty_space(&parking_lot);
         parking_lot[available_spot] = new_car;
     END WHILE
-END FOR
 
-output_statistics();
-
-FREE waiting_cars
-FREE parking_lot
-EXIT
 ```
