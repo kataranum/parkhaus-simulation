@@ -69,11 +69,14 @@ remove_due_cars(current_time, parking_lot):
         end if
 
         float time_park = current_time - car.time_arrival;
-        if time_park > car.time_park_duration:
-            car_leave(car);
-            parking_lot[j] = NULL
-            FREE car;
-        END_IF
+
+        if time_park < car.time_park_duration:
+            CONTINUE
+        end if
+
+        car_leave(car);
+        parking_lot[j] = NULL
+        FREE car;
     END FOR
 
 park_waiting_cars(parking_lot, waiting_cars):
