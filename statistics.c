@@ -51,7 +51,6 @@ FUNKTION init_statistik(dateiname):
     sum_queue_length        = 0
     max_queue_laenge        = 0
     full_occupancy_steps    = 0
-    occupancy_timestep[]    = 0
 
     schreibe_log("==== PARKHAUS-SIMULATION LOG ====")
     GIB 0 ZURÜCK
@@ -76,8 +75,6 @@ FUNKTION void output_timestep_statistics(current_step, occupancy, queue_len, fin
     sum_waiting_time += waiting_time_parking_cars
     sum_queue_length += queue_len
     
-    /*Berechnung der Auslastung pro Timestep in Prozent 
-    auslastung_timestep[current_step] = (occupancy/PARK_NUM_SPACES)*100
 
     WENN queue_len > max_queue_laenge:
         max_queue_laenge = queue_len
@@ -90,12 +87,13 @@ FUNKTION void output_timestep_statistics(current_step, occupancy, queue_len, fin
 
     gesamt_durchlauf += finished_cars
     
-    print("Aktuelle Belegung", occupancy | "Warteschlange", queue_len| "Durchschn. Wartezeit", durchschnitt_wartezeit| "Vollbelegungs Ticks", full_occupancy_steps| "Gesamt-Durchsatz",gesamt_durchlauf)
+    print("Aktuelle Belegung", occupancy | "Warteschlange", queue_len| "Durchschn. Wartezeit", durchschnitt_wartezeit| "Vollbelegungs Ticks", full_occupancy_steps| "Gesamt-Durchsatz",finished_cars)
 
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int PARK_NUM_SPACES);{
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int PARK_NUM_SPACES)
+{
     /*spätere Implementierung*/
 }
 
@@ -104,39 +102,38 @@ void output_timestep_statistics(int current_step, int occupancy, int queue_len, 
 /*---------------------------------------------------------------*/
 /*
 PSEUDOCODE
-FUNCTION void output_total_statistics()
+FUNCTION void output_total_statistics(total_time_steps,sum_occupancy,sum_queue_length,sum_waiting_time,full_occupancy_steps,finished_cars,PARK_NUM_SPACES)
     /* Funktionsvariablen
-    gesamt_zeit = sim_dauer
-    sum_auslastung = 0
+    avg_occupancy_percentage = 0;
+    avg_queue_length = 0;
+    avg_waiting_time = 0;
+    full_occupancy_percentage = 0;
 
-
-    /*Durchlauf aller timesteps und abspeichern der prozentualen Auslastungen
-    FÜR i=0 bis sim_dauer-1
-        sum_auslastung += auslastung_timestep[i]
-
-    /*Berechnung der gesamten durchschnittlichen Auslastung(Summe der timestep_Auslastungen / Anzahl der Timesteps)
-    durchschnitt_auslastung = sum_auslastung / sim_dauer
+    /*Berechnung der gesamten durchschnittlichen Auslastung(Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps))
+    avg_occupancy_percentage = ((sum_occupancy / total_time_steps)/PARK_NUM_SPACES)*100
 
     /*Berechne durschnittliche Warteschlangenlänge
-    duchschnitt_wartequeue = gesamt_wartequeue / sim_dauer 
+    avg_queue_length = sum_queue_length / total_time_steps 
 
-    /*Berechne durschnittliche Wartezeit (SUmme aller Wartezeiten / )
-    durschnitt_wartezeit = gesamt_wartezeit / gesamt_belegung
+    /*Berechne durschnittliche Wartezeit (Summe aller Wartezeiten(sum_waiting_time) / Anzahl geparkter Autos (sum_occupancy))
+    avg_waiting_time = sum_waiting_time / sum_occupancy
 
-    /* Zeit mit vollbelegung (volle_belegung) und prozentaler Anteil an gesamt Dauer
-    prozent_volle_belegung = (volle_belegung / sim_dauer) *100
+    /* Zeit mit Vollbelegung (full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
+    full_occupancy_percentage = (full_occupancy_steps / total_time_steps) *100
 
-    /* Anzahl abgefertigter Autos -> gesamt_durchlauf
+    /* Anzahl abgefertigter Autos -> finished_cars
 
-    /* Ausgabe der Daten über Konsole und text file
-    printf("Simulationdauer", gesamt_zeit|"Gesamt Kap.",anz_parkplätze,"Durchschn. Auslastung", durchschnitt_auslastung| "Durschn. Warteschlangenlänge",duchschnitt_wartequeue |"Max. Warteschlangenlänge", max_queue_laenge| "Durschschn. Wartezeit", durschnitt_wartezeit| "Zeit mit voller Belegung", volle_belegung| "Prozentualer Anteil", prozent_volle_belegung)
+    /* Ausgabe der Daten über Konsole
+    printf("Simulationdauer", total_time_steps|"Gesamt Kap.",PARK_NUM_SPACES,"Durchschn. Auslastung", avg_occupancy_percentage| "Durschn. Warteschlangenlänge",avg_queue_length |"Max. Warteschlangenlänge", max_queue_laenge| "Durschschn. Wartezeit", avg_waiting_time| "Zeit mit voller Belegung", full_occupancy_steps| "Prozentualer Anteil", full_occupancy_percentage| "Erfolgreich abgefertigete Autos", finished_cars)
+    /*File öffnen und Schreiben
     WRITE TO FILE ... 
+    /*File ordnungsgemäß schließen
     IF p_log_file != NULL THEN
         CLOSE_FILE p_log_file
     END IF
 */
 /*---------------------------------------------------------------*/
-void output_total_statistics(int TOTAL_TIME_STEPS, int PARK_NUM_SPACES,int occupancy_timestep_percent[])
+void output_total_statistics(int TOTAL_TIME_STEPS, int sum_occupancy, int sum_queue_length, int sum_waiting_time, int full_occupancy_steps, int finished_cars, int PARK_NUM_SPACES)
 {
     /*spätere Implementierung*/
 }
