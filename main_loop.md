@@ -32,7 +32,6 @@ struct Car {
 
 Noch nicht definierte Funktionen:
 
-- `get_new_cars_arriving()` - Randomly enqueue new cars to the queue (also modify statistics)
 - `room_available()` - Check if there are free spots in the parking lot
 - `car_leave()` - Save car leaving in statistics
 - `car_arrive()` - Save car arriving in statistics
@@ -66,6 +65,7 @@ FREE waiting_cars
 FREE parking_lot
 EXIT
 
+// Have cars over their max park time leave the parking lot
 remove_due_cars(current_step, parking_lot):
     FOR j IN 0 TO PARK_NUM_SPACES:
         Car car = parking_lot[j];
@@ -89,6 +89,7 @@ remove_due_cars(current_step, parking_lot):
     END FOR
 END
 
+// Dequeue waiting_cars until parking_lot is full (or queue becomes empty)
 park_waiting_cars(parking_lot, waiting_cars):
     WHILE room_available(&parking_lot) AND !waiting_cars.is_empty():
         Car new_car = waiting_cars.dequeue();
@@ -100,6 +101,7 @@ park_waiting_cars(parking_lot, waiting_cars):
     END WHILE
 END
 
+// Randomly enqueue new cars to the queue (also modify statistics)
 get_new_cars_arriving(waiting_cars):
     // Random float between 0 and 1
     float random_float = frng();
@@ -112,6 +114,7 @@ get_new_cars_arriving(waiting_cars):
     waiting_cars.enqueue(new_car);
 END
 
+// Create new car struct to be enqueued
 init_new_car():
     Car car;
 
