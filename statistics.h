@@ -36,9 +36,11 @@ int init_statistics(const char *filename);
 * @param[in] current_step Current index of the timestep.
 * @param[in] occupancy current number of parking cars.
 * @param[in] queue_len current number of waiting cars.
+* @param[in] finished_cars number of cars left the parking garage.
+* @param[in] waiting_time_parking_cars total waiting time of all new parked cars
 */
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len);
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int parking_cars);
 
 /*---------------------------------------------------------------*/
 /* End statistics update                                         */
@@ -48,4 +50,12 @@ void output_timestep_statistics(int current_step, int occupancy, int queue_len);
  */
 
 void output_total_statistics(void);
+
+/*---------------------------------------------------------------*/
+/* Calculating functions for statistics                          */
+/*---------------------------------------------------------------*/
+/**
+ * @brief Outputs the summarized statistics at the end of the simulation.
+ */
+
 #endif
