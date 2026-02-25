@@ -28,9 +28,9 @@ Gemäß den Anforderungen werden 5 Kennzahlen/Statistiken benötigt.
 *   **Begründung:** Der Durchsatz ermöglicht es dem Leiter, das Gesamtvolumen des Verkehrs zu beurteilen. Er dient als Basis für die Kalkulation von Verschleiß und Betriebskosten im Falle einer Erweiterung. Diese Kennzahl gibt eine Basis um beurteilen zu können, wie rellevant das Parkhaus ist.
 
 ## 2. Ausgabeformat
-Die oben genannten Statistiken werden in jedem Zeitschritt sowie als finales Resümee wie folgt ausgegeben:
-1.  **Konsole:** In einem tabellarischen, lesbaren Format zur Live-Überwachung.
-2.  **Text-Datei:** Als persistentes Log zur späteren detaillierten Analyse durch die Geschäftsleitung.
+Die oben genannten Statistiken werden wie folgt ausgegeben:
+1.  **Konsole:** In einem tabellarischen, lesbaren Format zur Live-Überwachung (in jedem Zeitschritt).
+2.  **Text-Datei:** Als persistentes Log zur späteren detaillierten Analyse durch die Geschäftsleitung (finales Resümee).
 
 ## 3. Begründung der Datentypen
 Für die Zähler der Fahrzeuge und Zeitschritte wird der Datentyp `unsigned int` oder `long` verwendet, da negative Werte in diesem Kontext unmöglich sind und ein großer Wertebereich für lange Simulationen sichergestellt werden muss. Für prozentuale Werte und Durchschnitte wird `double` genutzt, um die nötige Präzision zu gewährleisten.
