@@ -32,6 +32,9 @@ struct Car {
 
 Noch nicht definierte Funktionen:
 
+- `frng()` - Get a random float between 0 (inclusive) and 1 (exclusive)
+- `get_unique_id()` - Return a unique integer; shall never return same number twice
+- `random_park_duration()` - Get random park duration (calculation model is yet to be defined)
 - `room_available()` - Check if there are free spots in the parking lot
 - `car_leave()` - Save car leaving in statistics
 - `car_arrive()` - Save car arriving in statistics
