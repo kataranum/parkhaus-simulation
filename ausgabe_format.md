@@ -20,18 +20,40 @@ Gesamt-Durchsatz:       28 Fahrzeuge
 Die Ausgabe der Gesamtstatistik erfolgt am Ende der Simulation in einer Textdatei `statistics.txt`.
 
 ```text
-========================================
-PARKHAUS-SIMULATION
-Statistikbericht
+==================================================
+              PARKHAUS-SIMULATION
+                Statistikbericht
+==================================================
 
-Gesamtsimulationsdauer: 3600 s
+Simulationsdauer:                     3600 Zeitschritte
+Gesamtkapazität Parkhaus:             200 Stellplätze
 
-Fahrzeuge gesamt: 250
-Erfolgreich geparkt: 198
-Abgewiesen (voll): 52
+--------------------------------------------------
+1. AUSLASTUNG
+--------------------------------------------------
+Durchschnittliche Auslastung:          87.4 %
 
-Durchschnittliche Wartezeit: 14.3 s
-Maximale Wartezeit: 87 s
+--------------------------------------------------
+2. WARTESCHLANGE
+--------------------------------------------------
+Durchschnittliche Warteschlangenlänge: 6.3 Fahrzeuge
+Maximale Warteschlangenlänge:          21 Fahrzeuge
 
-========================================
+--------------------------------------------------
+3. WARTEZEIT
+--------------------------------------------------
+Durchschnittliche Wartezeit:           18.7 Zeitschritte
+
+--------------------------------------------------
+4. VOLLBELEGUNG
+--------------------------------------------------
+Zeitschritte mit Vollbelegung:         742
+Anteil an Simulationsdauer:            20.6 %
+
+--------------------------------------------------
+5. FAHRZEUG-DURCHSATZ
+--------------------------------------------------
+Fahrzeuge erfolgreich abgefertigt:    1 128
+
+==================================================
 ```
