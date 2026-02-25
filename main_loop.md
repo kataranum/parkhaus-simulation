@@ -111,4 +111,14 @@ get_new_cars_arriving(waiting_cars):
     Car new_car = init_new_car();
     waiting_cars.enqueue(new_car);
 END
+
+init_new_car():
+    Car car;
+
+    car.id = get_unique_id();
+    car.time_arrival = 0;
+    car.time_park_duration = random_park_duration();
+
+    RETURN car;
+END
 ```
