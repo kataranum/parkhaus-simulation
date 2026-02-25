@@ -36,27 +36,21 @@ int init_statistics(const char *filename);
 * @param[in] current_step Current index of the timestep.
 * @param[in] occupancy current number of parking cars.
 * @param[in] queue_len current number of waiting cars.
-* @param[in] finished_cars number of cars left the parking garage.
+* @param[in] finished_cars_timestep number of cars left the parking garage in the current timestep
 * @param[in] waiting_time_parking_cars total waiting time of all new parked cars
 * @param[in] PARK_NUM_SPACES number of total parking slots
 */
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int PARK_NUM_SPACES);
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
- * @param[in] TOTAL_TIME_STEPS number of all timesteps for one simulation
- * @param[in] sum_occupancy total occupancy after simulation
- * @param[in] sum_queue_length total length after simulation
- * @param[in] sum_waiting_time total waiting time after simulation
- * @param[in] full_occupancy_steps number of steps with full occupancy after simulation
- * @param[in] finished_cars number of cars left the parking garage
  * @param[in] PARK_NUM_SPACES number of total parking slots
 **/
 
-void output_total_statistics(int TOTAL_TIME_STEPS, int sum_occupancy, int sum_queue_length, int sum_waiting_time, int full_occupancy_steps, int finished_cars, int PARK_NUM_SPACES);
+void output_total_statistics(int PARK_NUM_SPACES);
 
 #endif
