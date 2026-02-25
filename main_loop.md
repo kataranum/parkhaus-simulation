@@ -122,7 +122,7 @@ init_new_car():
     Car car;
 
     car.id = get_unique_id();
-    car.time_arrival = 0;
+    car.time_arrival = 0; // Time arrival will be set when car is parked
     car.time_park_duration = random_park_duration();
 
     RETURN car;
