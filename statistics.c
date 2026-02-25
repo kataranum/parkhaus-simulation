@@ -45,6 +45,7 @@ FUNKTION init_statistik(dateiname):
     gesamt_wartequeue  = 0
     max_queue_laenge   = 0
     volle_belegung     = 0
+    auslastung_timestep[] = 0
 
     schreibe_log("==== PARKHAUS-SIMULATION LOG ====")
     GIB 0 ZURÜCK
@@ -67,6 +68,8 @@ FUNKTION void output_timestep_statistics(aktueller_schritt, belegung, länge_war
     gesamt_belegung += belegung
     gesamt_wartezeit += wartezeit_geparkter_autos
     gesamt_wartequeue += warteschlange
+    
+    auslastung_timestep[aktueller_schritt] = (belegung/anz_parkplätze)*100
 
     WENN warteschlange > max_queue_laenge:
         max_queue_laenge = warteschlange
@@ -94,13 +97,22 @@ void output_timestep_statistics(int current_step, int occupancy, int queue_len, 
 /*---------------------------------------------------------------*/
 /*
 PSEUDOCODE
+FUNCTION void output_total_statistics(sim_dauer, anz_parkplätze,)
+    gesamt_zeit = sim_dauer
+    sum_auslastung = 0
+    /*Durchlauf aller timesteps und abspeichern der prozentualen Auslastungen
+    FÜR i=0 bis sim_dauer-1
+        sum_auslastung += auslastung_timestep[i]
 
+    /*Berechnung der gesamten durchschnittlichen Auslastung(Summe der timestep_Auslastungen / Anzahl der Timesteps)
+    durchschnitt_auslastung = sum_auslastung / sim_dauer
 
-
+    /* Ausgabe der Daten über text file
+    printf("Simulationdauer", gesamt_zeit|"Gesamt Kap.",anz_parkplätze,"Durchschn. Auslastung", durchschnitt_auslastung)
 
 */
 /*---------------------------------------------------------------*/
-void output_total_statistics(void)
+void output_total_statistics(int TOTAL_TIME_STEPS, int PARK_NUM_SPACES,int occupancy_timestep_percent[])
 {
     /*spätere Implementierung*/
 }
