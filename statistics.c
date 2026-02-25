@@ -84,7 +84,23 @@ FUNKTION void output_timestep_statistics(aktueller_schritt, belegung, länge_war
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len)
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int parking_cars)
+{
+    /*spätere Implementierung*/
+}
+
+/*---------------------------------------------------------------*/
+/* End statistics output                                         */
+/*---------------------------------------------------------------*/
+/*
+PSEUDOCODE
+
+
+
+
+*/
+/*---------------------------------------------------------------*/
+void output_total_statistics(void)
 {
     /*spätere Implementierung*/
 }

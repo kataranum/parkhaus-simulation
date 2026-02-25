@@ -43,7 +43,7 @@ int init_statistics(const char *filename);
 void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars, int waiting_time_parking_cars, int parking_cars);
 
 /*---------------------------------------------------------------*/
-/* End statistics update                                         */
+/* End statistics output                                         */
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
