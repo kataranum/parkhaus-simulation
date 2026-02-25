@@ -99,4 +99,16 @@ park_waiting_cars(parking_lot, waiting_cars):
         parking_lot[available_spot] = new_car;
     END WHILE
 END
+
+get_new_cars_arriving(waiting_cars):
+    // Random float between 0 and 1
+    float random_float = frng();
+
+    IF (random_float >= PARK_CHANCE_ARRIVE):
+        RETURN
+    END IF
+
+    Car new_car = init_new_car();
+    waiting_cars.enqueue(new_car);
+END
 ```
