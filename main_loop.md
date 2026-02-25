@@ -38,6 +38,7 @@ Noch nicht definierte Funktionen:
 - `room_available()` - Check if there are free spots in the parking lot
 - `car_leave()` - Save car leaving in statistics
 - `car_arrive()` - Save car arriving in statistics
+- `statistics_car_enqueu()` - Save car enqueue in statistics
 
 ```
 PSEUDOCODE
@@ -115,6 +116,8 @@ get_new_cars_arriving(waiting_cars):
 
     Car new_car = init_new_car();
     waiting_cars.enqueue(new_car);
+
+    statistics_car_enqueue(new_car);
 END
 
 // Create new car struct to be enqueued
