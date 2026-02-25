@@ -87,6 +87,7 @@ remove_due_cars(current_step, parking_lot):
         parking_lot[j] = NULL
         FREE car;
     END FOR
+END
 
 park_waiting_cars(parking_lot, waiting_cars):
     WHILE room_available(&parking_lot) AND !waiting_cars.is_empty():
@@ -97,4 +98,5 @@ park_waiting_cars(parking_lot, waiting_cars):
         car_arrive(new_car);
         parking_lot[available_spot] = new_car;
     END WHILE
+END
 ```
