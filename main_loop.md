@@ -36,8 +36,8 @@ Noch nicht definierte Funktionen:
 - `get_unique_id()` - Return a unique integer; shall never return same number twice
 - `random_park_duration()` - Get random park duration (calculation model is yet to be defined)
 - `room_available()` - Check if there are free spots in the parking lot
-- `car_leave()` - Save car leaving in statistics
-- `car_arrive()` - Save car arriving in statistics
+- `statistics_car_leave()` - Save car leaving in statistics
+- `statistics_car_arrive()` - Save car arriving in statistics
 - `statistics_car_enqueu()` - Save car enqueue in statistics
 
 ```
@@ -87,7 +87,7 @@ remove_due_cars(current_step, parking_lot):
         end if
 
         // Have the car leave the lot
-        car_leave(car);
+        statistics_car_leave(car);
         parking_lot[j] = NULL
         FREE car;
     END FOR
@@ -100,7 +100,7 @@ park_waiting_cars(parking_lot, waiting_cars):
         new_car.time_arrival = current_step;
 
         int available_spot = find_empty_space(&parking_lot);
-        car_arrive(new_car);
+        statistics_car_arrive(new_car);
         parking_lot[available_spot] = new_car;
     END WHILE
 END
