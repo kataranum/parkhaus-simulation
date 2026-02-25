@@ -32,7 +32,7 @@ struct Car {
 
 Noch nicht definierte Funktionen:
 
-- `frng()` - Get a random float between 0 (inclusive) and 1 (exclusive)
+- `frand()` - Get a random float between 0 (inclusive) and 1 (exclusive)
 - `get_unique_id()` - Return a unique integer; shall never return same number twice
 - `random_park_duration()` - Get random park duration (calculation model is yet to be defined)
 - `room_available()` - Check if there are free spots in the parking lot
@@ -107,7 +107,7 @@ END
 // Randomly enqueue new cars to the queue (also modify statistics)
 get_new_cars_arriving(waiting_cars):
     // Random float between 0 and 1
-    float random_float = frng();
+    float random_float = frand();
 
     IF (random_float >= PARK_CHANCE_ARRIVE):
         RETURN
