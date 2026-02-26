@@ -17,3 +17,29 @@ END FOR
 void run_simulation(InputParams params, Stats *p_stats) {
     // TODO
 }
+
+// TODO: Add InputParams to this function header
+/*
+```PSEUDOCODE
+FOR i IN 0 TO params.num_spaces:
+    car = p_parking_lot[i];
+
+    IF is_empty(car):
+        CONTINUE
+    END IF
+
+    park_duration = current_step - car.time_arrival;
+
+    IF park_duration < car.time_park_duration:
+        CONTINUE
+    END IF
+
+    statistics_car_leave(car);
+    parking_lot[i] = EMPTY_CAR;
+    FREE car; // only in case car is allocated in heap
+END FOR
+```
+*/
+void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats *p_stats) {
+    // TODO
+}
