@@ -55,6 +55,17 @@ void get_new_cars_arriving(QueueCars waiting_cars);
  */
 int room_available(ParkingLot parking_lot);
 
+/**
+ * @brief Find any empty free spot in `parking_lot`
+ * 
+ * In case there are no free spots, return -1. Otherwise return the index of
+ * a free spot.
+ *
+ * @param parking_lot[in] Given parking lot 
+ * @return int Index to a free parking space
+ */
+int find_empty_space(ParkingLot parking_lot);
+
 // TODO: The functions below should maybe be in other headers (e.g. Car.h)
 
 /**
