@@ -58,3 +58,22 @@ END WHILE
 void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats) {
     // TODO
 }
+
+/*
+```PSEUDOCODE
+// Random float between 0 and 1
+random_float = frand();
+
+IF (random_float >= PARK_CHANCE_ARRIVE):
+    RETURN
+END IF
+
+new_car = init_new_car();
+waiting_cars.enqueue(new_car);
+
+statistics_car_enqueue(new_car);
+```
+*/
+void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats) {
+    // TODO
+}
