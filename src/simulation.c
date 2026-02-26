@@ -18,11 +18,10 @@ void run_simulation(InputParams params, Stats *p_stats) {
     // TODO
 }
 
-// TODO: Add InputParams to this function header
 /*
 ```PSEUDOCODE
-FOR i IN 0 TO params.num_spaces:
-    car = p_parking_lot[i];
+FOR i IN 0 TO parking_lot.length:
+    car = parking_lot.array[i];
 
     IF is_empty(car):
         CONTINUE
@@ -35,7 +34,7 @@ FOR i IN 0 TO params.num_spaces:
     END IF
 
     statistics_car_leave(car);
-    parking_lot[i] = EMPTY_CAR;
+    parking_lot.array[i] = EMPTY_CAR;
     FREE car; // only in case car is allocated in heap
 END FOR
 ```
