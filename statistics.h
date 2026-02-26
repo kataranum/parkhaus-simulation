@@ -8,6 +8,34 @@
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
+/*---------------------------------------------------------------*/
+/* Statistics state                                              */
+/*---------------------------------------------------------------*/
+typedef struct {
+    FILE *log_file;
+
+    /* Time tracking */
+    int total_time_steps;
+
+    /* Occupancy */
+    int sum_occupancy;
+    int *occupancy_timestep;
+
+    /* Waiting time */
+    int sum_waiting_time;
+
+    /* Queue statistics */
+    int sum_queue_length;
+    int max_queue_length;
+
+    /* Full occupancy */
+    int full_occupancy_steps;
+
+    /* Finished cars */
+    int finished_cars;
+
+} Statistics;
+
 
 /*---------------------------------------------------------------*/
 /* Initialization                                                */
