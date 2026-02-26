@@ -33,4 +33,4 @@ Die oben genannten Statistiken werden wie folgt ausgegeben:
 2.  **Text-Datei:** Als persistentes Log zur späteren detaillierten Analyse durch die Geschäftsleitung (finales Resümee).
 
 ## 3. Begründung der Datentypen
-Für die Zähler der Fahrzeuge und Zeitschritte wird der Datentyp `unsigned int` oder `long` verwendet, da negative Werte in diesem Kontext unmöglich sind und ein großer Wertebereich für lange Simulationen sichergestellt werden muss. Für prozentuale Werte und Durchschnitte wird `double` genutzt, um die nötige Präzision zu gewährleisten.
+Für die Zähler der Fahrzeuge und Zeitschritte wird der Datentyp `unsigned int` verwendet, da negative Werte in diesem Kontext unmöglich sind. Maximal können dann 2^32 Zeitschritte bererchnet werden, was ausreichend ist. Für prozentuale Werte und Durchschnitte wird `float` genutzt, um Kommazahlen darstellen zu können.
