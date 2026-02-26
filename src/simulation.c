@@ -5,6 +5,8 @@
 ALLOCATE_ARRAY Car[params.num_spaces] parking_lot;
 INIT_QUEUE Car waiting_cars;
 
+srand(params.rng_seed);
+
 FOR current_step IN 0 TO params.total_time_steps:
     get_new_cars_arriving(params, waiting_cars, p_stats);
     remove_due_cars(current_step, parking_lot, p_stats);
