@@ -77,6 +77,16 @@ Car init_new_car();
 int get_unique_id();
 
 /**
+ * @brief Get a random park duration for a new car
+ *
+ * Returns a random int between 1 and MAX_PARK_TIME. The latter being the
+ * maximum allowed park time for a car defined by the input parameters
+ * 
+ * @return int Number of timesteps that the car wants to park for
+ */
+int random_park_duration();
+
+/**
  * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)
  * 
  * Uses `rand()` internally so uses the seed set by `srand()`
