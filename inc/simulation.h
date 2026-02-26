@@ -36,6 +36,15 @@ void remove_due_cars(unsigned int current_step, ParkingLot parking_lot);
  */
 void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars);
 
+/**
+ * @brief Randomly enqueue a new car to `waiting_cars`
+ *
+ * Every time step there is a random chance that a new car with a random park
+ * duration will want to enter the parking lot. This function randomly decides
+ * whether to create and enqueue a new car, or to do nothing (0 new arrivals).
+ * 
+ * @param waiting_cars[out] Current simulation parking_lot
+ */
 void get_new_cars_arriving(QueueCars waiting_cars);
 
 int room_available(ParkingLot parking_lot);
