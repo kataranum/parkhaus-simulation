@@ -11,27 +11,6 @@
 /* static module variables                                       */
 /*---------------------------------------------------------------*/
 
-static FILE *p_log_file = NULL;
-
-/* Time tracking */
-static int total_time_steps = 0;
-
-/* Occupancy */
-static int sum_occupancy = 0;
-static int *occupancy_timestep = NULL;
-
-/*Waiting time*/
-static int sum_waiting_time = 0;
-
-/* Queue statistics */
-static int sum_queue_length = 0;
-static int max_queue_length = 0;
-
-/* Full occupancy */
-static int full_occupancy_steps = 0;
-
-/*finished cars*/
-static int finished_cars = 0;
 
 /*---------------------------------------------------------------*/
 /* Initialization 
@@ -41,26 +20,26 @@ PSEUDOCODE
 
 FUNKTION init_statistik(dateiname):
     /* Sicheres Öffnen der datei gewährleisten
-    WENN dateiname IST NULL:
+    WENN dateiname IST NULL ODER pointer auf Struct IST NULL:
         GIB -1 ZURÜCK
-    log_datei = öffne_datei_zum_schreiben(dateiname)
-    WENN log_datei IST NULL:
+    stats->log_datei = öffne_datei_zum_schreiben(dateiname)
+    WENN stats->log_datei IST NULL:
         GIB -1 ZURÜCK
 
     /* Variablen zurücksetzen
-    total_time_steps        = 0
-    sum_occupancy           = 0
-    sum_waiting_time        = 0
-    sum_queue_length        = 0
-    max_queue_laenge        = 0
-    full_occupancy_steps    = 0
-    finished_cars           = 0
+    stats->total_time_steps     = 0;
+    stats->sum_occupancy        = 0;
+    stats->sum_waiting_time     = 0;
+    stats->sum_queue_length     = 0;
+    stats->max_queue_length     = 0;
+    stats->full_occupancy_steps = 0;
+    stats->finished_cars        = 0;
 
     GIB 0 ZURÜCK
 */
 /*---------------------------------------------------------------*/
 
-int init_statistics(const char *filename)
+int init_statistics(Statistics *stats, const char *filename)
 {
  /*spätere implementierung*/   
 }

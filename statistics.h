@@ -19,7 +19,6 @@ typedef struct {
 
     /* Occupancy */
     int sum_occupancy;
-    int *occupancy_timestep;
 
     /* Waiting time */
     int sum_waiting_time;
@@ -46,9 +45,10 @@ typedef struct {
  * This function must be called once before the simulation loop
  * starts. All internal values are reset to zero.
  * @param[in] filename Name der zu erstellenden Log-Datei.
+ * @param[in] stats pointer auf Statistiks struct
  * @return int 0 bei Erfolg, -1 bei Dateifehler.
  */
-int init_statistics(const char *filename);
+int init_statistics(Statistics *stats, const char *filename);
 
 
 /*---------------------------------------------------------------*/
