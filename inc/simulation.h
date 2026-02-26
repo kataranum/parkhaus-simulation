@@ -55,6 +55,8 @@ void get_new_cars_arriving(QueueCars waiting_cars);
  */
 int room_available(ParkingLot parking_lot);
 
+// TODO: The functions below should maybe be in other headers (e.g. Car.h)
+
 /**
  * @brief Initialize a new car with random ID and park duration
  * 
