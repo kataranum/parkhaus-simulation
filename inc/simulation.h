@@ -2,9 +2,9 @@
 #define H_SIMULATION
 
 // TODO: Define proper array for as parking_lot
-typedef void* ParkingLot;
+struct ParkingLot;
 // TODO: Define proper Queue struct for cars
-typedef void* QueueCars;
+struct QueueCars;
 
 // TODO: Replace placeholder with proper struct definition
 struct Car;
