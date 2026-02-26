@@ -30,7 +30,7 @@ struct Stats;
  * @param parking_lot[in/out] Current simulation parking lot
  * @param stats[in/out] Statistics data
  */
-void remove_due_cars(unsigned int current_step, ParkingLot parking_lot, Stats stats);
+void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats *p_stats);
 
 /**
  * @brief Move cars from the queue in the parking lot until the lot is full
@@ -44,7 +44,7 @@ void remove_due_cars(unsigned int current_step, ParkingLot parking_lot, Stats st
  * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
-void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars, Stats stats);
+void park_waiting_cars(ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats);
 
 /**
  * @brief Randomly enqueue a new car to `waiting_cars`
@@ -57,7 +57,7 @@ void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars, Stats sta
  * @param waiting_cars[out] Current simulation parking_lot
  * @param stats[in/out] Statistics data
  */
-void get_new_cars_arriving(InputParams params, QueueCars waiting_cars, Stats stats);
+void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
@@ -65,7 +65,7 @@ void get_new_cars_arriving(InputParams params, QueueCars waiting_cars, Stats sta
  * @param parking_lot[in] Given parking lot
  * @return int (boolean) whether there is at least one free spot
  */
-int room_available(ParkingLot parking_lot);
+int room_available(const ParkingLot *p_parking_lot);
 
 /**
  * @brief Find any empty free spot in `parking_lot`
@@ -76,7 +76,7 @@ int room_available(ParkingLot parking_lot);
  * @param parking_lot[in] Given parking lot 
  * @return int Index to a free parking space
  */
-int find_empty_space(ParkingLot parking_lot);
+int find_empty_space(const ParkingLot *p_parking_lot);
 
 // TODO: The functions below should maybe be in other headers (e.g. Car.h)
 
