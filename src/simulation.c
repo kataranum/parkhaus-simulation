@@ -42,3 +42,19 @@ END FOR
 void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats *p_stats) {
     // TODO
 }
+
+/*
+```PSEUDOCODE
+WHILE room_available(parking_lot) AND NOT waiting_cars.is_empty():
+    new_car = waiting_cars.dequeue();
+    new_car.arrival_time = current_step;
+
+    available_spot = find_empty_space(parking_lot);
+    statistics_car_arrive(new_car);
+    parking_lot.array[available_spot] = new_car;
+END WHILE
+```
+*/
+void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats) {
+    // TODO
+}

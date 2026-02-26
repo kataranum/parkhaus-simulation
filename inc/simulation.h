@@ -55,7 +55,7 @@ void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats
  * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
-void park_waiting_cars(ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats);
+void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats);
 
 /**
  * @brief Randomly enqueue a new car to `waiting_cars`
