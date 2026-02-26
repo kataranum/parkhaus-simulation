@@ -9,6 +9,10 @@ typedef void* QueueCars;
 // TODO: Replace placeholder with proper struct definition
 struct Car;
 
+// TODO: Replace placeholder with proper struct definition
+/// All variables that are given as input to the program
+struct InputParams;
+
 /**
  * @brief Have cars over their max park time leave the parking lot
  * 
@@ -43,9 +47,10 @@ void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars);
  * duration will want to enter the parking lot. This function randomly decides
  * whether to create and enqueue a new car, or to do nothing (0 new arrivals).
  * 
+ * @param params[in] Input parameters
  * @param waiting_cars[out] Current simulation parking_lot
  */
-void get_new_cars_arriving(QueueCars waiting_cars);
+void get_new_cars_arriving(InputParams params, QueueCars waiting_cars);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
@@ -71,9 +76,10 @@ int find_empty_space(ParkingLot parking_lot);
 /**
  * @brief Initialize a new car with random ID and park duration
  * 
+ * @param params[in] Input parameters
  * @return Car Newly initialized car
  */
-Car init_new_car();
+Car init_new_car(InputParams params);
 
 /**
  * @brief Get a new unique ID for Car
@@ -93,9 +99,10 @@ int get_unique_id();
  * Returns a random int between 1 and MAX_PARK_TIME. The latter being the
  * maximum allowed park time for a car defined by the input parameters
  * 
+ * @param params[in] Input parameters
  * @return int Number of timesteps that the car wants to park for
  */
-int random_park_duration();
+int random_park_duration(InputParams params);
 
 /**
  * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)
