@@ -77,3 +77,20 @@ statistics_car_enqueue(new_car);
 void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats) {
     // TODO
 }
+
+/*
+```PSEUDOCODE
+FOR i IN 0 TO parking_lot.length:
+    car = parking_lot.array[i];
+
+    IF is_empty(car):
+        RETURN i;
+    END IF
+END FOR
+
+RETURN -1
+```
+*/
+int find_empty_space(const ParkingLot *p_parking_lot) {
+    // TODO
+}
