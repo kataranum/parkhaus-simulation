@@ -47,11 +47,40 @@ void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars);
  */
 void get_new_cars_arriving(QueueCars waiting_cars);
 
+/**
+ * @brief Determine whether there are free spots in `parking_lot`
+ * 
+ * @param parking_lot[in] Given parking lot
+ * @return int (boolean) whether there is at least one free spot
+ */
 int room_available(ParkingLot parking_lot);
 
+/**
+ * @brief Initialize a new car with random ID and park duration
+ * 
+ * @return Car Newly initialized car
+ */
 Car init_new_car();
+
+/**
+ * @brief Get a new unique ID for Car
+ *
+ * Should never return the same ID twice.
+ *
+ * Internally, a static variable is incremented and returned every call, so the
+ * returned value will always increase.
+ * 
+ * @return int New unique ID
+ */
 int get_unique_id();
 
+/**
+ * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)
+ * 
+ * Uses `rand()` internally so uses the seed set by `srand()`
+ *
+ * @return float Random float between 0 and 1
+ */
 float frand();
 
 #endif
