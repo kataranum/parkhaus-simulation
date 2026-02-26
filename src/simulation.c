@@ -66,7 +66,7 @@ void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, Que
 // Random float between 0 and 1
 random_float = frand();
 
-IF (random_float >= PARK_CHANCE_ARRIVE):
+IF (random_float >= params.park_chance_arrive):
     RETURN
 END IF
 
