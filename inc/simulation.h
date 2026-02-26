@@ -54,7 +54,7 @@ void park_waiting_cars(ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Sta
  * whether to create and enqueue a new car, or to do nothing (0 new arrivals).
  * 
  * @param params[in] Input parameters
- * @param waiting_cars[out] Current simulation parking_lot
+ * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
 void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats);
