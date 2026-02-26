@@ -13,6 +13,10 @@ struct Car;
 /// All variables that are given as input to the program
 struct InputParams;
 
+// TODO: Replace placeholder with proper struct definition
+/// Storage for all data that evaluates statistics
+struct Stats;
+
 /**
  * @brief Have cars over their max park time leave the parking lot
  * 
@@ -24,8 +28,9 @@ struct InputParams;
  *
  * @param current_step[in] Current simulation time step 
  * @param parking_lot[in/out] Current simulation parking lot
+ * @param stats[in/out] Statistics data
  */
-void remove_due_cars(unsigned int current_step, ParkingLot parking_lot);
+void remove_due_cars(unsigned int current_step, ParkingLot parking_lot, Stats stats);
 
 /**
  * @brief Move cars from the queue in the parking lot until the lot is full
@@ -37,8 +42,9 @@ void remove_due_cars(unsigned int current_step, ParkingLot parking_lot);
  *
  * @param parking_lot[in/out] Current simulation parking lot
  * @param waiting_cars[in/out] Current simulation car queue
+ * @param stats[in/out] Statistics data
  */
-void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars);
+void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars, Stats stats);
 
 /**
  * @brief Randomly enqueue a new car to `waiting_cars`
@@ -49,8 +55,9 @@ void park_waiting_cars(ParkingLot parking_lot, QueueCars waiting_cars);
  * 
  * @param params[in] Input parameters
  * @param waiting_cars[out] Current simulation parking_lot
+ * @param stats[in/out] Statistics data
  */
-void get_new_cars_arriving(InputParams params, QueueCars waiting_cars);
+void get_new_cars_arriving(InputParams params, QueueCars waiting_cars, Stats stats);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
