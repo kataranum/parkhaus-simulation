@@ -111,3 +111,12 @@ RETURN -1
 int find_empty_space(const ParkingLot *p_parking_lot) {
     // TODO
 }
+
+/*
+```PSEUDOCODE
+RETURN (rand() % (params.max_park_duration - 1)) + 1
+```
+*/
+int random_park_duration(InputParams params) {
+    // TODO
+}
