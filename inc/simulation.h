@@ -18,6 +18,17 @@ struct InputParams;
 struct Stats;
 
 /**
+ * @brief Run the entire simulation with the given parameters
+ * 
+ * The simulation uses `params` to determine behaviour, and saves all relevant
+ * statistics in `p_stats`.
+ *
+ * @param params[in] Given input parameters
+ * @param p_stats[in/out] Statistics data
+ */
+void run_simulation(InputParams params, Stats *p_stats);
+
+/**
  * @brief Have cars over their max park time leave the parking lot
  * 
  * Every car has a set parking duration. After this time passed, the car must
