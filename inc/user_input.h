@@ -18,4 +18,14 @@ typedef struct {
     unsigned long rng_seed;
 } InputParams;
 
+/**
+ * @brief Prompt user to input all required values
+ *
+ * Will block until the user inputs all values correctly. If there is invalid
+ * input, the user will be prompted again.
+ *
+ * @return InputParams Input parameters with all fields set
+ */
+InputParams get_user_input(void);
+
 #endif
