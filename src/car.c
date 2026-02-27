@@ -24,3 +24,10 @@ RETURN (rand() % (params.max_park_duration - 1)) + 1
 int random_park_duration(InputParams params) {
     // TODO
 }
+
+/*
+```PSEUDOCODE
+RETURN car.id == -1
+```
+*/
+int is_empty(Car car);
