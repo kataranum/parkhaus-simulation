@@ -5,13 +5,10 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-// TODO: Replace placeholder with proper struct definition
-/// All variables that are given as input to the program
-struct InputParams;
-
-// TODO: Replace placeholder with proper struct definition
-/// Storage for all data that evaluates statistics
-struct Stats;
+#include "user_input.h"
+#include "car.h"
+#include "parking_lot.h"
+#include "statistics.h"
 
 /**
  * @brief All data relevant for the simulation in one struct
