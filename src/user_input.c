@@ -2,11 +2,13 @@
 
 /*
 ```PSEUDOCODE
-DO
+LOOP:
     input = READ_INPUT
-WHILE !is_parsable(input);
 
-RETURN input AS unsigned int;
+    IF is_parsable(input):
+        RETURN input AS unsigned int;
+    END IF
+END LOOP
 ```
 */
 unsigned int input_valid_uint(void) {
@@ -15,11 +17,13 @@ unsigned int input_valid_uint(void) {
 
 /*
 ```PSEUDOCODE
-DO
+LOOP:
     input = READ_INPUT
-WHILE !is_parsable(input);
 
-RETURN input AS float;
+    IF is_parsable(input):
+        RETURN input AS float;
+    END IF
+END LOOP
 ```
 */
 float input_valid_float(void) {
