@@ -46,7 +46,7 @@ LOOP:
 
     value = input AS float;
 
-    IF value < min OR value > max:
+    IF value < 0.0 OR value > 100.0:
         PRINT "value is outside allowed range (0% - 100%)"
         CONTINUE;
     END IF
@@ -55,7 +55,7 @@ LOOP:
 END LOOP
 ```
 */
-float input_valid_float(float min, float max) {
+float input_valid_percentage(void) {
     // TODO
 }
 
@@ -70,7 +70,7 @@ PRINT "Please input maximum number of timesteps that cars will park for"
 params.park_max_time = input_valid_uint();
 
 PRINT "Please enter a percentage chance of cars arriving on a new timestep"
-float percentage = input_valid_float(0.0, 100.0);
+float percentage = input_valid_percentage();
 params.park_chance_arrive = percentage / 100.0;
 
 PRINT "Please input how many timesteps should be simulated"
