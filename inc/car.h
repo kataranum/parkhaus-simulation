@@ -47,4 +47,14 @@ int get_unique_id();
  */
 int random_park_duration(InputParams params);
 
+/**
+ * @brief Determine whether a parking space is empty
+ * 
+ * A parking space is empty if the id of the car is -1.
+ * 
+ * @param car[in] Car to check
+ * @return int (boolean) whether the parking space is empty
+ */
+int is_empty(Car car);
+
 #endif
