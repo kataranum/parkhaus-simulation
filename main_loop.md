@@ -14,19 +14,6 @@ Für jetzt geht der Pseudocode davon aus, dass die Input-Parameter als struct
 - `TOTAL_TIME_STEPS` Anzahl der simulierten Zeitschritte
 - `RNG_SEED` Seed für `rand()`
 
-## `Car` struct
-
-Im Pseudocode muss ein struct `Car` verwendet werden. Es wird angenommen, dass
-folgende Felder definiert sind:
-
-```C
-struct Car {
-    unsigned int id;
-    int time_arrival;
-    int time_park_duration;
-};
-```
-
 ## Statistik
 
 Alle Statistikvariablen werden in einem struct `Stats` gespeichert. Der
