@@ -11,6 +11,23 @@ typedef struct
 }ParkingLot;
 
 /**
+ * @brief Initialize a new parking lot with given length
+ * 
+ * This arry is allocated on the heap, so it must be freed after use with `free_parking_lot()`.
+ * 
+ * @param length[in] Length of the parking lot
+ * @return ParkingLot Newly initialized parking lot
+ */
+ParkingLot init_parking_lot(unsigned int length);
+
+/**
+ * @brief Free the memory allocated for the parking lot
+ * 
+ * @param parking_lot[in] Given parking lot
+ */
+void free_parking_lot(ParkingLot parking_lot);
+
+/**
  * @brief Determine whether there are free spots in `parking_lot`
  * 
  * @param parking_lot[in] Given parking lot
