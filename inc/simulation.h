@@ -1,3 +1,7 @@
+/**
+ * @file Central functions that implement the main simulation loop.
+ */
+
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
