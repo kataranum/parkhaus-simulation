@@ -8,6 +8,8 @@ LOOP:
     IF is_parsable(input):
         RETURN input AS unsigned int;
     END IF
+
+    PRINT "invalid uint"
 END LOOP
 ```
 */
@@ -23,6 +25,8 @@ LOOP:
     IF is_parsable(input):
         RETURN input AS unsigned long;
     END IF
+
+    PRINT "invalid ulong"
 END LOOP
 ```
 */
@@ -38,6 +42,8 @@ LOOP:
     IF is_parsable(input):
         RETURN input AS float;
     END IF
+
+    PRINT "invalid float"
 END LOOP
 ```
 */
