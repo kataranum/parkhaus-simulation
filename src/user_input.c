@@ -22,6 +22,10 @@ unsigned int input_valid_uint(void) {
 LOOP:
     input = READ_INPUT
 
+    IF is_empty(input):
+        RETURN time(NULL);
+    END IF
+
     IF is_parsable(input):
         RETURN input AS unsigned long;
     END IF
