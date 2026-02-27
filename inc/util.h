@@ -1,3 +1,7 @@
+/**
+ * @file Helpful functions that aren't specific to a feature of the program
+ */
+
 #ifndef UTIL_H
 #define UTIL_H
 
