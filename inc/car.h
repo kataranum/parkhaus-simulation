@@ -45,5 +45,4 @@ int get_unique_id();
  */
 int random_park_duration(InputParams params);
 
-
 #endif
