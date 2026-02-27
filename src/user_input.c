@@ -21,6 +21,21 @@ LOOP:
     input = READ_INPUT
 
     IF is_parsable(input):
+        RETURN input AS unsigned long;
+    END IF
+END LOOP
+```
+*/
+unsigned int input_valid_long(void) {
+    // TODO
+}
+
+/*
+```PSEUDOCODE
+LOOP:
+    input = READ_INPUT
+
+    IF is_parsable(input):
         RETURN input AS float;
     END IF
 END LOOP
