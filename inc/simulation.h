@@ -1,5 +1,5 @@
-#ifndef H_SIMULATION
-#define H_SIMULATION
+#ifndef SIMULATION_H
+#define SIMULATION_H
 
 // TODO: Define proper array for as parking_lot
 struct ParkingLot;
