@@ -71,58 +71,6 @@ void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, Que
 void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats);
 
 /**
- * @brief Determine whether there are free spots in `parking_lot`
- * 
- * @param parking_lot[in] Given parking lot
- * @return int (boolean) whether there is at least one free spot
- */
-int room_available(const ParkingLot *p_parking_lot);
-
-/**
- * @brief Find any empty free spot in `parking_lot`
- * 
- * In case there are no free spots, return -1. Otherwise return the index of
- * a free spot.
- *
- * @param parking_lot[in] Given parking lot 
- * @return int Index to a free parking space
- */
-int find_empty_space(const ParkingLot *p_parking_lot);
-
-// TODO: The functions below should maybe be in other headers (e.g. Car.h)
-
-/**
- * @brief Initialize a new car with random ID and park duration
- * 
- * @param params[in] Input parameters
- * @return Car Newly initialized car
- */
-Car init_new_car(InputParams params);
-
-/**
- * @brief Get a new unique ID for Car
- *
- * Should never return the same ID twice.
- *
- * Internally, a static variable is incremented and returned every call, so the
- * returned value will always increase.
- * 
- * @return int New unique ID
- */
-int get_unique_id();
-
-/**
- * @brief Get a random park duration for a new car
- *
- * Returns a random int between 1 and MAX_PARK_TIME. The latter being the
- * maximum allowed park time for a car defined by the input parameters
- * 
- * @param params[in] Input parameters
- * @return int Number of timesteps that the car wants to park for
- */
-int random_park_duration(InputParams params);
-
-/**
  * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)
  * 
  * Uses `rand()` internally so uses the seed set by `srand()`
