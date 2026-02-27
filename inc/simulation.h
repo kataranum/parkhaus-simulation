@@ -25,7 +25,7 @@ struct SimulationData {
     /** The current time step */
     unsigned int current_step;
     /** Pointer to all the statistics variables */
-    Stats *p_stat;
+    Stats *p_stats;
 
     /** Current state of the parking lot array */
     ParkingLot parking_lot;
