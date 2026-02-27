@@ -41,7 +41,7 @@ FOR i IN 0 TO parking_lot.length:
 END FOR
 ```
 */
-void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats *p_stats) {
+void remove_due_cars(SimulationData simulation_data) {
     // TODO
 }
 
@@ -57,7 +57,7 @@ WHILE room_available(parking_lot) AND NOT waiting_cars.is_empty():
 END WHILE
 ```
 */
-void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats) {
+void park_waiting_cars(SimulationData simulation_data) {
     // TODO
 }
 
@@ -77,6 +77,6 @@ waiting_cars.enqueue(new_car);
 statistics_car_enqueue(new_car);
 ```
 */
-void get_new_cars_arriving(InputParams params, unsigned int current_step, QueueCars *p_waiting_cars, Stats *p_stats) {
+void get_new_cars_arriving(SimulationData simulation_data) {
     // TODO
 }

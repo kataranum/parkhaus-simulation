@@ -17,6 +17,15 @@ struct InputParams;
 /// Storage for all data that evaluates statistics
 struct Stats;
 
+struct SimulationData {
+    InputParams params;
+    unsigned int current_step;
+    Stats *p_stat;
+
+    ParkingLot parking_lot;
+    QueueCars queue;
+};
+
 /**
  * @brief Run the entire simulation with the given parameters
  * 
@@ -41,7 +50,7 @@ void run_simulation(InputParams params, Stats *p_stats);
  * @param parking_lot[in/out] Current simulation parking lot
  * @param stats[in/out] Statistics data
  */
-void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats *p_stats);
+void remove_due_cars(SimulationData simulation_data);
 
 /**
  * @brief Move cars from the queue in the parking lot until the lot is full
@@ -55,7 +64,7 @@ void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats
  * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
-void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, QueueCars *p_waiting_cars, Stats *p_stats);
+void park_waiting_cars(SimulationData simulation_data);
 
 /**
  * @brief Randomly enqueue a new car to `waiting_cars`
@@ -69,7 +78,7 @@ void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, Que
  * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
-void get_new_cars_arriving(InputParams params, unsigned int current_step, QueueCars *p_waiting_cars, Stats *p_stats);
+void get_new_cars_arriving(SimulationData simulation_data);
 
 /**
  * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)
