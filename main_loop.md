@@ -34,7 +34,6 @@ Noch nicht definierte Funktionen:
 
 - `frand()` - Get a random float between 0 (inclusive) and 1 (exclusive)
 - `get_unique_id()` - Return a unique integer; shall never return same number twice
-- `random_park_duration()` - Get random park duration (calculation model is yet to be defined)
 - `room_available()` - Check if there are free spots in the parking lot
 - `statistics_car_leave()` - Save car leaving in statistics
 - `statistics_car_arrive()` - Save car arriving in statistics
@@ -129,5 +128,10 @@ init_new_car():
     car.time_park_duration = random_park_duration();
 
     RETURN car;
+END
+
+// Return random integer between 1 and max_duration
+random_park_duration(max_duration):
+    RETURN (rand() % (max_duration - 1)) + 1
 END
 ```
