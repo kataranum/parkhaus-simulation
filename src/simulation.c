@@ -2,7 +2,7 @@
 
 /*
 ```PSEUDOCODE
-ALLOCATE_ARRAY Car[params.num_spaces] parking_lot;
+parking_lot = init_parking_lot(params.num_parking_spaces);
 INIT_QUEUE Car waiting_cars;
 
 srand(params.rng_seed);
