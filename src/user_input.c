@@ -4,12 +4,25 @@
 ```PSEUDOCODE
 DO
     input = READ_INPUT
-WHILE !is_valid(input);
+WHILE !is_parsable(input);
 
 RETURN input AS unsigned int;
 ```
 */
 unsigned int input_valid_uint(void) {
+    // TODO
+}
+
+/*
+```PSEUDOCODE
+DO
+    input = READ_INPUT
+WHILE !is_parsable(input);
+
+RETURN input AS float;
+```
+*/
+float input_valid_float(void) {
     // TODO
 }
 
@@ -24,8 +37,7 @@ PRINT "Please input maximum number of timesteps that cars will park for"
 params.park_max_time = input_valid_uint();
 
 PRINT "Please enter a percentage chance of cars arriving on a new timestep"
-float percentage;
-input_valid_float(&percentage);
+float percentage = input_valid_float(&percentage);
 assert_float_range(percentage, 0.0, 100.0);
 params.park_chance_arrive = percentage / 100.0;
 
