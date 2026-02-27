@@ -1,3 +1,7 @@
+/**
+ * @file Functionality for getting values from user input via terminal stdin
+ */
+
 #ifndef USER_INPUT_H
 #define USER_INPUT_H
 
