@@ -30,7 +30,7 @@ LOOP:
 END LOOP
 ```
 */
-unsigned int input_valid_long(void) {
+unsigned int input_valid_seed(void) {
     // TODO
 }
 
@@ -77,7 +77,7 @@ PRINT "Please input how many timesteps should be simulated"
 params.total_time_steps = input_valid_uint();
 
 PRINT "Enter seed (leave empty for random seed)"
-input_valid_ulong(&params.rng_seed);
+params.rng_seed = input_valid_seed();
 
 RETURN params
 ```
