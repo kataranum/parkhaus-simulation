@@ -17,12 +17,19 @@ struct InputParams;
 /// Storage for all data that evaluates statistics
 struct Stats;
 
+/**
+ * @brief All data relevant for the simulation in one struct
+ */
 struct SimulationData {
     InputParams params;
+    /** The current time step */
     unsigned int current_step;
+    /** Pointer to all the statistics variables */
     Stats *p_stat;
 
+    /** Current state of the parking lot array */
     ParkingLot parking_lot;
+    /** Current queue of all cars waiting */
     QueueCars queue;
 };
 
