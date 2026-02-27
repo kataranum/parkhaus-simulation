@@ -25,7 +25,7 @@ FOR current_step IN 0 TO params.total_time_steps:
 END FOR
 ``'
 */
-void run_simulation(InputParams params, Stats *p_stats) {
+void run_simulation(InputParams params, Statistics *p_stats) {
     // TODO
 }
 

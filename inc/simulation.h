@@ -18,7 +18,7 @@ struct SimulationData {
     /** The current time step */
     unsigned int current_step;
     /** Pointer to all the statistics variables */
-    Stats *p_stats;
+    Statistics *p_stats;
 
     /** Current state of the parking lot array */
     ParkingLot parking_lot;
@@ -35,7 +35,7 @@ struct SimulationData {
  * @param params[in] Given input parameters
  * @param p_stats[in/out] Statistics data
  */
-void run_simulation(InputParams params, Stats *p_stats);
+void run_simulation(InputParams params, Statistics *p_stats);
 
 /**
  * @brief Have cars over their max park time leave the parking lot
