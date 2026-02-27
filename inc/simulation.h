@@ -65,10 +65,11 @@ void park_waiting_cars(unsigned int current_step, ParkingLot *p_parking_lot, Que
  * whether to create and enqueue a new car, or to do nothing (0 new arrivals).
  * 
  * @param params[in] Input parameters
+ * @param params[in] Current time step
  * @param waiting_cars[in/out] Current simulation car queue
  * @param stats[in/out] Statistics data
  */
-void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats);
+void get_new_cars_arriving(InputParams params, unsigned int current_step, QueueCars *p_waiting_cars, Stats *p_stats);
 
 /**
  * @brief Return a random float between 0.0 (inclusive) and 1.0 (exclusive)

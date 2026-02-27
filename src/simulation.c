@@ -49,7 +49,7 @@ void remove_due_cars(unsigned int current_step, ParkingLot *p_parking_lot, Stats
 ```PSEUDOCODE
 WHILE room_available(parking_lot) AND NOT waiting_cars.is_empty():
     new_car = waiting_cars.dequeue();
-    new_car.arrival_time = current_step;
+    new_car.arrival_time_park = current_step;
 
     available_spot = find_empty_space(parking_lot);
     statistics_car_arrive(new_car);
@@ -71,11 +71,12 @@ IF (random_float >= params.park_chance_arrive):
 END IF
 
 new_car = init_new_car();
+new_car.time_arrival_queue = current_step;
 waiting_cars.enqueue(new_car);
 
 statistics_car_enqueue(new_car);
 ```
 */
-void get_new_cars_arriving(InputParams params, QueueCars *p_waiting_cars, Stats *p_stats) {
+void get_new_cars_arriving(InputParams params, unsigned int current_step, QueueCars *p_waiting_cars, Stats *p_stats) {
     // TODO
 }
