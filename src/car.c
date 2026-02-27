@@ -5,8 +5,9 @@
 Car car;
 
 car.id = get_unique_id();
-car.time_arrival = 0;
-car.time_park_duration = random_park_duration();
+car.time_arrival_park = 0;
+car.time_arrival_queue = 0;
+car.time_park_duration = random_park_duration(params);
 
 RETURN car
 ```
