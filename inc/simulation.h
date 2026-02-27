@@ -1,14 +1,6 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-// TODO: Define proper array for as parking_lot
-struct ParkingLot;
-// TODO: Define proper Queue struct for cars
-struct QueueCars;
-
-// TODO: Replace placeholder with proper struct definition
-struct Car;
-
 // TODO: Replace placeholder with proper struct definition
 /// All variables that are given as input to the program
 struct InputParams;
