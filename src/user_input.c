@@ -39,15 +39,23 @@ unsigned int input_valid_long(void) {
 LOOP:
     input = READ_INPUT
 
-    IF is_parsable(input):
-        RETURN input AS float;
+    IF !is_parsable(input):
+        PRINT "invalid float"
+        CONTINUE;
     END IF
 
-    PRINT "invalid float"
+    value = input AS float;
+
+    IF value < min OR value > max:
+        PRINT "value is outside allowed range (0% - 100%)"
+        CONTINUE;
+    END IF
+
+    RETURN value;
 END LOOP
 ```
 */
-float input_valid_float(void) {
+float input_valid_float(float min, float max) {
     // TODO
 }
 
@@ -62,8 +70,7 @@ PRINT "Please input maximum number of timesteps that cars will park for"
 params.park_max_time = input_valid_uint();
 
 PRINT "Please enter a percentage chance of cars arriving on a new timestep"
-float percentage = input_valid_float(&percentage);
-assert_float_range(percentage, 0.0, 100.0);
+float percentage = input_valid_float(0.0, 100.0);
 params.park_chance_arrive = percentage / 100.0;
 
 PRINT "Please input how many timesteps should be simulated"
