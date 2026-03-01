@@ -69,6 +69,7 @@ CarNode *p_new_frontmost = p_frontmost->p_behind;
 free(p_frontmost);
 p_frontmost = NULL;
 p_queue->p_front = p_new_frontmost;
+p_queue->length--;
 
 RETURN car;
 ```
