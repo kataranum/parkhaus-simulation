@@ -71,9 +71,10 @@ void enqueue(CarQueue *p_queue, Car car);
  * @brief Pop the frontmost car off the queue and return it.
  * 
  * @param[in/out] p_queue Pointer to queue
- @ return Car Dequeued car
+ * @param[out] p_car Pointer to where dequeued car should be written
+ @ return int 1 if dequeue was successful, 0 if not
  */
-Car dequeue(CarQueue *p_queue);
+int dequeue(CarQueue *p_queue, Car *p_car);
 
 /**
  * @brief Check if the queue is empty

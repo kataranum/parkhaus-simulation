@@ -59,11 +59,10 @@ void enqueue(CarQueue *p_queue, Car car) {
 Car *p_frontmost = p_queue->p_front;
 
 IF p_frontmost == NULL:
-    TODO: return invalid
-    RETURN
+    RETURN 0
 END IF
 
-Car car = p_frontmost->car;
+*p_car = p_frontmost->car;
 CarNode *p_new_frontmost = p_frontmost->p_behind;
 
 free(p_frontmost);
@@ -78,7 +77,7 @@ END IF
 RETURN car;
 ```
 */
-Car dequeue(CarQueue *p_queue) {
+int dequeue(CarQueue *p_queue, Car *p_car) {
     // TODO
 }
 
