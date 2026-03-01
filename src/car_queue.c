@@ -38,8 +38,8 @@ CarNode *p_new = malloc(sizeof(p_new));
 p_new->car = car;
 p_new->p_behind = NULL;
 
-CarNode *p_backmost = p_queue->p_back;
-p_backmost->p_behind = p_new;
+CarNode *p_old_backmost = p_queue->p_back;
+p_old_backmost->p_behind = p_new;
 p_queue->p_back = p_new;
 ```
 */
@@ -47,6 +47,19 @@ void enqueue(CarQueue *p_queue, Car car) {
     // TODO
 }
 
+/*
+```PSEUDOCODE
+Car *p_frontmost = p_queue->p_front;
+Car car = p_frontmost->car;
+CarNode *p_new_frontmost = p_frontmost->p_behind;
+
+free(p_frontmost);
+p_frontmost = NULL;
+p_queue->p_front = p_new_frontmost;
+
+RETURN car;
+```
+*/
 Car dequeue(CarQueue *p_queue) {
     // TODO
 }
