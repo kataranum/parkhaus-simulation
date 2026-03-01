@@ -1,18 +1,16 @@
 #ifndef CAR_QUEUE_H
 #define CAR_QUEUE_H
 
-/**
- * @file car_queue.h
- * 
- */
-typedef struct
-{
-    int lenght;
-} CarQueue;
+#include "car.h"
 
-typedef struct
-{
-    
-};
+typedef struct CarNode {
+    Car car;
+    struct CarNode *p_next;
+} CarNode;
+
+typedef struct {
+    CarNode *p_last;
+    unsigned int length;
+} CarQueue;
 
 #endif
