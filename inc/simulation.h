@@ -8,6 +8,7 @@
 #include "user_input.h"
 #include "car.h"
 #include "parking_lot.h"
+#include "car_queue.h"
 #include "statistics.h"
 
 /**
@@ -23,7 +24,7 @@ struct SimulationData {
     /** Current state of the parking lot array */
     ParkingLot parking_lot;
     /** Current queue of all cars waiting */
-    QueueCars queue;
+    CarQueue queue;
 };
 
 /**

@@ -3,7 +3,7 @@
 /*
 ```PSEUDOCODE
 parking_lot = init_parking_lot(params.num_parking_spaces);
-INIT_QUEUE Car waiting_cars;
+waiting_cars = queue_init();
 
 srand(params.rng_seed);
 
@@ -23,7 +23,7 @@ FOR current_step IN 0 TO params.total_time_steps:
 
     output_timestep_statistics();
 END FOR
-``'
+```
 */
 void run_simulation(InputParams params, Statistics *p_stats) {
     // TODO
@@ -60,8 +60,13 @@ void remove_due_cars(SimulationData simulation_data) {
 parking_lot = simulation_data.parking_lot;
 waiting_cars = simulation_data.waiting_cars;
 
-WHILE room_available(parking_lot) AND NOT waiting_cars.is_empty():
-    new_car = waiting_cars.dequeue();
+WHILE room_available(parking_lot):
+    Car new_car;
+    IF dequeue(&waiting_cars, &new_car) == 0:
+        // No more cars waiting in queue
+        RETURN
+    END IF
+
     new_car.arrival_time_park = simulation_data.current_step;
 
     available_spot = find_empty_space(parking_lot);
@@ -85,7 +90,7 @@ END IF
 
 new_car = init_new_car();
 new_car.time_arrival_queue = simulation_data.current_step;
-simulation_data.waiting_cars.enqueue(new_car);
+enqueue(&simulation_data.waiting_cars, new_car);
 
 statistics_car_enqueue(new_car);
 ```
