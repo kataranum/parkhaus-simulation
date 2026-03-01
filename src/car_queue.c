@@ -1,5 +1,14 @@
 #include "../inc/car_queue.h"
 
+/*
+```PSEUDOCODE
+CarQueue queue;
+queue.p_front = NULL;
+queue.p_back = NULL;
+length = 0;
+RETURN queue;
+```
+*/
 CarQueue queue_init() {
     // TODO
 }
