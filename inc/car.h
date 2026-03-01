@@ -1,3 +1,8 @@
+/**
+ * File: car.h
+ * Description: This file contains the Car struct and Car functions.
+ */
+
 #ifndef SIMULATION_H
 #define SIMULATION_H
 /**

@@ -1,3 +1,8 @@
+/**
+ * File: parking_lot.h
+ * Description: This file contains the ParkingLot struct and ParkingLot functions.
+ */
+
 #ifndef PARKING_LOT_H
 #define PARKING_LOT_H
 
