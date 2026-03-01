@@ -71,6 +71,10 @@ p_frontmost = NULL;
 p_queue->p_front = p_new_frontmost;
 p_queue->length--;
 
+IF p_queue->length == 0:
+    p_queue->p_back = NULL;
+END IF
+
 RETURN car;
 ```
 */
