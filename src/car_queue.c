@@ -64,6 +64,11 @@ Car dequeue(CarQueue *p_queue) {
     // TODO
 }
 
+/*
+```PSEUDOCODE
+RETURN queue.length == 0;
+```
+*/
 int is_empty(CarQueue queue) {
     // TODO
 }
