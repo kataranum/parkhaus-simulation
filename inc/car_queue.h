@@ -42,14 +42,45 @@ typedef struct {
     unsigned int length;
 } CarQueue;
 
+/**
+ * @brief Init a new car queue
+ *
+ * @return CarQueue New empty CarQueue
+ */
 CarQueue queue_init();
 
+/**
+ * @brief Delete the whole queue from memory
+ *
+ * Frees all memory allocated by the queue. The struct can be reused without
+ * calling `queue_init()` a second time.
+ *
+ * @param[in/out] p_queue Pointer to queue
+ */
 void queue_delete(CarQueue *p_queue);
 
+/**
+ * @brief Enqueue a new car to the back of the queue
+ *
+ * @param[in/out] p_queue Pointer to queue
+ * @param[in] car Car to enqueue
+ */
 void enqueue(CarQueue *p_queue, Car car);
 
+/**
+ * @brief Pop the frontmost car off the queue and return it.
+ * 
+ * @param[in/out] p_queue Pointer to queue
+ @ return Car Dequeued car
+ */
 Car dequeue(CarQueue *p_queue);
 
+/**
+ * @brief Check if the queue is empty
+ *
+ * @param[in] queue Given queue
+ * @return int (bool) whether the queue is empty
+ */
 int is_empty(CarQueue queue);
 
 #endif
