@@ -25,7 +25,7 @@ ParkingLot init_parking_lot(unsigned int length);
  * 
  * @param parking_lot[in] Given parking lot
  */
-void free_parking_lot(ParkingLot parking_lot);
+void free_parking_lot(ParkingLot *p_parking_lot);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
