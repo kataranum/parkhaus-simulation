@@ -13,6 +13,21 @@ CarQueue queue_init() {
     // TODO
 }
 
+/*
+```PSEUDOCODE
+CarNode *p_node = p_queue->p_front;
+
+WHILE (p_node != NULL):
+    CarNode *p_next = p_node->p_behind;
+    free(p_node);
+    p_node = p_next;
+END WHILE
+
+p_queue->p_front = NULL;
+p_queue->p_back = NULL;
+length = 0;
+```
+*/
 void queue_delete(CarQueue *p_queue) {
     // TODO
 }
