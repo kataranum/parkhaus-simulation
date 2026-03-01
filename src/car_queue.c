@@ -39,7 +39,11 @@ p_new->car = car;
 p_new->p_behind = NULL;
 
 CarNode *p_old_backmost = p_queue->p_back;
-p_old_backmost->p_behind = p_new;
+IF (p_old_backmost != NULL):
+    p_old_backmost->p_behind = p_new;
+ELSE:
+    p_queue->p_front = p_new;
+END IF
 p_queue->p_back = p_new;
 ```
 */
