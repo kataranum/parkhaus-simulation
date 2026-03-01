@@ -42,4 +42,14 @@ typedef struct {
     unsigned int length;
 } CarQueue;
 
+CarQueue queue_init();
+
+void queue_delete(CarQueue *p_queue);
+
+void enqueue(CarQueue *p_queue, Car car);
+
+Car dequeue(CarQueue *p_queue);
+
+int is_empty(CarQueue queue);
+
 #endif
