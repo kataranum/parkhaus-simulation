@@ -57,6 +57,12 @@ void enqueue(CarQueue *p_queue, Car car) {
 /*
 ```PSEUDOCODE
 Car *p_frontmost = p_queue->p_front;
+
+IF p_frontmost == NULL:
+    TODO: return invalid
+    RETURN
+END IF
+
 Car car = p_frontmost->car;
 CarNode *p_new_frontmost = p_frontmost->p_behind;
 
