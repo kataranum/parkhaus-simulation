@@ -1,4 +1,4 @@
-#ifdef PARKING_LOT_H
+#ifndef PARKING_LOT_H
 #define PARKING_LOT_H
 
 /**
