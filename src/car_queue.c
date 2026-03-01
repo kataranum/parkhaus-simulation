@@ -32,6 +32,17 @@ void queue_delete(CarQueue *p_queue) {
     // TODO
 }
 
+/*
+```PSEUDOCODE
+CarNode *p_new = malloc(sizeof(p_new));
+p_new->car = car;
+p_new->p_behind = NULL;
+
+CarNode *p_backmost = p_queue->p_back;
+p_backmost->p_behind = p_new;
+p_queue->p_back = p_new;
+```
+*/
 void enqueue(CarQueue *p_queue, Car car) {
     // TODO
 }
