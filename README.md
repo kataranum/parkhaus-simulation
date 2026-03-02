@@ -1,5 +1,8 @@
 # Parkhaus Simulation
 
+[GitHub Repo](https://github.com/kataranum/parkhaus-simulation.git)
+[Projekt Canbanboard](https://github.com/users/kataranum/projects/2)
+
 Gruppenprojekt "Parkhaus-Simulation" für Vorlesung Programmieren I von Christian
 Braunagel.
 
