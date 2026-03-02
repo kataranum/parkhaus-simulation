@@ -1,4 +1,4 @@
-#include <./inc/util.h>
+#include <../inc/util.h>
 
 /*
 ```PSEUDOCODE
