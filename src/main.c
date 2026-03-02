@@ -1,3 +1,7 @@
+#include <user_input.h>
+#include <statistics.h>
+#include <simulation.h>
+
 /*
 ```PSEUDOCODE
 intput_params = get_user_input()
