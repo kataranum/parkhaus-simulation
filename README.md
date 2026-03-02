@@ -3,4 +3,8 @@
 Gruppenprojekt "Parkhaus-Simulation" für Vorlesung Programmieren I von Christian
 Braunagel.
 
-Gruppenmitglieder: Maxim Mandrossa, Luis Dentler, Kevin Müller
+Gruppenmitglieder:
+
+- Maxim Mandrossa (Bert-gg)
+- Luis Dentler (LuisDentler)
+- Kevin Müller (kataranum)
