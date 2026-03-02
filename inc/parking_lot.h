@@ -33,6 +33,14 @@ ParkingLot init_parking_lot(unsigned int length);
 void free_parking_lot(ParkingLot *p_parking_lot);
 
 /**
+ * @brief Get the amount of occupied parking spots
+ * 
+ * @param parking_lot[in] Given parking lot
+ * @return int Amount of occupied parking spots
+ */
+int get_occupancy(ParkingLot parking_lot);
+
+/**
  * @brief Determine whether there are free spots in `parking_lot`
  * 
  * @param parking_lot[in] Given parking lot
