@@ -14,9 +14,6 @@
 typedef struct {
     FILE *log_file;
 
-    /* Time tracking */
-    int total_time_steps;
-
     /* Occupancy */
     int sum_occupancy;
 
@@ -61,24 +58,30 @@ int init_statistics(Statistics *stats, const char *filename);
 * It updates values related to occupancy, queue length and
 * full-capacity detection and outputs the statistic in the console.
 * 
-* @param[in] current_step Current index of the timestep.
-* @param[in] occupancy current number of parking cars.
-* @param[in] queue_len current number of waiting cars.
-* @param[in] finished_cars_timestep number of cars left the parking garage in the current timestep
-* @param[in] waiting_time_parking_cars total waiting time of all new parked cars
-* @param[in] PARK_NUM_SPACES number of total parking slots
+* @param simulation_data[in] simulation_data  
+* @param[in] stats pointer auf Statistiks struct
 */
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES);
+void output_timestep_statistics(Statistics *stats,SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
- * @param[in] PARK_NUM_SPACES number of total parking slots
+ * @param params[in] given params 
+ * @param[in] stats pointer auf Statistiks struct  
 **/
 
-void output_total_statistics(int PARK_NUM_SPACES);
+void output_total_statistics(Statistics *stats, InputParams params);
+
+/*---------------------------------------------------------------*/
+/* Car leave                                                     */
+/*---------------------------------------------------------------*/
+/**
+* @brief Counts the finished_cars.
+* @param[in] stats pointer auf Statistiks struct
+**/
+void statistics_car_leave(Statistics *stats);
 
 #endif
