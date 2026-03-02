@@ -78,6 +78,14 @@ FUNKTION void output_timestep_statistics(Statistics *stats,SimulationData simula
     // Konsolenausgabe der Live-Statistik pro Zeitschritt
     print("Aktuelle Belegung", simulation_data.occupancy | "Warteschlange", simulation_data.queue_len| "Durchschn. Wartezeit", avg_waiting_time_timestep| "Vollbelegungs Ticks", stats.full_occupancy_steps| "Gesamt-Durchsatz",stats.finished_cars)
 
+    //Ausgabe in Textfile
+    WRITE TO FILE ... 
+    
+    //File ordnungsgemäß schließen
+    IF p_log_file != NULL THEN
+        CLOSE_FILE p_log_file
+    END IF
+
 ENDE
 */
 /*---------------------------------------------------------------*/
