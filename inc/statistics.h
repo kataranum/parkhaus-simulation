@@ -59,9 +59,10 @@ int init_statistics(Statistics *stats, const char *filename);
 * full-capacity detection and outputs the statistic in the console.
 * 
 * @param simulation_data[in] simulation_data  
+* @param[in] stats pointer auf Statistiks struct
 */
 
-void output_timestep_statistics(SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats,SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */

@@ -50,39 +50,39 @@ int init_statistics(Statistics *stats, const char *filename)
 /*
 PSEUDOCODE
 
-FUNKTION void output_timestep_statistics(SimulationData simulation_data)
+FUNKTION void output_timestep_statistics(Statistics *stats,SimulationData simulation_data)
 
 
     // Funktions Variablen
     avg_waiting_time_timestep = 0
     
 
-    sum_occupancy +=  simulation_data.occupancy
-    sum_waiting_time += simulation_data.waiting_time_parking_cars
-    sum_queue_length += simulation_data.queue_len
+    stats.sum_occupancy +=  simulation_data.occupancy
+    stats.sum_waiting_time += simulation_data.waiting_time_parking_cars
+    stats.sum_queue_length += simulation_data.queue_len
    
     
     // Aktualisierung der längsten Warteschlange
-    WENN queue_len > max_queue_laenge:
-        max_queue_laenge = simulation_data.queue_len
+    WENN queue_len > stats.max_queue_laenge:
+        stats.max_queue_laenge = simulation_data.queue_len
 
     // Hochzählen der static Variable wenn Parkhaus ausgelastet 
     WENN simulation_data.occupancy IST simulation_data.park_num_spaces:
-        full_occupancy_steps += 1
+        stats.full_occupancy_steps += 1
     
     //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
-    avg_waiting_time_timestep = sum_waiting_time/sum_occupancy
+    avg_waiting_time_timestep = stats.sum_waiting_time/stats.sum_occupancy
 
-    // Anzahl an "fertigen" Autos in static Variable <finished_cars>
+    // Anzahl an "fertigen" Autos in static Variable <stats.finished_cars>
     
     // Konsolenausgabe der Live-Statistik pro Zeitschritt
-    print("Aktuelle Belegung", simulation_data.occupancy | "Warteschlange", simulation_data.queue_len| "Durchschn. Wartezeit", avg_waiting_time_timestep| "Vollbelegungs Ticks", full_occupancy_steps| "Gesamt-Durchsatz",finished_cars)
+    print("Aktuelle Belegung", simulation_data.occupancy | "Warteschlange", simulation_data.queue_len| "Durchschn. Wartezeit", avg_waiting_time_timestep| "Vollbelegungs Ticks", stats.full_occupancy_steps| "Gesamt-Durchsatz",stats.finished_cars)
 
 ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats,SimulationData simulation_data);
 {
     //spätere Implementierung
 }
@@ -95,7 +95,7 @@ void output_timestep_statistics(SimulationData simulation_data);
 /*
 PSEUDOCODE
 
-FUNCTION void output_total_statistics(park_num_spaces)
+FUNCTION void output_total_statistics(Statistics *stats, SimulationData simulation_data)
 
     // Funktionsvariablen
     avg_occupancy_percentage = 0;
@@ -105,26 +105,26 @@ FUNCTION void output_total_statistics(park_num_spaces)
 
 
     //Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(park_num_spaces) ) *100)
-    avg_occupancy_percentage = ((sum_occupancy / total_time_steps)/park_num_spaces)*100
+    avg_occupancy_percentage = ((stats.sum_occupancy / simulation_data.total_time_steps)/simulation_data.park_num_spaces)*100
 
 
     //Berechne durschnittliche Warteschlangenlänge(Länge der gesamten Wartenschlange(sum_queue_length) / Anzahl der gesamten Timesteps(total_time_steps))
-    avg_queue_length = sum_queue_length / total_time_steps 
+    avg_queue_length = stats.sum_queue_length / simulation_data.total_time_steps 
 
 
     //Berechne durschnittliche Wartezeit (Summe aller Wartezeiten(sum_waiting_time) / Anzahl geparkter Autos (sum_occupancy))
-    avg_waiting_time = sum_waiting_time / sum_occupancy
+    avg_waiting_time = stats.sum_waiting_time / stats.sum_occupancy
 
 
-    // Zeit mit Vollbelegung (full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
-    full_occupancy_percentage = (full_occupancy_steps / total_time_steps) *100
+    // Zeit mit Vollbelegung (stats.full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
+    full_occupancy_percentage = (stats.full_occupancy_steps / simulation_data.total_time_steps) *100
 
 
-    // Anzahl abgefertigter Autos -> finished_cars
+    // Anzahl abgefertigter Autos -> stats.finished_cars
 
 
     // Ausgabe der Daten über Konsole
-    printf("Simulationdauer", total_time_steps|"Gesamt Kap.",park_num_spaces,"Durchschn. Auslastung", avg_occupancy_percentage| "Durschn. Warteschlangenlänge",avg_queue_length |"Max. Warteschlangenlänge", max_queue_laenge| "Durschschn. Wartezeit", avg_waiting_time| "Zeit mit voller Belegung", full_occupancy_steps| "Prozentualer Anteil", full_occupancy_percentage| "Erfolgreich abgefertigete Autos", finished_cars)
+    printf("Simulationdauer", simulation_data.total_time_steps|"Gesamt Kap.",simulation_data.park_num_spaces,"Durchschn. Auslastung", avg_occupancy_percentage| "Durschn. Warteschlangenlänge",avg_queue_length |"Max. Warteschlangenlänge", stats.max_queue_laenge| "Durschschn. Wartezeit", avg_waiting_time| "Zeit mit voller Belegung", stats.full_occupancy_steps| "Prozentualer Anteil", full_occupancy_percentage| "Erfolgreich abgefertigete Autos", stats.finished_cars)
     
     //File öffnen und Schreiben
     WRITE TO FILE ... 
@@ -136,7 +136,7 @@ FUNCTION void output_total_statistics(park_num_spaces)
 ENDE
 */
 /*---------------------------------------------------------------*/
-void output_total_statistics(int park_num_spaces)
+void output_total_statistics(Statistics *stats, SimulationData simulation_data)
 {
     //spätere Implementierung
 }
@@ -157,3 +157,4 @@ void statistics_car_leave(Statistics *stats)
 {
     //spätere Implementierung
 }   
+//
