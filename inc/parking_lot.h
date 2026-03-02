@@ -13,7 +13,7 @@ typedef struct
 {
     Car *p_array;
     unsigned int length;
-}ParkingLot;
+} ParkingLot;
 
 /**
  * @brief Initialize a new parking lot with given length
