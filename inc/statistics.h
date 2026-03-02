@@ -69,11 +69,12 @@ void output_timestep_statistics(Statistics *stats,SimulationData simulation_data
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
- * @param simulation_data[in] simulation_data
+ * @param params[in] Given input parameters
  * @param[in] stats pointer auf Statistiks struct  
 **/
 
-void output_total_statistics(Statistics *stats, SimulationData simulation_data);
+void output_total_statistics(InputParams params, SimulationData simulation_data);
+
 
 /*---------------------------------------------------------------*/
 /* Car leave                                                     */
