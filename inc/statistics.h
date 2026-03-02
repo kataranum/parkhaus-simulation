@@ -58,15 +58,10 @@ int init_statistics(Statistics *stats, const char *filename);
 * It updates values related to occupancy, queue length and
 * full-capacity detection and outputs the statistic in the console.
 * 
-* @param[in] current_step Current index of the timestep.
-* @param[in] occupancy current number of parking cars.
-* @param[in] queue_len current number of waiting cars.
-* @param[in] waiting_time_parking_cars total waiting time of all new parked cars
-* @param[in] park_num_spaces number of total parking slots
-* @param[in] total_time_steps number of total parking slots
+* @param simulation_data[in] simulation_data  
 */
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps);
+void output_timestep_statistics(SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */

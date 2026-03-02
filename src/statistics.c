@@ -50,24 +50,24 @@ int init_statistics(Statistics *stats, const char *filename)
 /*
 PSEUDOCODE
 
-FUNKTION void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps)
+FUNKTION void output_timestep_statistics(SimulationData simulation_data)
 
 
     // Funktions Variablen
     avg_waiting_time_timestep = 0
     
 
-    sum_occupancy += occupancy
-    sum_waiting_time += waiting_time_parking_cars
-    sum_queue_length += queue_len
-    finished_cars += finished_cars_timestep
+    sum_occupancy +=  simulation_data.occupancy
+    sum_waiting_time += simulation_data.waiting_time_parking_cars
+    sum_queue_length += simulation_data.queue_len
+   
     
     // Aktualisierung der längsten Warteschlange
     WENN queue_len > max_queue_laenge:
-        max_queue_laenge = queue_len
+        max_queue_laenge = simulation_data.queue_len
 
     // Hochzählen der static Variable wenn Parkhaus ausgelastet 
-    WENN occupancy IST park_num_spaces:
+    WENN simulation_data.occupancy IST simulation_data.park_num_spaces:
         full_occupancy_steps += 1
     
     //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
@@ -76,13 +76,13 @@ FUNKTION void output_timestep_statistics(int current_step, int occupancy, int qu
     // Anzahl an "fertigen" Autos in static Variable <finished_cars>
     
     // Konsolenausgabe der Live-Statistik pro Zeitschritt
-    print("Aktuelle Belegung", occupancy | "Warteschlange", queue_len| "Durchschn. Wartezeit", avg_waiting_time_timestep| "Vollbelegungs Ticks", full_occupancy_steps| "Gesamt-Durchsatz",finished_cars)
+    print("Aktuelle Belegung", simulation_data.occupancy | "Warteschlange", simulation_data.queue_len| "Durchschn. Wartezeit", avg_waiting_time_timestep| "Vollbelegungs Ticks", full_occupancy_steps| "Gesamt-Durchsatz",finished_cars)
 
 ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps)
+void output_timestep_statistics(SimulationData simulation_data);
 {
     //spätere Implementierung
 }
