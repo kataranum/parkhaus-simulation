@@ -27,7 +27,6 @@ FUNKTION init_statistik(dateiname):
         GIB -1 ZURÜCK
 
     /* Variablen zurücksetzen
-    stats->total_time_steps     = 0;
     stats->sum_occupancy        = 0;
     stats->sum_waiting_time     = 0;
     stats->sum_queue_length     = 0;
@@ -51,7 +50,7 @@ int init_statistics(Statistics *stats, const char *filename)
 /*
 PSEUDOCODE
 
-FUNKTION void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES)
+FUNKTION void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps)
 
 
     /* Funktions Variablen
@@ -68,7 +67,7 @@ FUNKTION void output_timestep_statistics(int current_step, int occupancy, int qu
         max_queue_laenge = queue_len
 
     /* Hochzählen der static Variable wenn Parkhaus ausgelastet 
-    WENN occupancy IST PARK_NUM_SPACES:
+    WENN occupancy IST park_num_spaces:
         full_occupancy_steps += 1
     
     /*Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
@@ -96,7 +95,7 @@ void output_timestep_statistics(int current_step, int occupancy, int queue_len, 
 /*
 PSEUDOCODE
 
-FUNCTION void output_total_statistics(PARK_NUM_SPACES)
+FUNCTION void output_total_statistics(park_num_spaces)
 
     /* Funktionsvariablen
     avg_occupancy_percentage = 0;
@@ -105,8 +104,8 @@ FUNCTION void output_total_statistics(PARK_NUM_SPACES)
     full_occupancy_percentage = 0;
 
 
-    /*Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(PARK_NUM_SPACES) ) *100)
-    avg_occupancy_percentage = ((sum_occupancy / total_time_steps)/PARK_NUM_SPACES)*100
+    /*Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(park_num_spaces) ) *100)
+    avg_occupancy_percentage = ((sum_occupancy / total_time_steps)/park_num_spaces)*100
 
 
     /*Berechne durschnittliche Warteschlangenlänge(Länge der gesamten Wartenschlange(sum_queue_length) / Anzahl der gesamten Timesteps(total_time_steps))
@@ -125,7 +124,7 @@ FUNCTION void output_total_statistics(PARK_NUM_SPACES)
 
 
     /* Ausgabe der Daten über Konsole
-    printf("Simulationdauer", total_time_steps|"Gesamt Kap.",PARK_NUM_SPACES,"Durchschn. Auslastung", avg_occupancy_percentage| "Durschn. Warteschlangenlänge",avg_queue_length |"Max. Warteschlangenlänge", max_queue_laenge| "Durschschn. Wartezeit", avg_waiting_time| "Zeit mit voller Belegung", full_occupancy_steps| "Prozentualer Anteil", full_occupancy_percentage| "Erfolgreich abgefertigete Autos", finished_cars)
+    printf("Simulationdauer", total_time_steps|"Gesamt Kap.",park_num_spaces,"Durchschn. Auslastung", avg_occupancy_percentage| "Durschn. Warteschlangenlänge",avg_queue_length |"Max. Warteschlangenlänge", max_queue_laenge| "Durschschn. Wartezeit", avg_waiting_time| "Zeit mit voller Belegung", full_occupancy_steps| "Prozentualer Anteil", full_occupancy_percentage| "Erfolgreich abgefertigete Autos", finished_cars)
     
     /*File öffnen und Schreiben
     WRITE TO FILE ... 
