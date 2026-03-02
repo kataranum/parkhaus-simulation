@@ -7,7 +7,9 @@
 #define PARKING_LOT_H
 
 /**
- * @brief This struct is a definiton of a parking lot, which contains an array of cars and the length of the array.
+ * @brief All values related to a parking lot.
+ * 
+ * Contains an array of cars and the length of the array.
  */
 typedef struct 
 {
