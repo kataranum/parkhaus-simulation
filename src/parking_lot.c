@@ -26,6 +26,24 @@ void free_parking_lot(ParkingLot *p_parking_lot) {
 
 /*
 ```PSEUDOCODE
+int occupancy = 0;
+FOR i IN 0 TO parking_lot.length:
+    car = parking_lot.array[i];
+
+    IF !is_empty(car):
+        occupancy++;
+    END IF
+END FOR
+
+RETURN occupancy;
+```
+*/
+int get_occupancy(ParkingLot parking_lot) {
+    // TODO
+}
+
+/*
+```PSEUDOCODE
 FOR i IN 0 TO parking_lot.length:
     car = parking_lot.array[i];
 
