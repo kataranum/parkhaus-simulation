@@ -25,8 +25,8 @@ FOR current_step IN 0 TO params.total_time_steps:
         simulation_data.current_step,
         get_occupancy(simulation_data.parking_lot),
         simulation_data.waiting_cars.length,
-        TODO,
-        TODO,
+        TODO, // Sollte bei statistics_car_leave() berechnet werden
+        simulation_data.waiting_cars.length, // Gesamtwartezeit der Schlange ist 1 Timestep pro Auto, also einfach die Länge der Schlange
         simulation_data.parking_lot.length,
     );
 END FOR
