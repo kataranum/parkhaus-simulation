@@ -14,9 +14,6 @@
 typedef struct {
     FILE *log_file;
 
-    /* Time tracking */
-    int total_time_steps;
-
     /* Occupancy */
     int sum_occupancy;
 
@@ -64,21 +61,30 @@ int init_statistics(Statistics *stats, const char *filename);
 * @param[in] current_step Current index of the timestep.
 * @param[in] occupancy current number of parking cars.
 * @param[in] queue_len current number of waiting cars.
-* @param[in] finished_cars_timestep number of cars left the parking garage in the current timestep
 * @param[in] waiting_time_parking_cars total waiting time of all new parked cars
-* @param[in] PARK_NUM_SPACES number of total parking slots
+* @param[in] park_num_spaces number of total parking slots
+* @param[in] total_time_steps number of total parking slots
 */
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES);
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
- * @param[in] PARK_NUM_SPACES number of total parking slots
+ * @param[in] park_num_spaces number of total parking slots
 **/
 
-void output_total_statistics(int PARK_NUM_SPACES);
+void output_total_statistics(int park_num_spaces);
+
+/*---------------------------------------------------------------*/
+/* Car leave                                                     */
+/*---------------------------------------------------------------*/
+/**
+* @brief Counts the finished_cars.
+* @param[in] car car struct of the leaving car
+**/
+void statistics_car_leave(car);
 
 #endif

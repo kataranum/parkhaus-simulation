@@ -51,14 +51,13 @@ int init_statistics(Statistics *stats, const char *filename)
 /*
 PSEUDOCODE
 
-FUNKTION void output_timestep_statistics(current_step, occupancy, queue_len, finished_cars_timestep, waiting_time_parking_cars, PARK_NUM_SPACES);
+FUNKTION void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES)
+
 
     /* Funktions Variablen
     avg_waiting_time_timestep = 0
     
 
-    /* Hochzählen der static Variablen für jeden Timestep
-    total_time_steps += 1
     sum_occupancy += occupancy
     sum_waiting_time += waiting_time_parking_cars
     sum_queue_length += queue_len
@@ -84,7 +83,7 @@ ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(int current_step, int occupancy, int queue_len, int finished_cars_timestep, int waiting_time_parking_cars, int PARK_NUM_SPACES)
+void output_timestep_statistics(int current_step, int occupancy, int queue_len, int waiting_time_parking_cars, int park_num_spaces,int total_time_steps)
 {
     /*spätere Implementierung*/
 }
@@ -138,7 +137,19 @@ FUNCTION void output_total_statistics(PARK_NUM_SPACES)
 ENDE
 */
 /*---------------------------------------------------------------*/
-void output_total_statistics(int PARK_NUM_SPACES)
+void output_total_statistics(int park_num_spaces)
 {
     /*spätere Implementierung*/
 }
+
+/*---------------------------------------------------------------*/
+/* Car leave                                                     */
+/*---------------------------------------------------------------*/
+/*
+PSEUDOCODE
+FUNCTION void statistics_car_leave(car);
+
+    finished_cars = finished_cars + 1 
+
+    
+
