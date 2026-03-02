@@ -16,9 +16,13 @@ ParkingLot init_parking_lot(unsigned int length);
 /*
 ```PSEUDOCODE
 free(parking_lot.array);
+parking_lot.array = NULL;
+parking_lot.length = 0;
 ```
 */
-void free_parking_lot(ParkingLot parking_lot);
+void free_parking_lot(ParkingLot *p_parking_lot) {
+    // TODO
+}
 
 /*
 ```PSEUDOCODE
@@ -33,7 +37,7 @@ END FOR
 RETURN False;
 ```
 */
-int room_available(const ParkingLot *p_parking_lot) {
+int room_available(ParkingLot parking_lot) {
     // TODO
 }
 
@@ -50,6 +54,6 @@ END FOR
 RETURN -1
 ```
 */
-int find_empty_space(const ParkingLot *p_parking_lot) {
+int find_empty_space(ParkingLot parking_lot) {
     // TODO
 }

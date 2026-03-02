@@ -30,7 +30,7 @@ ParkingLot init_parking_lot(unsigned int length);
  * 
  * @param parking_lot[in] Given parking lot
  */
-void free_parking_lot(ParkingLot parking_lot);
+void free_parking_lot(ParkingLot *p_parking_lot);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
@@ -38,7 +38,7 @@ void free_parking_lot(ParkingLot parking_lot);
  * @param parking_lot[in] Given parking lot
  * @return int (boolean) whether there is at least one free spot
  */
-int room_available(const ParkingLot *p_parking_lot);
+int room_available(ParkingLot parking_lot);
 
 /**
  * @brief Find any empty free spot in `parking_lot`
@@ -49,6 +49,6 @@ int room_available(const ParkingLot *p_parking_lot);
  * @param parking_lot[in] Given parking lot 
  * @return int Index to a free parking space
  */
-int find_empty_space(const ParkingLot *p_parking_lot);
+int find_empty_space(ParkingLot parking_lot);
 
 #endif
