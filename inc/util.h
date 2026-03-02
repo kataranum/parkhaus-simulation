@@ -1,5 +1,7 @@
 /**
- * @file Helpful functions that aren't specific to a feature of the program
+ * File: util.h
+ * Description: Helpful functions that aren't specific to a feature of the
+ *              program
  */
 
 #ifndef UTIL_H

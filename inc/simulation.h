@@ -1,5 +1,6 @@
 /**
- * @file Central functions that implement the main simulation loop.
+ * File: simulation.h
+ * Description: Central functions that implement the main simulation loop.
  */
 
 #ifndef SIMULATION_H
