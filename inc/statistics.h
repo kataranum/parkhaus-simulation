@@ -83,8 +83,8 @@ void output_total_statistics(int park_num_spaces);
 /*---------------------------------------------------------------*/
 /**
 * @brief Counts the finished_cars.
-* @param[in] car car struct of the leaving car
+* @param[in] stats pointer auf Statistiks struct
 **/
-void statistics_car_leave(car);
+void statistics_car_leave(Statistics *stats);
 
 #endif

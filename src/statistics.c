@@ -147,9 +147,15 @@ void output_total_statistics(int park_num_spaces)
 /*---------------------------------------------------------------*/
 /*
 PSEUDOCODE
-FUNCTION void statistics_car_leave(car);
 
-    finished_cars = finished_cars + 1 
+FUNCTION void statistics_car_leave(Statistics *stats);
 
-    
+    stats->finished_cars ++
+ENDE
+
+*/
+void statistics_car_leave(Statistics *stats)
+{
+    /*spätere Implementierung*/
+}   
 
