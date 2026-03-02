@@ -68,10 +68,10 @@ void output_timestep_statistics(SimulationData simulation_data);
 /*---------------------------------------------------------------*/
 /**
  * @brief Outputs the summarized statistics at the end of the simulation.
- * @param[in] park_num_spaces number of total parking slots
+ * @param simulation_data[in] simulation_data  
 **/
 
-void output_total_statistics(int park_num_spaces);
+void output_total_statistics(SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* Car leave                                                     */
