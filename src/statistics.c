@@ -110,9 +110,17 @@ ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(Statistics *stats,SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats,SimulationData simulation_data)
 {
-    //spätere Implementierung
+    //Funktions Variable
+    float avg_waiting_time_timestep = 0.0;
+
+    //Stats VAriablen mit Werten von Timestep befüllen
+    stats->sum_occupancy += simulation_data.occupancy;
+    stats->sum_waiting_time += simulation_data.waiting_time_parking_cars;
+    stats->sum_queue_length += simulation_data.queue_len;
+
+    
 }
 
 
