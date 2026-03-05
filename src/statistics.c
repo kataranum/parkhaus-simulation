@@ -40,7 +40,27 @@ FUNKTION init_statistik(dateiname):
 
 int init_statistics(Statistics *stats, const char *filename)
 {
- //spätere implementierung 
+    //Richtige Parameterübergabe sicherstellen 
+    if ((stats == NULL) ||(filename == NULL))
+    {
+        return -1;
+    }
+    //Datei öffnen
+    stats->log_file = fopen(filename, "w");
+    //Überprüfen ob öffnen funktioniert hat 
+    if (stats->log_file == NULL)
+    {
+        return -1;
+    }
+    //VAriablen zurücksetzen 
+    stats->sum_occupancy = 0;
+    stats->sum_waiting_time = 0;
+    stats->sum_queue_length = 0;
+    stats->max_queue_length = 0;
+    stats->full_occupancy_steps = 0;
+    stats->finished_cars = 0;
+
+    return 0; 
 }
 
 
