@@ -33,7 +33,27 @@ END FOR
 ```
 */
 void run_simulation(InputParams params, Statistics *p_stats) {
-    // TODO
+    ParkingLot parking_lot = init_parking_lot(params.park_num_spaces);
+    CarQueue waiting_cars = queue_init();
+
+    srand(params.rng_seed);
+
+    SimulationData simulation_data;
+    simulation_data.params = params;
+    simulation_data.current_step = 0;
+    simulation_data.p_stats = p_stats;
+    simulation_data.parking_lot = parking_lot;
+    simulation_data.waiting_cars = waiting_cars;
+
+    for (int i = 0; i < params.total_time_steps; i++) {
+        simulation_data.current_step = i;
+
+        get_new_cars_arriving(simulation_data);
+        remove_due_cars(simulation_data);
+        park_waiting_cars(simulation_data);
+
+        output_timestep_statistics(simulation_data);
+    }
 }
 
 /*
