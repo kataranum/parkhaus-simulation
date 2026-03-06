@@ -6,5 +6,5 @@ RETURN (float)rand() / (float)RAND_MAX;
 ```
 */
 float frand() {
-    // TODO
+    return (float)rand() / (float)RAND_MAX;
 }
