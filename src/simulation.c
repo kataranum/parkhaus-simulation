@@ -83,7 +83,25 @@ END WHILE
 ```
 */
 void park_waiting_cars(SimulationData simulation_data) {
-    // TODO
+    ParkingLot parking_lot = simulation_data.parking_lot;
+    CarQueue waiting_cars = simulation_data.waiting_cars;
+
+    while (room_available(parking_lot))
+    {
+        Car new_car;
+
+        if (dequeue(&waiting_cars, &new_cars) == 0)
+        {
+            // No more cars waiting in queue
+            return;
+        }
+
+        new_car.arrival_time_park = simulation_data.current_step;
+
+        int available_spot = find_empty_space(parking_lot);
+        // statistics_car_arrive()
+        parking_lot.p_array[available_spot] = new_car;
+    }
 }
 
 /*
