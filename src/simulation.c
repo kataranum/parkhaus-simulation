@@ -59,7 +59,27 @@ END FOR
 ```
 */
 void remove_due_cars(SimulationData simulation_data) {
-    // TODO
+    ParkingLot parking_lot = simulation_data.parking_lot;
+
+    for (int i = 0; i < parking_lot.length; i++)
+    {
+        Car car = parking_lot.p_array[i];
+
+        if (is_empty(car))
+        {
+            continue;
+        }
+
+        int park_duration = simulation_data.current_step - car.time_arrival;
+
+        if (park_duration < car.time_park_duration)
+        {
+            continue;
+        }
+
+        statistics_car_leave(simulation_data.p_stats);
+        parking_lot.p_array[i].id = -1; // TODO: Put this in function or something
+    }
 }
 
 /*
