@@ -5,6 +5,7 @@
  */
 
 #include "../inc/statistics.h"
+#include "../inc/simulation.h"
 #include <stdio.h>
 
 /*---------------------------------------------------------------*/
@@ -110,17 +111,28 @@ ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(Statistics *stats,SimulationData simulation_data)
+void output_timestep_statistics(Statistics *stats,struct SimulationData simulation_data)
 {
     //Funktions Variable
     float avg_waiting_time_timestep = 0.0;
 
     //Stats VAriablen mit Werten von Timestep befüllen
-    stats->sum_occupancy += simulation_data.occupancy;
-    stats->sum_waiting_time += simulation_data.waiting_time_parking_cars;
-    stats->sum_queue_length += simulation_data.queue_len;
-
+    stats->sum_occupancy += get_occupancy(simulation_data.parking_lot);
+    stats->sum_waiting_time += ;
+    stats->sum_queue_length += simulation_data.queue.length;
     
+    // Aktualisierung der längsten Warteschlange
+    if (simulation_data.queue.length > stats->max_queue_length)
+    {
+        stats->max_queue_length = simulation_data.queue.length;
+    }
+    
+    // Hochzählen der static Variable wenn Parkhaus ausgelastet
+    if (get_occupancy(simulation_data.parking_lot) == simulation_data.params.park_num_spaces)
+    {
+        stats->full_occupancy_steps += 1; 
+    }
+     
 }
 
 
