@@ -103,5 +103,16 @@ statistics_car_enqueue(new_car);
 ```
 */
 void get_new_cars_arriving(SimulationData simulation_data) {
-    // TODO
+    float random_float = frand();
+
+    if (random_float >= simulation_data.params.park_chance_arrive)
+    {
+        return;
+    }
+
+    Car new_car = init_new_car();
+    new_car.time_arrival_queue = simulation_data.current_step;
+    enqueue(&simulation_data.queue, new_car);
+
+    //statistics_car_enqueue();
 }
