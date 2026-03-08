@@ -215,7 +215,16 @@ ENDE
 /*---------------------------------------------------------------*/
 void output_total_statistics(Statistics *stats, InputParams params)
 {
-    //spätere Implementierung
+    //Funktionsvariablen 
+    float avg_occupancy_percentage = 0.0;
+    float avg_queue_length = 0.0;
+    float avg_waiting_time = 0.0;
+    float full_occupancy_percentage = 0.0;
+
+    //Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(park_num_spaces) ) *100)
+    avg_occupancy_percentage = ((stats->sum_occupancy / params.total_time_steps)/params.park_num_spaces)*100;
+
+
 }
 
 /*---------------------------------------------------------------*/
