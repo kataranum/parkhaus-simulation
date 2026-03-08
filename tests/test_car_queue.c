@@ -9,6 +9,8 @@ void test_queue_init(void) {
     assert(q.p_front == NULL);
     assert(q.p_back == NULL);
     assert(q.length == 0);
+
+    queue_delete(&q);
 }
 
 void test_queue_delete(void) {
