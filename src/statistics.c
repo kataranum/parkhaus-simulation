@@ -253,8 +253,20 @@ void output_total_statistics(Statistics *stats, InputParams params)
     printf("3. WARTEZEIT\n");
     printf("--------------------------------------------------\n");
     printf("Durchschnittliche Wartezeit:           %.1f Zeitschritte\n\n", avg_waiting_time);
+    printf("--------------------------------------------------\n");
+    printf("4. VOLLBELEGUNG\n");
+    printf("--------------------------------------------------\n");
+    printf("Zeitschritte mit Vollbelegung:         %d\n", stats->full_occupancy_steps);
+    printf("Anteil an Simulationsdauer:            %.1f %%\n\n", full_occupancy_percentage);
+    printf("--------------------------------------------------\n");
+    printf("5. FAHRZEUG-DURCHSATZ\n");
+    printf("--------------------------------------------------\n");
+    printf("Fahrzeuge erfolgreich abgefertigt:     %d\n\n", stats->finished_cars);
+    printf("==================================================\n");
 
+    //Dateiausgabe 
 }
+
 
 /*---------------------------------------------------------------*/
 /* Car leave                                                     */
