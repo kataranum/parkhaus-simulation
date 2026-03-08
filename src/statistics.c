@@ -224,6 +224,20 @@ void output_total_statistics(Statistics *stats, InputParams params)
     //Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(park_num_spaces) ) *100)
     avg_occupancy_percentage = ((stats->sum_occupancy / params.total_time_steps)/params.park_num_spaces)*100;
 
+    //Berechne durschnittliche Warteschlangenlänge(Länge der gesamten Wartenschlange(sum_queue_length) / Anzahl der gesamten Timesteps(total_time_steps))
+    avg_queue_length = stats->sum_queue_length / params.total_time_steps;
+
+    //Berechne durschnittliche Wartezeit (Summe aller Wartezeiten(sum_waiting_time) / Anzahl geparkter Autos (sum_occupancy))
+    avg_waiting_time = stats->sum_waiting_time / stats->sum_occupancy;
+
+    // Zeit mit Vollbelegung (stats.full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
+    full_occupancy_percentage = (stats->full_occupancy_steps / params.total_time_steps) *100;
+
+    // Ausgabe der Daten über Konsole
+    printf("==================================================\n");
+    printf("              PARKHAUS-SIMULATION\n");
+    printf("                Statistikbericht\n");
+    printf("==================================================\n\n");
 
 }
 
