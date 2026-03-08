@@ -95,7 +95,23 @@ void test_dequeue(void) {
 }
 
 void test_is_empty(void) {
-    assert(false);
+    CarQueue q = init_queue();
+
+    assert(is_empty(q) == true);
+
+    // fields don't matter so don't initialize
+    Car some_car;
+    enqueue(&q, some_car);
+
+    assert(is_empty(q) == false);
+
+    dequeue(&q, &some_car);
+
+    assert(is_empty(q) == true);
+
+    queue_delete(&q);
+
+    assert(is_empty(q) == true);
 }
 
 int main(void) {
