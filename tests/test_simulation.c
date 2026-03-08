@@ -88,7 +88,38 @@ void test_remove_due_cars(void) {
 }
 
 void test_park_waiting_cars(void) {
-    assert(false);
+    SimulationData data = get_simdata_default();
+
+    const int EXCESS_CARS_AMOUNT = 5;
+    
+    // make parking lot completely full
+    for (int i = 0; i < PARK_NUM_SPACES + EXCESS_CARS_AMOUNT; i++) {
+        Car car = init_new_car(data.params);
+        car.id = i;
+        enqueue(&data.waiting_cars, car);
+    }
+    park_waiting_cars(data);
+
+    // all spots should be full now
+    assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
+    for (int i = 0; i < PARK_NUM_SPACES; i++) {
+        Car car = data.parking_lot.p_array[i];
+
+        assert( ! is_empty(car) );
+        assert(car.id < PARK_NUM_SPACES);
+    }
+
+    // calling park_waiting_cars() again shouldn't change anything
+    park_waiting_cars(data);
+    assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
+    for (int i = 0; i < PARK_NUM_SPACES; i++) {
+        Car car = data.parking_lot.p_array[i];
+
+        assert( ! is_empty(car) );
+        assert(car.id < PARK_NUM_SPACES);
+    }
+
+    free_simdata(data);
 }
 
 void test_get_new_cars_arriving(void) {
