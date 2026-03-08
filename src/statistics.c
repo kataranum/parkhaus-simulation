@@ -265,6 +265,15 @@ void output_total_statistics(Statistics *stats, InputParams params)
     printf("==================================================\n");
 
     //Dateiausgabe 
+    if (stats->log_file != NULL)
+    {
+        fprintf(stats->log_file, "==================================================\n");
+        fprintf(stats->log_file, "PARKHAUS-SIMULATION");
+        fprintf(stats->log_file, "Statistikbericht");
+        fprintf(stats->log_file, "==================================================\n\n");
+        fprintf(stats->log_file, "Simulationsdauer:", params.total_time_steps, "Zeitschritte");
+        fprintf(stats->log_file, "Gesamtkapazität Parkhaus:", params.park_num_spaces, "Stellplätze");
+    }
 }
 
 
