@@ -232,6 +232,5 @@ ENDE
 */
 void statistics_car_leave(Statistics *stats)
 {
-    //spätere Implementierung
+    stats->finished_cars ++;
 }   
-//
