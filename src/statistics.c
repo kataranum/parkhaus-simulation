@@ -297,6 +297,13 @@ void output_total_statistics(Statistics *stats, InputParams params)
         fprintf(stats->log_file, "Fahrzeuge erfolgreich abgefertigt:", stats->finished_cars);
         fprintf(stats->log_file, "==================================================\n");
     }
+    //File ordnungsgemäß schließen
+    if (stats->log_file != NULL)
+    {
+        fclose(stats->log_file);
+        stats->log_file = NULL;
+    }
+
 }
 
 
