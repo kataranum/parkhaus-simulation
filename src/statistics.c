@@ -155,6 +155,11 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
         fprintf(stats->log_file, "SIMULATIONS-SCHRITT: %d / %d\n",simulation_data.current_step,simulation_data.params.total_time_steps);    
         fprintf(stats->log_file, "------------------------------------------------------------\n");
         fprintf(stats->log_file, "Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n",current_occupancy,simulation_data.params.park_num_spaces,occupancy_percent);
+        fprintf(stats->log_file, "Warteschlange:          %d Fahrzeuge\n",simulation_data.queue.length);
+        fprintf(stats->log_file, "Durchschn. Wartezeit:   %.1f Zeitschritte\n",avg_waiting_time_timestep);
+        fprintf(stats->log_file, "Vollbelegungs-Ticks:    %d\n",stats->full_occupancy_steps);
+        fprintf(stats->log_file, "Gesamt-Durchsatz:       %d Fahrzeuge\n",stats->finished_cars);
+        fprintf(stats->log_file, "------------------------------------------------------------\n\n");
     }
 
 }
