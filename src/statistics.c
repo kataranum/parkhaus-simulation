@@ -273,6 +273,29 @@ void output_total_statistics(Statistics *stats, InputParams params)
         fprintf(stats->log_file, "==================================================\n\n");
         fprintf(stats->log_file, "Simulationsdauer:", params.total_time_steps, "Zeitschritte");
         fprintf(stats->log_file, "Gesamtkapazität Parkhaus:", params.park_num_spaces, "Stellplätze");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "1. AUSLASTUNG\n");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "Durchschnittliche Auslastung:", avg_occupancy_percentage);
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "2. WARTESCHLANGE\n");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "Durchschnittliche Warteschlangenlänge:", avg_queue_length, "Fahrzeuge");
+        fprintf(stats->log_file, "Maximale Warteschlangenlänge:", stats->max_queue_length, "Fahrzeuge");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "3. WARTEZEIT\n");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "Durchschnittliche Wartezeit:", avg_waiting_time, "Zeitschritte");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "4. VOLLBELEGUNG\n");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "Zeitschritte mit Vollbelegung:", stats->full_occupancy_steps);
+        fprintf(stats->log_file, "Anteil an Simulationsdauer:", full_occupancy_percentage);
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "5. FAHRZEUG-DURCHSATZ\n");
+        fprintf(stats->log_file, "--------------------------------------------------\n");
+        fprintf(stats->log_file, "Fahrzeuge erfolgreich abgefertigt:", stats->finished_cars);
+        fprintf(stats->log_file, "==================================================\n");
     }
 }
 
