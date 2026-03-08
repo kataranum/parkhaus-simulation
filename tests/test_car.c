@@ -4,7 +4,11 @@
 #include <car.h>
 
 void test_init(void) {
-    Car car = init_new_car();
+    // InputParams remain unused here, but are required for code to compile
+    InputParams params;
+    params.max_park_duration = 1;
+
+    Car car = init_new_car(params);
 
     assert(car.time_arrival_park == 0);
     assert(car.time_arrival_queue == 0);
