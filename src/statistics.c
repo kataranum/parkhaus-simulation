@@ -151,7 +151,10 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     //Datei Ausgabe
     if (stats->log_file != NULL)
     {
-        
+        fprintf(stats->log_file, "------------------------------------------------------------\n");
+        fprintf(stats->log_file, "SIMULATIONS-SCHRITT: %d / %d\n",simulation_data.current_step,simulation_data.params.total_time_steps);    
+        fprintf(stats->log_file, "------------------------------------------------------------\n");
+        fprintf(stats->log_file, "Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n",current_occupancy,simulation_data.params.park_num_spaces,occupancy_percent);
     }
 
 }
