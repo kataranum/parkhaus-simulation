@@ -123,7 +123,51 @@ void test_park_waiting_cars(void) {
 }
 
 void test_get_new_cars_arriving(void) {
-    assert(false);
+    SimulationData data = get_simdata_default();
+
+    data.params.park_chance_arrive = 0.5;
+
+    const int TEST_AMOUNT = 10000;
+    for (int i = 0; i < TEST_AMOUNT; i++) {
+        test_get_new_cars_arriving(data);
+    }
+
+    // I'll define loose bounds that you'd need to be really unlucky to exceed
+    // by pure chance
+    assert(data.waiting_cars.length > TEST_AMOUNT * 0.1);
+    assert(data.waiting_cars.length < TEST_AMOUNT * 0.9);
+
+    free_simdata(data);
+}
+
+void test_chance_1(void) {
+    SimulationData data = get_simdata_default();
+
+    data.params.park_chance_arrive = 1.0;
+
+    const int TEST_AMOUNT = 1000;
+    for (int i = 0; i < TEST_AMOUNT; i++) {
+        test_get_new_cars_arriving(data);
+    }
+
+    assert(data.waiting_cars.length == TEST_AMOUNT);
+
+    free_simdata(data);
+}
+
+void test_chance_0(void) {
+    SimulationData data = get_simdata_default();
+
+    data.params.park_chance_arrive = 0.0;
+
+    const int TEST_AMOUNT = 1000;
+    for (int i = 0; i < TEST_AMOUNT; i++) {
+        test_get_new_cars_arriving(data);
+    }
+
+    assert(data.waiting_cars.length == 0);
+
+    free_simdata(data);
 }
 
 int main(void) {
