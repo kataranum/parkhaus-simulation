@@ -238,6 +238,21 @@ void output_total_statistics(Statistics *stats, InputParams params)
     printf("              PARKHAUS-SIMULATION\n");
     printf("                Statistikbericht\n");
     printf("==================================================\n\n");
+    printf("Simulationsdauer:                     %d Zeitschritte\n", params.total_time_steps);
+    printf("Gesamtkapazität Parkhaus:             %d Stellplätze\n\n", params.park_num_spaces);
+    printf("--------------------------------------------------\n");
+    printf("1. AUSLASTUNG\n");
+    printf("--------------------------------------------------\n");
+    printf("Durchschnittliche Auslastung:          %.1f %%\n\n", avg_occupancy_percentage);
+    printf("--------------------------------------------------\n");
+    printf("2. WARTESCHLANGE\n");
+    printf("--------------------------------------------------\n");
+    printf("Durchschnittliche Warteschlangenlänge: %.1f Fahrzeuge\n", avg_queue_length);
+    printf("Maximale Warteschlangenlänge:          %d Fahrzeuge\n\n", stats->max_queue_length);
+    printf("--------------------------------------------------\n");
+    printf("3. WARTEZEIT\n");
+    printf("--------------------------------------------------\n");
+    printf("Durchschnittliche Wartezeit:           %.1f Zeitschritte\n\n", avg_waiting_time);
 
 }
 
