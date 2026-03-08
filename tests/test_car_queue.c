@@ -79,6 +79,7 @@ void test_dequeue(void) {
 
         assert(result);
         assert(dequeued.id == i);
+        assert(q.length == AMOUNT_CARS - i - 1);
     }
 
     const int SOME_ID = 123;
@@ -88,6 +89,7 @@ void test_dequeue(void) {
 
     assert(result == false);
     assert(dequeued.id == SOME_ID); // dequeued shall not be touched on error
+    assert(q.length == 0);
 
     queue_delete(&q);
 }
