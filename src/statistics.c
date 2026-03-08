@@ -148,6 +148,12 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     printf("Gesamt-Durchsatz:       %d Fahrzeuge\n", stats->finished_cars);
     printf("------------------------------------------------------------\n");
      
+    //Datei Ausgabe
+    if (stats->log_file != NULL)
+    {
+        
+    }
+
 }
 
 
