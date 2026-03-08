@@ -4,7 +4,11 @@
 #include <car_queue.h>
 
 void test_queue_init(void) {
-    assert(false);
+    CarQueue q = queue_init();
+
+    assert(q.p_front == NULL);
+    assert(q.p_back == NULL);
+    assert(q.length == NULL);
 }
 
 void test_queue_delete(void) {
