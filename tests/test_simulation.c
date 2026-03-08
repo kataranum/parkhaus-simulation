@@ -37,6 +37,52 @@ void free_simdata(SimulationData data) {
 
 void test_remove_due_cars(void) {
     SimulationData data = get_simdata_default();
+    data.current_step = 8;
+
+    // first car, parking longer than allowed, so should leave
+    data.parking_lot.p_array[0].id = 0;
+    data.parking_lot.p_array[0].time_arrival_park = 0;
+    data.parking_lot.p_array[0].time_arrival_queue = 0;
+    data.parking_lot.p_array[0].time_park_duration = 5;
+
+    // second car, parking duration still not exceeded
+    data.parking_lot.p_array[1].id = 1;
+    data.parking_lot.p_array[1].time_arrival_park = 0;
+    data.parking_lot.p_array[1].time_arrival_queue = 0;
+    data.parking_lot.p_array[1].time_park_duration = 10;
+
+    // third car, arrived later so parking duration also not exceeded
+    data.parking_lot.p_array[2].id = 2;
+    data.parking_lot.p_array[2].time_arrival_park = 5;
+    data.parking_lot.p_array[2].time_arrival_queue = 0;
+    data.parking_lot.p_array[2].time_park_duration = 5;
+
+    // fourth car, parking duration exactly as allowed. Probably shouldn't leave yet.
+    data.parking_lot.p_array[3].id = 3;
+    data.parking_lot.p_array[3].time_arrival_park = 0;
+    data.parking_lot.p_array[3].time_arrival_queue = 0;
+    data.parking_lot.p_array[3].time_park_duration = 8;
+
+    // fifth car, parking duration is 0, should leave immediately anyway
+    data.parking_lot.p_array[4].id = 4;
+    data.parking_lot.p_array[4].time_arrival_park = 0;
+    data.parking_lot.p_array[4].time_arrival_queue = 0;
+    data.parking_lot.p_array[4].time_park_duration = 0;
+
+    // redundant check to see if data is in an expected state
+    assert( is_empty(data.parking_lot.p_array[0]) == false );
+    assert( is_empty(data.parking_lot.p_array[1]) == false );
+    assert( is_empty(data.parking_lot.p_array[2]) == false );
+    assert( is_empty(data.parking_lot.p_array[3]) == false );
+    assert( is_empty(data.parking_lot.p_array[4]) == false );
+
+    remove_due_cars(data);
+
+    assert( is_empty(data.parking_lot.p_array[0]) == true );
+    assert( is_empty(data.parking_lot.p_array[1]) == false );
+    assert( is_empty(data.parking_lot.p_array[2]) == false );
+    assert( is_empty(data.parking_lot.p_array[3]) == false );
+    assert( is_empty(data.parking_lot.p_array[4]) == true );
 
     free_simdata(data);
 }
