@@ -30,6 +30,9 @@ FOR current_step IN 0 TO params.total_time_steps:
         simulation_data.parking_lot.length,
     );
 END FOR
+
+FREE simulation_data.parking_lot
+FREE simulation_data.waiting_cars
 ```
 */
 void run_simulation(InputParams params, Statistics *p_stats) {
@@ -54,6 +57,9 @@ void run_simulation(InputParams params, Statistics *p_stats) {
 
         output_timestep_statistics(simulation_data);
     }
+
+    free_parking_lot(&simulation_data.parking_lot);
+    queue_delete(&simulation_data.waiting_cars);
 }
 
 /*
