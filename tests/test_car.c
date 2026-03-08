@@ -25,7 +25,34 @@ void test_unique_id(void) {
 }
 
 void test_random_park_duration(void) {
-    assert(false);
+    const int MAX_PARK_TIME = 10;
+
+    InputParams params;
+    params.rng_seed = time(NULL); // I wonder if doing this randomly is idiomatic for unit tests
+    params.park_max_time = MAX_PARK_TIME;
+
+    const int TOTAL_TESTS = 1024;
+
+    for (int i = 0; i < TOTAL_TESTS; i++) {
+        int random_duration = random_park_duration(params);
+
+        assert(random_duration <= MAX_PARK_TIME);
+        assert(random_duration > 0);
+    }
+}
+
+void test_invalid_park_duration(void) {
+    InputParams params;
+    params.rng_seed = time(NULL); // I wonder if doing this randomly is idiomatic for unit tests
+    params.park_max_time = 0;
+
+    const int TOTAL_TESTS = 1024;
+
+    for (int i = 0; i < TOTAL_TESTS; i++) {
+        int random_duration = random_park_duration(params);
+
+        assert(random_duration == 1);
+    }
 }
 
 void test_is_empty(void) {
@@ -36,6 +63,7 @@ int main(void) {
     test_init();
     test_unique_id();
     test_random_park_duration();
+    test_invalid_park_duration();
     test_is_empty();
 
     printf("Alle unit tests sind erfolgreich durchgelaufen\n");
