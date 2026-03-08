@@ -4,7 +4,10 @@
 #include <car.h>
 
 void test_init(void) {
-    assert(false);
+    Car car = init_new_car();
+    
+    assert(car.time_arrival_park == 0);
+    assert(car.time_arrival_queue == 0);
 }
 
 void test_unique_id(void) {
