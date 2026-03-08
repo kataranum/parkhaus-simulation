@@ -47,16 +47,21 @@ void test_random_park_duration(void) {
 }
 
 void test_invalid_park_duration(void) {
-    InputParams params;
-    params.rng_seed = time(NULL); // I wonder if doing this randomly is idiomatic for unit tests
-    params.park_max_time = 0;
+    InputParams params_1, params_2;
+    params_1.rng_seed = time(NULL);
+    params_1.park_max_time = 0;
+
+    params_2.rng_seed = time(NULL);
+    params_2.park_max_time = 1;
 
     const int TOTAL_TESTS = 1024;
 
     for (int i = 0; i < TOTAL_TESTS; i++) {
-        int random_duration = random_park_duration(params);
+        int random_duration_1 = random_park_duration(params_1);
+        int random_duration_2 = random_park_duration(params_2);
 
-        assert(random_duration == 1);
+        assert(random_duration_1 == 1);
+        assert(random_duration_2 == 1);
     }
 }
 
@@ -79,6 +84,7 @@ int main(void) {
     test_init();
     test_unique_id();
     test_random_park_duration();
+    test_invalid_park_duration
     test_invalid_park_duration();
     test_is_empty();
 
