@@ -116,7 +116,7 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     //Funktions Variable
     float avg_waiting_time_timestep = 0.0;
     int current_occupancy = get_occupancy(simulation_data.parking_lot);
-    float percent = (current_occupancy / simulation_data.params.park_num_spaces) * 100.0;
+    float occupancy_percent = (current_occupancy / simulation_data.params.park_num_spaces) * 100.0;
 
     //Stats VAriablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
@@ -141,11 +141,11 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     printf("------------------------------------------------------------\n");
     printf("SIMULATIONS-SCHRITT: %d / %d\n", simulation_data.current_step, simulation_data.params.total_time_steps);
     printf("------------------------------------------------------------\n");
-    printf("Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n", current_occupancy, simulation_data.params.park_num_spaces, percent);
-    printf("Warteschlange:          %d Fahrzeuge\n", queue_len);
-    printf("Durchschn. Wartezeit:   %.1f Zeitschritte\n", avg_wait);
-    printf("Vollbelegungs-Ticks:    %d\n", full_ticks);
-    printf("Gesamt-Durchsatz:       %d Fahrzeuge\n", throughput);
+    printf("Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n", current_occupancy, simulation_data.params.park_num_spaces, occupancy_percent);
+    printf("Warteschlange:          %d Fahrzeuge\n", simulation_data.queue.length);
+    printf("Durchschn. Wartezeit:   %.1f Zeitschritte\n", avg_waiting_time_timestep);
+    printf("Vollbelegungs-Ticks:    %d\n", stats->full_occupancy_steps);
+    printf("Gesamt-Durchsatz:       %d Fahrzeuge\n", stats->finished_cars);
     printf("------------------------------------------------------------\n");
      
 }
