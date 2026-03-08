@@ -29,8 +29,16 @@ SimulationData get_simdata_default(void) {
     return data;
 }
 
+void free_simdata(SimulationData data) {
+    free(data.p_stats);
+    free_parking_lot(&data.parking_lot);
+    queue_delete(&data.waiting_cars);
+}
+
 void test_remove_due_cars(void) {
-    SimulationData data;
+    SimulationData data = get_simdata_default();
+
+    free_simdata(data);
 }
 
 void test_park_waiting_cars(void) {
