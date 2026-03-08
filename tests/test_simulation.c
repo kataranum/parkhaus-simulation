@@ -171,6 +171,12 @@ void test_chance_0(void) {
 }
 
 int main(void) {
+    test_remove_due_cars();
+    test_park_waiting_cars();
+    test_get_new_cars_arriving();
+    test_chance_1();
+    test_chance_0();
+
     printf("All unit tests sind erfolgreich durchgelaufen.\n");
     return 0;
 }
