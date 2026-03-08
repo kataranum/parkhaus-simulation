@@ -3,6 +3,16 @@
 #include <assert.h>
 #include <simulation.h>
 
+/*
+Die Funktion run_simulation() wird nicht getestet, da diese praktisch alle
+anderen Funktionen von hier in einen Prozess bündelt und selber nicht wirklich
+was eigenes macht. Außerdem währe es an dem Punkt schon kein Unit Test mehr, da
+das eigentlich die gesamt Simulationsschleife ist.
+
+Die anderen Funktionen, die von run_simulation() aufgerufen werden, werden
+natürlich getestet.
+*/
+
 // default values for most unit tests
 #define PARK_NUM_SPACES 10
 #define PARK_MAX_TIME 10
