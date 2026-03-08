@@ -5,13 +5,23 @@
 
 void test_init(void) {
     Car car = init_new_car();
-    
+
     assert(car.time_arrival_park == 0);
     assert(car.time_arrival_queue == 0);
 }
 
 void test_unique_id(void) {
-    assert(false);
+    int ids[1024] = { 0 };
+    const int TOTAL_TESTS = sizeof(ids) / sizeof(ids[0]);
+
+    for (int index = 0; index < TOTAL_TESTS; index++) {
+        ids[index] = get_unique_id();
+
+        // check against all existing ids that there is no identical value
+        for (int check_index = 0; check_index < index; check_index++) {
+            assert(ids[index] != ids[check_index]);
+        }
+    }
 }
 
 void test_random_park_duration(void) {
