@@ -44,7 +44,23 @@ void test_queue_delete_empty(void) {
 }
 
 void test_enqueue(void) {
-    assert(false);
+    CarQueue q = queue_init();
+
+    assert(q.length == 0);
+
+    const int AMOUNT_CARS = 10;
+    for (int id = 0; id < AMOUNT_CARS; id++) {
+        Car car;
+        car.id = id;
+        enqueue(&q, car);
+
+        assert(q.length == id + 1),
+
+        assert(q.p_front->id == 0);
+        assert(q.p_back->id == id);
+    }
+
+    queue_delete(&q);
 }
 
 void test_dequeue(void) {
