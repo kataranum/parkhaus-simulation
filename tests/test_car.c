@@ -20,6 +20,7 @@ void test_unique_id(void) {
         // check against all existing ids that there is no identical value
         for (int check_index = 0; check_index < index; check_index++) {
             assert(ids[index] != ids[check_index]);
+            assert(ids[check_index] >= 0);
         }
     }
 }
