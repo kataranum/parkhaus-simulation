@@ -64,7 +64,32 @@ void test_enqueue(void) {
 }
 
 void test_dequeue(void) {
-    assert(false);
+    CarQueue q = queue_init();
+
+    const int AMOUNT_CARS = 10;
+    for (int i = 0; i < AMOUNT_CARS; i++) {
+        Car car;
+        car.id = i;
+        enqueue(&q, car);
+    }
+
+    for (int i = 0; i < AMOUNT_CARS; i++) {
+        Car dequeued;
+        bool result = dequeue(&q, &dequeued);
+
+        assert(result);
+        assert(dequeued.id == i);
+    }
+
+    const int SOME_ID = 123;
+    Car dequeued;
+    dequeued.id = SOME_ID;
+    bool result = dequeue(&q, &dequeued);
+
+    assert(result == false);
+    assert(dequeued.id == SOME_ID); // dequeued shall not be touched on error
+
+    queue_delete(&q);
 }
 
 void test_is_empty(void) {
