@@ -12,7 +12,7 @@
 #include <car_queue.h>
 
 // Forward declaration of Statistics struct
-struct Statistics;
+typedef struct Statistics Statistics;
 //#include <statistics.h>
 
 /**
@@ -23,7 +23,7 @@ typedef struct {
     /** The current time step */
     unsigned int current_step;
     /** Pointer to all the statistics variables */
-    struct Statistics *p_stats;
+    Statistics *p_stats;
 
     /** Current state of the parking lot array */
     ParkingLot parking_lot;
@@ -40,7 +40,7 @@ typedef struct {
  * @param params[in] Given input parameters
  * @param p_stats[in/out] Statistics data
  */
-void run_simulation(InputParams params, struct Statistics *p_stats);
+void run_simulation(InputParams params, Statistics *p_stats);
 
 /**
  * @brief Have cars over their max park time leave the parking lot

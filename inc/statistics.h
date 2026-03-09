@@ -14,7 +14,7 @@
 /*---------------------------------------------------------------*/
 /* Statistics state                                              */
 /*---------------------------------------------------------------*/
-typedef struct {
+struct Statistics {
     FILE *log_file;
 
     /* Occupancy */
@@ -33,7 +33,7 @@ typedef struct {
     /* Finished cars */
     int finished_cars;
 
-} Statistics;
+};
 
 
 /*---------------------------------------------------------------*/
