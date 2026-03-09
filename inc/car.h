@@ -3,8 +3,8 @@
  * Description: This file contains the Car struct and Car functions.
  */
 
-#ifndef SIMULATION_H
-#define SIMULATION_H
+#ifndef CAR_H
+#define CAR_H
 
 #include <user_input.h>
 
