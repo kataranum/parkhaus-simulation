@@ -74,6 +74,13 @@ target_link_libraries(test_car_queue
     car_queue
 )
 
+add_executable(test_simulation
+    tests/test_simulation.c
+)
+target_link_libraries(test_simulation
+    simulation
+)
+
 # enable CTest
 
 enable_testing()
@@ -86,6 +93,10 @@ add_test(
     NAME CarQueueUnitTests
     COMMAND test_car_queue
 )
+add_test(
+    NAME SimulationUnitTests
+    COMMAND test_simulation
+)
 
 # Custom Target to execute tests
 add_custom_target(run_tests
@@ -93,6 +104,7 @@ add_custom_target(run_tests
     DEPENDS
         test_car
         test_car_queue
+        test_simulation
     COMMENT "Running unit tests"
 )
 
