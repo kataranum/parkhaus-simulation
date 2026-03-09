@@ -90,7 +90,7 @@ int main(void) {
     test_init();
     test_unique_id();
     test_random_park_duration();
-    test_invalid_park_duration
+    test_invalid_park_duration();
     test_invalid_park_duration();
     test_is_empty();
 
