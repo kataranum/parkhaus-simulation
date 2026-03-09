@@ -35,7 +35,7 @@ FREE simulation_data.parking_lot
 FREE simulation_data.waiting_cars
 ```
 */
-void run_simulation(InputParams params, Statistics *p_stats) {
+void run_simulation(InputParams params, struct Statistics *p_stats) {
     ParkingLot parking_lot = init_parking_lot(params.park_num_spaces);
     CarQueue waiting_cars = queue_init();
 
