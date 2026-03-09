@@ -15,7 +15,7 @@
 /**
  * @brief All data relevant for the simulation in one struct
  */
-struct SimulationData {
+typedef struct {
     InputParams params;
     /** The current time step */
     unsigned int current_step;
