@@ -66,6 +66,6 @@ int random_park_duration(InputParams params);
  * @param car[in] Car to check
  * @return int (boolean) whether the parking space is empty
  */
-int is_empty(Car car);
+int car_empty(Car car);
 
 #endif

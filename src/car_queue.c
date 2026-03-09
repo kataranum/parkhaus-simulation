@@ -86,6 +86,6 @@ int dequeue(CarQueue *p_queue, Car *p_car) {
 RETURN queue.length == 0;
 ```
 */
-int is_empty(CarQueue queue) {
+int queue_empty(CarQueue queue) {
     // TODO
 }

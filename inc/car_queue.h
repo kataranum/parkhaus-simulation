@@ -8,7 +8,7 @@
 #ifndef CAR_QUEUE_H
 #define CAR_QUEUE_H
 
-#include "car.h"
+#include <car.h>
 
 /**
  * @brief A node in CarQueue containing a single car
@@ -82,6 +82,6 @@ int dequeue(CarQueue *p_queue, Car *p_car);
  * @param[in] queue Given queue
  * @return int (bool) whether the queue is empty
  */
-int is_empty(CarQueue queue);
+int queue_empty(CarQueue queue);
 
 #endif
