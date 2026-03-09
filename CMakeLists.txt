@@ -64,7 +64,7 @@ add_executable(test_car
     tests/test_car.c
 )
 target_link_libraries(test_car
-    user_input
+    car
 )
 
 # enable CTest
