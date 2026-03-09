@@ -6,11 +6,11 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-#include "user_input.h"
-#include "car.h"
-#include "parking_lot.h"
-#include "car_queue.h"
-#include "statistics.h"
+#include <user_input.h>
+#include <car.h>
+#include <parking_lot.h>
+#include <car_queue.h>
+#include <statistics.h>
 
 /**
  * @brief All data relevant for the simulation in one struct
