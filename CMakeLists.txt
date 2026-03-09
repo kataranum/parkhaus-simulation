@@ -37,6 +37,28 @@ add_library(simulation
     src/simulation.c
 )
 
+# Dependencies among libraries
+
+target_link_libraries(car PUBLIC
+    user_input
+)
+target_link_libraries(car_queue PUBLIC
+    car
+)
+target_link_libraries(parking_lot PUBLIC
+    car
+)
+target_link_libraries(statistics PUBLIC
+    simulation
+)
+target_link_libraries(simulation PUBLIC
+    user_input
+    car
+    parking_lot
+    car_queue
+    statistics
+)
+
 # Program
 
 add_executable(parkhaus
