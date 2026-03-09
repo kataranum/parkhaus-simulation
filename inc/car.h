@@ -6,6 +6,8 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
+#include <user_input.h>
+
 /**
  * @brief All values related to a car.
  * 
