@@ -1,4 +1,4 @@
-#include "../inc/simulation.h"
+#include <simulation.h>
 
 /*
 ```PSEUDOCODE

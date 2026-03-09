@@ -1,4 +1,4 @@
-#include "../inc/user_input.h"
+#include <user_input.h>
 #include <parse_num.h>
 #include <stdio.h>
 #include <string.h>
