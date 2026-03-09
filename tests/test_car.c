@@ -87,10 +87,10 @@ void test_is_empty(void) {
     // I guess it's cleaner to ensure these are also handled in a sensible way
     car_4.id = -5;
 
-    assert( is_empty(car_1) == false );
-    assert( is_empty(car_2) == false );
-    assert( is_empty(car_3) == true );
-    assert( is_empty(car_4) == true );
+    assert( car_empty(car_1) == false );
+    assert( car_empty(car_2) == false );
+    assert( car_empty(car_3) == true );
+    assert( car_empty(car_4) == true );
 }
 
 int main(void) {
