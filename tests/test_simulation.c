@@ -19,6 +19,7 @@ natürlich getestet.
 #define PARK_CHANCE_ARRIVE 0.5
 #define TOTAL_TIME_STEPS 100
 
+// Create SimulationData with default values
 SimulationData get_simdata_default(void) {
     InputParams params;
     params.park_num_spaces = PARK_NUM_SPACES;
@@ -39,6 +40,7 @@ SimulationData get_simdata_default(void) {
     return data;
 }
 
+// Free all memory allocated from get_simdata_default()
 void free_simdata(SimulationData data) {
     free(data.p_stats);
     free_parking_lot(&data.parking_lot);
@@ -132,6 +134,7 @@ void test_park_waiting_cars(void) {
     free_simdata(data);
 }
 
+// rough check that randomness is somewhat behaving as expected
 void test_get_new_cars_arriving(void) {
     SimulationData data = get_simdata_default();
 
@@ -150,6 +153,7 @@ void test_get_new_cars_arriving(void) {
     free_simdata(data);
 }
 
+// assert that a chance of 1.0 gurantees a new car each timestep
 void test_chance_1(void) {
     SimulationData data = get_simdata_default();
 
@@ -165,6 +169,7 @@ void test_chance_1(void) {
     free_simdata(data);
 }
 
+// assert that a chance of 0.0 completely prevents cars from arriving
 void test_chance_0(void) {
     SimulationData data = get_simdata_default();
 
