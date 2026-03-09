@@ -4,10 +4,7 @@
  *              parking garage simulation.
  */
 
-#include "../inc/statistics.h"
-#include "../inc/simulation.h"
-#include "../inc/car.h"
-#include <stdio.h>
+#include <statistics.h>
 
 /*---------------------------------------------------------------*/
 /* static module variables                                       */

@@ -8,6 +8,9 @@
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
+#include <stdio.h>
+#include <simulation.h>
+
 /*---------------------------------------------------------------*/
 /* Statistics state                                              */
 /*---------------------------------------------------------------*/
