@@ -59,6 +59,30 @@ target_link_libraries(simulation PUBLIC
     statistics
 )
 
+# Unit test executables
+add_executable(test_car
+    tests/test_car.c
+)
+target_link_libraries(test_car
+    user_input
+)
+
+# enable CTest
+
+enable_testing()
+
+add_test(
+    NAME CarUnitTests
+    COMMAND test_car
+)
+
+# Custom Target to execute tests
+add_custom_target(run_tests
+    COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
+    DEPENDS test_car
+    COMMENT "Running unit tests"
+)
+
 # Program
 
 add_executable(parkhaus
@@ -70,3 +94,5 @@ target_link_libraries(parkhaus PRIVATE
     statistics
     simulation
 )
+
+add_dependencies(parkhaus run_tests)
