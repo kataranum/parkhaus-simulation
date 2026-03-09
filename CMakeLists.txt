@@ -67,6 +67,13 @@ target_link_libraries(test_car
     car
 )
 
+add_executable(test_car_queue
+    tests/test_car_queue.c
+)
+target_link_libraries(test_car_queue
+    car_queue
+)
+
 # enable CTest
 
 enable_testing()
@@ -75,11 +82,17 @@ add_test(
     NAME CarUnitTests
     COMMAND test_car
 )
+add_test(
+    NAME CarQueueUnitTests
+    COMMAND test_car_queue
+)
 
 # Custom Target to execute tests
 add_custom_target(run_tests
     COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
-    DEPENDS test_car
+    DEPENDS
+        test_car
+        test_car_queue
     COMMENT "Running unit tests"
 )
 
