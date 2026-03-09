@@ -6,30 +6,7 @@
 #ifndef SIMULATION_H
 #define SIMULATION_H
 
-#include <user_input.h>
-#include <car.h>
-#include <parking_lot.h>
-#include <car_queue.h>
-
-// Forward declaration of Statistics struct
-typedef struct Statistics Statistics;
-//#include <statistics.h>
-
-/**
- * @brief All data relevant for the simulation in one struct
- */
-typedef struct {
-    InputParams params;
-    /** The current time step */
-    unsigned int current_step;
-    /** Pointer to all the statistics variables */
-    Statistics *p_stats;
-
-    /** Current state of the parking lot array */
-    ParkingLot parking_lot;
-    /** Current queue of all cars waiting */
-    CarQueue waiting_cars;
-};
+#include <sim_data.h>
 
 /**
  * @brief Run the entire simulation with the given parameters

@@ -9,32 +9,7 @@
 #define STATISTICS_H
 
 #include <stdio.h>
-#include <simulation.h>
-
-/*---------------------------------------------------------------*/
-/* Statistics state                                              */
-/*---------------------------------------------------------------*/
-struct Statistics {
-    FILE *log_file;
-
-    /* Occupancy */
-    int sum_occupancy;
-
-    /* Waiting time */
-    int sum_waiting_time;
-
-    /* Queue statistics */
-    int sum_queue_length;
-    int max_queue_length;
-
-    /* Full occupancy */
-    int full_occupancy_steps;
-
-    /* Finished cars */
-    int finished_cars;
-
-};
-
+#include <sim_data.h>
 
 /*---------------------------------------------------------------*/
 /* Initialization                                                */
