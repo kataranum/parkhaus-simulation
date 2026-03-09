@@ -109,7 +109,7 @@ ENDE
 */
 /*---------------------------------------------------------------*/
 
-void output_timestep_statistics(Statistics *stats,struct SimulationData simulation_data)
+void output_timestep_statistics(Statistics *stats,SimulationData simulation_data)
 {
     //Funktions Variable
     float avg_waiting_time_timestep = 0.0;
