@@ -3,6 +3,7 @@
 #include <assert.h>
 #include <car_queue.h>
 
+// check that fields are set correctly
 void test_queue_init(void) {
     CarQueue q = queue_init();
 
@@ -13,6 +14,7 @@ void test_queue_init(void) {
     queue_delete(&q);
 }
 
+// check that fields are set properly after deletion and no SEGFAULT happens
 void test_queue_delete(void) {
     CarQueue q = queue_init();
 
@@ -33,6 +35,7 @@ void test_queue_delete(void) {
     assert(q.length == 0);
 }
 
+// deleting an empty queue shouldn't do anything
 void test_queue_delete_empty(void) {
     CarQueue q = queue_init();
 
@@ -43,6 +46,7 @@ void test_queue_delete_empty(void) {
     assert(q.length == 0);
 }
 
+// check that enqueueing works and also is ordered correctly
 void test_enqueue(void) {
     CarQueue q = queue_init();
 
@@ -63,6 +67,8 @@ void test_enqueue(void) {
     queue_delete(&q);
 }
 
+// check that dequeueing works and also in correct order
+// check "dequeueing" and empty queue as well
 void test_dequeue(void) {
     CarQueue q = queue_init();
 
