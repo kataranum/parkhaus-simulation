@@ -64,3 +64,9 @@ target_link_libraries(simulation PUBLIC
 add_executable(parkhaus
     src/main.c
 )
+
+target_link_libraries(parkhaus PRIVATE
+    user_input
+    statistics
+    simulation
+)
