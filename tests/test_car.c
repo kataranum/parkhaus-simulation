@@ -73,7 +73,7 @@ void test_invalid_park_duration(void) {
 
 void test_is_empty(void) {
     Car car_1, car_2, car_3, car_4;
-    car_1.id = 67; // i am very sorry for choosing this number
+    car_1.id = 7;
     car_2.id = 0;
     car_3.id = -1;
     // negative IDs other than -1 are technically undefined by our means, but
