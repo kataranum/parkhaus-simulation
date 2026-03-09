@@ -1,6 +1,8 @@
 #include <stdio.h>
+#include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
+#include <time.h>
 #include <simulation.h>
 
 const long RNG_SEEDS[] = {
@@ -89,19 +91,19 @@ void test_remove_due_cars(void) {
     data.parking_lot.p_array[4].time_park_duration = 0;
 
     // redundant check to see if data is in an expected state
-    assert( is_empty(data.parking_lot.p_array[0]) == false );
-    assert( is_empty(data.parking_lot.p_array[1]) == false );
-    assert( is_empty(data.parking_lot.p_array[2]) == false );
-    assert( is_empty(data.parking_lot.p_array[3]) == false );
-    assert( is_empty(data.parking_lot.p_array[4]) == false );
+    assert( car_empty(data.parking_lot.p_array[0]) == false );
+    assert( car_empty(data.parking_lot.p_array[1]) == false );
+    assert( car_empty(data.parking_lot.p_array[2]) == false );
+    assert( car_empty(data.parking_lot.p_array[3]) == false );
+    assert( car_empty(data.parking_lot.p_array[4]) == false );
 
     remove_due_cars(data);
 
-    assert( is_empty(data.parking_lot.p_array[0]) == true );
-    assert( is_empty(data.parking_lot.p_array[1]) == false );
-    assert( is_empty(data.parking_lot.p_array[2]) == false );
-    assert( is_empty(data.parking_lot.p_array[3]) == false );
-    assert( is_empty(data.parking_lot.p_array[4]) == true );
+    assert( car_empty(data.parking_lot.p_array[0]) == true );
+    assert( car_empty(data.parking_lot.p_array[1]) == false );
+    assert( car_empty(data.parking_lot.p_array[2]) == false );
+    assert( car_empty(data.parking_lot.p_array[3]) == false );
+    assert( car_empty(data.parking_lot.p_array[4]) == true );
 
     free_simdata(data);
 }
@@ -124,7 +126,7 @@ void test_park_waiting_cars(void) {
     for (int i = 0; i < PARK_NUM_SPACES; i++) {
         Car car = data.parking_lot.p_array[i];
 
-        assert( ! is_empty(car) );
+        assert( ! car_empty(car) );
         assert(car.id < PARK_NUM_SPACES);
     }
 
@@ -134,7 +136,7 @@ void test_park_waiting_cars(void) {
     for (int i = 0; i < PARK_NUM_SPACES; i++) {
         Car car = data.parking_lot.p_array[i];
 
-        assert( ! is_empty(car) );
+        assert( ! car_empty(car) );
         assert(car.id < PARK_NUM_SPACES);
     }
 
@@ -149,7 +151,7 @@ void test_get_new_cars_arriving(long seed) {
 
     const int TEST_AMOUNT = 10000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        test_get_new_cars_arriving(data);
+        get_new_cars_arriving(data);
     }
 
     // I'll define loose bounds that you'd need to be really unlucky to exceed
@@ -168,7 +170,7 @@ void test_chance_1(long seed) {
 
     const int TEST_AMOUNT = 1000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        test_get_new_cars_arriving(data);
+        get_new_cars_arriving(data);
     }
 
     assert(data.waiting_cars.length == TEST_AMOUNT);
@@ -184,7 +186,7 @@ void test_chance_0(long seed) {
 
     const int TEST_AMOUNT = 1000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        test_get_new_cars_arriving(data);
+        get_new_cars_arriving(data);
     }
 
     assert(data.waiting_cars.length == 0);
