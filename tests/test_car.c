@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <car.h>
 
+// check if Car fields are set correctly
 void test_init(void) {
     // InputParams remain unused here, but are required for code to compile
     InputParams params;
@@ -10,10 +11,13 @@ void test_init(void) {
 
     Car car = init_new_car(params);
 
+    // only check these two fields because the others are rather unpredictable
+    // and are tested in the other tests
     assert(car.time_arrival_park == 0);
     assert(car.time_arrival_queue == 0);
 }
 
+// check that get_unique_id() actually never returns the same id twice
 void test_unique_id(void) {
     int ids[1024] = { 0 };
     const int TOTAL_TESTS = sizeof(ids) / sizeof(ids[0]);
@@ -29,6 +33,7 @@ void test_unique_id(void) {
     }
 }
 
+// check if random_park_duration() is within defined bounds
 void test_random_park_duration(void) {
     const int MAX_PARK_TIME = 10;
 
@@ -46,6 +51,7 @@ void test_random_park_duration(void) {
     }
 }
 
+// make sure that random_park_duration returns 1 for technically invalid bounds
 void test_invalid_park_duration(void) {
     InputParams params_1, params_2;
     params_1.rng_seed = time(NULL);
