@@ -60,8 +60,8 @@ void test_enqueue(void) {
 
         assert(q.length == id + 1),
 
-        assert(q.p_front->id == 0);
-        assert(q.p_back->id == id);
+        assert(q.p_front->car.id == 0);
+        assert(q.p_back->car.id == id);
     }
 
     queue_delete(&q);
@@ -101,7 +101,7 @@ void test_dequeue(void) {
 }
 
 void test_is_empty(void) {
-    CarQueue q = init_queue();
+    CarQueue q = queue_init();
 
     assert(queue_empty(q) == true);
 
