@@ -46,7 +46,7 @@ typedef struct {
     /** Current state of the parking lot array */
     ParkingLot parking_lot;
     /** Current queue of all cars waiting */
-    CarQueue queue;
+    CarQueue waiting_cars;
 } SimulationData;
 
 #endif
