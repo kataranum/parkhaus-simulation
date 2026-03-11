@@ -36,6 +36,12 @@ LOOP:
 END LOOP
 ```
 */
+
+/**
+ * @brief Prompt user for a valid unsigned int input
+ * @return unsigned int value entered by the user
+ */
+
 unsigned int input_valid_uint(void)
 {
     while (1)
@@ -75,6 +81,12 @@ LOOP:
 END LOOP
 ```
 */
+
+/**
+ * @brief Prompt user for a valid percentage input (0 - 100)
+ * @return float value entered by the user
+ */
+
 float input_valid_percentage(void)
 {
     while (1)
@@ -114,6 +126,12 @@ LOOP:
 END LOOP
 ```
 */
+
+/**
+ * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
+ * @return unsigned long seed value
+ */
+
 unsigned int input_valid_seed(void)
 {
     while (1)
@@ -128,7 +146,7 @@ unsigned int input_valid_seed(void)
 
         if (is_parsable_uint(input))
         {
-            return (unsigned int)input;
+            return parse_uint(input);
         }
 
         printf("invalid ulong");
