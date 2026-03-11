@@ -50,7 +50,6 @@ unsigned int input_valid_uint(void)
         }
         
         printf("invalid uint");
-        break;
     }
 
 }
