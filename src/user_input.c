@@ -1,18 +1,26 @@
 #include <stdio.h>
 #include <string.h>
 #include "../inc/user_input.h"
+#include <stdbool.h>
 
 #define INPUT_BUFFER_SIZE 256
 
-int read_user_text(char *text, size_t size)
+/**
+ * @brief Read a line of text from stdin and remove the trailing newline character
+ * @param text Buffer to store the input text
+ * @param size Size of the buffer
+ * @return 0 on success, 1 on failure
+ */
+
+bool read_user_text(char *text, size_t size)
 {
     if (fgets(text, size, stdin) == NULL)
     {
-        return 1;
+        return false;
     }
 
     text[strcspn(text, "\n")] = '\0';
-    return 0;
+    return true;
 }
 
 /*
