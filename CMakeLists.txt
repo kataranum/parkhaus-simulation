@@ -57,6 +57,7 @@ target_link_libraries(simulation PUBLIC
     parking_lot
     car_queue
     statistics
+    util
 )
 
 # Unit test executables
