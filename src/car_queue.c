@@ -11,7 +11,6 @@ RETURN queue;
 */
 CarQueue queue_init()
 {
-    
     CarQueue queue;
     queue.p_front = NULL;
     queue.p_back = NULL;
@@ -36,7 +35,6 @@ length = 0;
 */
 void queue_delete(CarQueue *p_queue)
 {
-    
     CarNode *p_node = p_queue->p_front;
 
     while (p_node != NULL)
@@ -71,7 +69,6 @@ p_queue->length++;
 */
 void enqueue(CarQueue *p_queue, Car car)
 {
-    
     CarNode *p_new = malloc(sizeof(CarNode));
     p_new->car = car;
     p_new->p_behind = NULL;
@@ -114,8 +111,8 @@ END IF
 RETURN car;
 ```
 */
-int dequeue(CarQueue *p_queue, Car *p_car) {
-    
+int dequeue(CarQueue *p_queue, Car *p_car)
+{
     CarNode *p_frontmost = p_queue->p_front;
 
     if (p_frontmost == NULL)
@@ -144,6 +141,7 @@ int dequeue(CarQueue *p_queue, Car *p_car) {
 RETURN queue.length == 0;
 ```
 */
-int is_empty(CarQueue queue) {
-    // TODO
+int is_empty(CarQueue queue)
+{
+    return queue.length == 0;
 }
