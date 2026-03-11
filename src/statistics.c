@@ -6,6 +6,7 @@
 
 #include "../inc/statistics.h"
 #include "../inc/simulation.h"
+#include "../inc/car.h"
 #include <stdio.h>
 
 /*---------------------------------------------------------------*/
