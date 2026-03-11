@@ -47,7 +47,11 @@ unsigned int input_valid_uint(void)
     while (1)
     {
         char input[INPUT_BUFFER_SIZE];
-        read_user_text(input, sizeof(input));
+        if ( ! read_user_text(input, sizeof(input)) )
+        {
+            printf("Invalid input\n");
+            continue;
+        }
 
         //TODO: implement is_parsable (for each function (float or int))
         if (is_parsable_uint(input))
@@ -92,7 +96,11 @@ float input_valid_percentage(void)
     while (1)
     {
         char input[INPUT_BUFFER_SIZE];
-        read_user_text(input, sizeof(input));
+        if ( ! read_user_text(input, sizeof(input)) )
+        {
+            printf("Invalid input\n");
+            continue;
+        }
 
         //TODO: implement is_parsable_float
         if (is_parsable_float(input))
@@ -137,7 +145,11 @@ unsigned int input_valid_seed(void)
     while (1)
     {    
         char input[INPUT_BUFFER_SIZE];
-        read_user_text(input, sizeof(input));
+        if ( ! read_user_text(input, sizeof(input)) )
+        {
+            printf("Invalid input\n");
+            continue;
+        }
 
         if (strlen(input) == 0)
         {
