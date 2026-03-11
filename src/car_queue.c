@@ -9,8 +9,14 @@ length = 0;
 RETURN queue;
 ```
 */
-CarQueue queue_init() {
-    // TODO
+CarQueue queue_init()
+{
+    
+    CarQueue queue;
+    queue.p_front = NULL;
+    queue.p_back = NULL;
+    queue.length = 0;
+    return queue;
 }
 
 /*
@@ -28,8 +34,21 @@ p_queue->p_back = NULL;
 length = 0;
 ```
 */
-void queue_delete(CarQueue *p_queue) {
-    // TODO
+void queue_delete(CarQueue *p_queue)
+{
+    
+    CarNode *p_node = p_queue->p_front;
+
+    while (p_node != NULL)
+    {
+        CarNode *p_next = p_node->p_behind;
+        free(p_node);
+        p_node = p_next;
+    }
+
+    p_queue->p_front = NULL;
+    p_queue->p_back = NULL;
+    p_queue->length = 0;
 }
 
 /*
@@ -50,8 +69,26 @@ p_queue->p_back = p_new;
 p_queue->length++;
 ```
 */
-void enqueue(CarQueue *p_queue, Car car) {
-    // TODO
+void enqueue(CarQueue *p_queue, Car car)
+{
+    
+    CarNode *p_new = malloc(sizeof(CarNode));
+    p_new->car = car;
+    p_new->p_behind = NULL;
+
+    CarNode *p_old_backmost = p_queue->p_back;
+
+    if (p_old_backmost != NULL)
+    {
+        p_old_backmost->p_behind = p_new;
+    }
+    else
+    {
+        p_queue->p_front = p_new;
+    }
+
+    p_queue->p_back = p_new;
+    p_queue->length++;
 }
 
 /*
