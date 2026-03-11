@@ -46,7 +46,7 @@ unsigned int input_valid_uint(void)
         //TODO: implement is_parsable (for each function (float or int))
         if (is_parsable_uint(input))
         {
-            return (unsigned int)input;
+            return parse_uint(input);
         }
         
         printf("invalid uint");
