@@ -120,7 +120,6 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
 
     //Stats Variablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
-    stats->sum_waiting_time += ;//Wo wird die Wartezeit jedes im diesem timestep geparkten autos berechnet ?
     stats->sum_queue_length += simulation_data.queue.length;
     
     // Aktualisierung der längsten Warteschlange
@@ -324,6 +323,19 @@ void statistics_car_leave(Statistics *stats)
     stats->finished_cars ++;
 }
 
+/*---------------------------------------------------------------*/
+/* Car arrive                                                    */
+/*---------------------------------------------------------------*/
+/*
+PSEUDOCODE
+
+FUNCTION statistics_car_arrive(Statistics *stats, struct Car new_car)
+
+    stats->sum_waiting_time += new_car.time_arrival_park - new_car.time_arrival_queue;
+
+ENDE
+
+*/
 void statistics_car_arrive(Statistics *stats, struct Car new_car)
 {
     stats->sum_waiting_time += new_car.time_arrival_park - new_car.time_arrival_queue;

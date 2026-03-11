@@ -84,4 +84,13 @@ void output_total_statistics(Statistics *stats, InputParams params);
 **/
 void statistics_car_leave(Statistics *stats);
 
+/*---------------------------------------------------------------*/
+/* Car arrive                                                    */
+/*---------------------------------------------------------------*/
+/**
+* @brief Calculates the waiting time of parked cars
+* @param[in] stats pointer auf Statistiks struct
+**/
+void statistics_car_arrive(Statistics *stats, struct Car new_car);
+
 #endif
