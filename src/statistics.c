@@ -322,4 +322,9 @@ ENDE
 void statistics_car_leave(Statistics *stats)
 {
     stats->finished_cars ++;
-}   
+}
+
+void statistics_car_arrive(Statistics *stats, struct Car new_car)
+{
+    stats->sum_waiting_time += new_car.time_arrival_park - new_car.time_arrival_queue;
+}
