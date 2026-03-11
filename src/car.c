@@ -16,6 +16,10 @@ Car init_new_car(InputParams params) {
     // TODO
 }
 
+int get_unique_id() {
+    // TODO
+}
+
 /*
 ```PSEUDOCODE
 RETURN (rand() % (params.max_park_duration - 1)) + 1
@@ -30,4 +34,6 @@ int random_park_duration(InputParams params) {
 RETURN car.id == -1
 ```
 */
-int car_empty(Car car);
+int car_empty(Car car) {
+    // TODO
+}

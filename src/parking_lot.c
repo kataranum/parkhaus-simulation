@@ -11,7 +11,9 @@ parking_lot.length = length;
 RETURN parking_lot
 ```
 */
-ParkingLot init_parking_lot(unsigned int length);
+ParkingLot init_parking_lot(unsigned int length) {
+    // TODO
+}
 
 /*
 ```PSEUDOCODE
