@@ -115,7 +115,28 @@ RETURN car;
 ```
 */
 int dequeue(CarQueue *p_queue, Car *p_car) {
-    // TODO
+    
+    CarNode *p_frontmost = p_queue->p_front;
+
+    if (p_frontmost == NULL)
+    {
+        return 0;
+    }
+
+    *p_car = p_frontmost->car;
+    CarNode *p_new_frontmost = p_frontmost->p_behind;
+
+    free(p_frontmost);
+    p_frontmost = NULL;
+    p_queue->p_front = p_new_frontmost;
+    p_queue->length--;
+
+    if (p_queue->length == 0)
+    {
+        p_queue->p_back = NULL;
+    }
+
+    return 1;
 }
 
 /*
