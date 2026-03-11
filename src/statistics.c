@@ -116,7 +116,7 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     //Funktions Variable
     float avg_waiting_time_timestep = 0.0;
     int current_occupancy = get_occupancy(simulation_data.parking_lot);
-    float occupancy_percent = (current_occupancy / simulation_data.params.park_num_spaces) * 100.0;
+    float occupancy_percent = ((float)current_occupancy / simulation_data.params.park_num_spaces) * 100.0;
 
     //Stats Variablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
