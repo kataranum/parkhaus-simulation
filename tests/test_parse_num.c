@@ -108,7 +108,11 @@ void test_parse_invalid_uint(void) {
 
 // test graceful failure on values too large for uint
 void test_parse_big_uint(void) {
-    assert(false);
+    unsigned int output = 37;
+    bool success = parse_uint("2147483648", &output);
+
+    assert( ! success );
+    assert(output == 37);
 }
 
 // test successful parsing
