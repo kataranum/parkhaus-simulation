@@ -313,75 +313,15 @@ void output_total_statistics(Statistics *stats, InputParams params)
     stats->finished_cars
     );
 
+    //Konsolenausgabe
+    printf("%s", buffer);
 
-
-
-
-
-
-    printf("==================================================\n");
-    printf("              PARKHAUS-SIMULATION\n");
-    printf("                Statistikbericht\n");
-    printf("==================================================\n\n");
-    printf("Simulationsdauer:                     %d Zeitschritte\n", params.total_time_steps);
-    printf("Gesamtkapazität Parkhaus:             %d Stellplätze\n\n", params.park_num_spaces);
-    printf("--------------------------------------------------\n");
-    printf("1. AUSLASTUNG\n");
-    printf("--------------------------------------------------\n");
-    printf("Durchschnittliche Auslastung:          %.1f %%\n\n", avg_occupancy_percentage);
-    printf("--------------------------------------------------\n");
-    printf("2. WARTESCHLANGE\n");
-    printf("--------------------------------------------------\n");
-    printf("Durchschnittliche Warteschlangenlänge: %.1f Fahrzeuge\n", avg_queue_length);
-    printf("Maximale Warteschlangenlänge:          %d Fahrzeuge\n\n", stats->max_queue_length);
-    printf("--------------------------------------------------\n");
-    printf("3. WARTEZEIT\n");
-    printf("--------------------------------------------------\n");
-    printf("Durchschnittliche Wartezeit:           %.1f Zeitschritte\n\n", avg_waiting_time);
-    printf("--------------------------------------------------\n");
-    printf("4. VOLLBELEGUNG\n");
-    printf("--------------------------------------------------\n");
-    printf("Zeitschritte mit Vollbelegung:         %d\n", stats->full_occupancy_steps);
-    printf("Anteil an Simulationsdauer:            %.1f %%\n\n", full_occupancy_percentage);
-    printf("--------------------------------------------------\n");
-    printf("5. FAHRZEUG-DURCHSATZ\n");
-    printf("--------------------------------------------------\n");
-    printf("Fahrzeuge erfolgreich abgefertigt:     %d\n\n", stats->finished_cars);
-    printf("==================================================\n");
-
-    //Dateiausgabe 
+    //Dateiausgabe
     if (stats->log_file != NULL)
     {
-        fprintf(stats->log_file, "==================================================\n");
-        fprintf(stats->log_file, "PARKHAUS-SIMULATION");
-        fprintf(stats->log_file, "Statistikbericht");
-        fprintf(stats->log_file, "==================================================\n\n");
-        fprintf(stats->log_file, "Simulationsdauer:", params.total_time_steps, "Zeitschritte");
-        fprintf(stats->log_file, "Gesamtkapazität Parkhaus:", params.park_num_spaces, "Stellplätze");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "1. AUSLASTUNG\n");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "Durchschnittliche Auslastung:", avg_occupancy_percentage);
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "2. WARTESCHLANGE\n");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "Durchschnittliche Warteschlangenlänge:", avg_queue_length, "Fahrzeuge");
-        fprintf(stats->log_file, "Maximale Warteschlangenlänge:", stats->max_queue_length, "Fahrzeuge");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "3. WARTEZEIT\n");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "Durchschnittliche Wartezeit:", avg_waiting_time, "Zeitschritte");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "4. VOLLBELEGUNG\n");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "Zeitschritte mit Vollbelegung:", stats->full_occupancy_steps);
-        fprintf(stats->log_file, "Anteil an Simulationsdauer:", full_occupancy_percentage);
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "5. FAHRZEUG-DURCHSATZ\n");
-        fprintf(stats->log_file, "--------------------------------------------------\n");
-        fprintf(stats->log_file, "Fahrzeuge erfolgreich abgefertigt:", stats->finished_cars);
-        fprintf(stats->log_file, "==================================================\n");
+        fprintf(stats->log_file, "%s", buffer);
     }
+
     //File ordnungsgemäß schließen
     if (stats->log_file != NULL)
     {
