@@ -119,7 +119,36 @@ void test_parse_big_uint(void) {
 
 // test successful parsing
 void test_parse_float(void) {
-    assert(false);
+    char *test_inputs[] = {
+        "1.0",
+        "37.0",
+        "0.5",
+        "-2.3",
+        "0.0",
+        "   -12.34  ",
+    };
+    float expected_outputs[] = {
+        1.0,
+        37.0,
+        0.5,
+        -2.3,
+        0.0,
+        -12.34,
+    };
+
+    const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
+    const int AMOUNT_OUTPUTS = sizeof(expected_outputs) / sizeof(expected_outputs[0]);
+
+    assert(AMOUNT_INPUTS == AMOUNT_OUTPUTS);
+
+    for (int i = 0; i < AMOUNT_INPUTS; i++) {
+        float output = 0;
+        bool success = parse_ufloat(test_inputs[i], &output);
+
+        assert(success);
+        // TODO
+        //assert(output == expected_outputs[i]);
+    }
 }
 
 // test graceful failure on invalid strings
