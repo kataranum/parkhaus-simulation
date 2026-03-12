@@ -195,9 +195,13 @@ void test_chance_0(long seed) {
 int main(void) {
     test_remove_due_cars();
     test_park_waiting_cars();
-    test_get_new_cars_arriving();
-    test_chance_1();
-    test_chance_0();
+
+    for (int i = 0; i < RNG_SEED_AMOUNT; i++) {
+        long seed = RNG_SEEDS[i];
+        test_get_new_cars_arriving(seed);
+        test_chance_1(seed);
+        test_chance_0(seed);
+    }
 
     printf("All unit tests sind erfolgreich durchgelaufen.\n");
     return 0;
