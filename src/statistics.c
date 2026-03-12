@@ -138,6 +138,24 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     avg_waiting_time_timestep = stats->sum_waiting_time / stats->sum_occupancy;
 
     //Konsolenausgabe
+    char buffer[1024];
+    sprintf(buffer,
+        "------------------------------------------------------------\n"
+        "SIMULATIONS-SCHRITT: %d / %d\n"
+        "------------------------------------------------------------\n"
+        "%-35s %10d / %d Plätze (%6.1f %%)\n"
+        "%-35s %10d Fahrzeuge\n"
+        "%-35s %10.1f Zeitschritte\n"
+        "%-35s %10d\n"
+        "%-35s %10d Fahrzeuge\n"
+        "------------------------------------------------------------\n\n",
+        simulation_data.current_step,
+        simulation_data.params.total_time_steps,
+
+        "Aktuelle Belegung:",
+        current_occupancy,
+
+
     printf("------------------------------------------------------------\n");
     printf("SIMULATIONS-SCHRITT: %d / %d\n", simulation_data.current_step, simulation_data.params.total_time_steps);
     printf("------------------------------------------------------------\n");
@@ -234,17 +252,7 @@ void output_total_statistics(Statistics *stats, InputParams params)
     full_occupancy_percentage = (stats->full_occupancy_steps / params.total_time_steps) *100;
 
     // Ausgabe der Daten über Konsole
-    char buffer[1024];
-    sprintf(buffer,
-        "------------------------------------------------------------\n"
-        "SIMULATIONS-SCHRITT: %d / %d\n"
-        "------------------------------------------------------------\n"
-        "%-35s %10d / %d Plätze (%6.1f %%)\n"
-        "%-35s %10d Fahrzeuge\n"
-        "%-35s %10.1f Zeitschritte\n"
-        "%-35s %10d\n"
-        "%-35s %10d Fahrzeuge\n"
-        "------------------------------------------------------------\n\n",
+   
         
 
 
