@@ -121,7 +121,7 @@ void test_parse_big_uint(void) {
 void test_parse_float(void) {
     char *test_inputs[] = {
         "1.0",
-        "37.0",
+        "37",
         "0.5",
         "-2.3",
         "0.0",
@@ -153,7 +153,25 @@ void test_parse_float(void) {
 
 // test graceful failure on invalid strings
 void test_parse_invalid_float(void) {
-    assert(false);
+    char *test_inputs[] = {
+        "asdf",
+        "0,1",
+        "",
+        "--3.1",
+        "5a",
+        "NaN",
+        "inf",
+    };
+
+    const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
+
+    for (int i = 0; i < AMOUNT_INPUTS; i++) {
+        float output = 2.0;
+        bool success = parse_ufloat(test_inputs[i], &output);
+
+        assert( ! success );
+        assert(output == 2.0);
+    }
 }
 
 int main(void) {
