@@ -252,6 +252,70 @@ void output_total_statistics(Statistics *stats, InputParams params)
     // Ausgabe der Daten über Konsole
    
         
+    char buffer[2048];
+
+    snprintf(buffer, sizeof(buffer),
+    "==================================================\n"
+    "              PARKHAUS-SIMULATION\n"
+    "                Statistikbericht\n"
+    "==================================================\n\n"
+    "%-40s %10d Zeitschritte\n"
+    "%-40s %10d Stellplätze\n\n"
+    "--------------------------------------------------\n"
+    "1. AUSLASTUNG\n"
+    "--------------------------------------------------\n"
+    "%-40s %10.1f %%\n\n"
+    "--------------------------------------------------\n"
+    "2. WARTESCHLANGE\n"
+    "--------------------------------------------------\n"
+    "%-40s %10.1f Fahrzeuge\n"
+    "%-40s %10d Fahrzeuge\n\n"
+    "--------------------------------------------------\n"
+    "3. WARTEZEIT\n"
+    "--------------------------------------------------\n"
+    "%-40s %10.1f Zeitschritte\n\n"
+    "--------------------------------------------------\n"
+    "4. VOLLBELEGUNG\n"
+    "--------------------------------------------------\n"
+    "%-40s %10d\n"
+    "%-40s %10.1f %%\n\n"
+    "--------------------------------------------------\n"
+    "5. FAHRZEUG-DURCHSATZ\n"
+    "--------------------------------------------------\n"
+    "%-40s %10d\n\n"
+    "==================================================\n",
+
+    "Simulationsdauer:",
+    params.total_time_steps,
+
+    "Gesamtkapazität Parkhaus:",
+    params.park_num_spaces,
+
+    "Durchschnittliche Auslastung:",
+    avg_occupancy_percentage,
+
+    "Durchschnittliche Warteschlangenlänge:",
+    avg_queue_length,
+
+    "Maximale Warteschlangenlänge:",
+    stats->max_queue_length,
+
+    "Durchschnittliche Wartezeit:",
+    avg_waiting_time,
+
+    "Zeitschritte mit Vollbelegung:",
+    stats->full_occupancy_steps,
+
+    "Anteil an Simulationsdauer:",
+    full_occupancy_percentage,
+
+    "Fahrzeuge erfolgreich abgefertigt:",
+    stats->finished_cars
+    );
+
+
+
+
 
 
 
