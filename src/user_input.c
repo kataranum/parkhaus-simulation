@@ -1,6 +1,7 @@
+#include "../inc/user_input.h"
+#include <parse_num.h>
 #include <stdio.h>
 #include <string.h>
-#include "../inc/user_input.h"
 #include <stdbool.h>
 
 #define INPUT_BUFFER_SIZE 256
@@ -53,10 +54,10 @@ unsigned int input_valid_uint(void)
             continue;
         }
 
-        //TODO: implement is_parsable (for each function (float or int))
-        if (is_parsable_uint(input))
+        unsigned int value = 0;
+        if (parse_uint(input, &value))
         {
-            return parse_uint(input);
+            return value;
         }
         
         printf("invalid uint");
@@ -103,9 +104,9 @@ float input_valid_percentage(void)
         }
 
         //TODO: implement is_parsable_float
-        if (is_parsable_float(input))
+        float value = 0.0;
+        if (parse_float(input, &value))
         {
-            float value = (float)atof(input);
             if (value < 0.0 || value > 100.0)
             {
                 printf("value is outside allowed range (0\% - 100\%)\n");
@@ -113,6 +114,7 @@ float input_valid_percentage(void)
             }
             return value;
         }
+
         printf("invalid float\n");
     }
 }
@@ -156,9 +158,10 @@ unsigned int input_valid_seed(void)
             return (unsigned int)time(NULL);
         }
 
-        if (is_parsable_uint(input))
+        unsigned long value = 0;
+        if (parse_ulong(input, &value))
         {
-            return parse_uint(input);
+            return value;
         }
 
         printf("invalid ulong");
