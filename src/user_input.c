@@ -43,7 +43,7 @@ END LOOP
  */
 unsigned int input_valid_uint(void)
 {
-    while (1)
+    while (true)
     {
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
@@ -87,7 +87,7 @@ END LOOP
  */
 unsigned long input_valid_seed(void)
 {
-    while (1)
+    while (true)
     {    
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
@@ -139,7 +139,7 @@ END LOOP
  */
 float input_valid_percentage(void)
 {
-    while (1)
+    while (true)
     {
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
