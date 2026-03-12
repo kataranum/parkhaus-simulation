@@ -10,6 +10,7 @@ void test_parse_ulong(void) {
         "0101",
         "0",
         "   456  ",
+        "2147483648",
     };
     unsigned long expected_outputs[] = {
         123,
@@ -17,6 +18,7 @@ void test_parse_ulong(void) {
         101,
         0,
         456,
+        2147483648,
     };
 
     const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
