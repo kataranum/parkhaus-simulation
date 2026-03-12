@@ -148,7 +148,6 @@ float input_valid_percentage(void)
             continue;
         }
 
-        //TODO: implement is_parsable_float
         float value = 0.0;
         if (parse_float(input, &value))
         {
