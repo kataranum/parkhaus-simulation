@@ -1,5 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
+#include <test_utils.h>
 #include <parse_num.h>
 
 // test successful parsing
@@ -146,8 +147,7 @@ void test_parse_float(void) {
         bool success = parse_ufloat(test_inputs[i], &output);
 
         assert(success);
-        // TODO
-        //assert(output == expected_outputs[i]);
+        assert(cmp_float(output, expected_outputs[i]));
     }
 }
 
