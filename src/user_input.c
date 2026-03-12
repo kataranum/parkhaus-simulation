@@ -53,12 +53,13 @@ unsigned int input_valid_uint(void)
         }
 
         unsigned int value = 0;
-        if (parse_uint(input, &value))
+        if ( ! parse_uint(input, &value) )
         {
-            return value;
+            printf("invalid uint");
+            continue;
         }
         
-        printf("invalid uint");
+        return value;
     }
 
 }
@@ -102,12 +103,13 @@ unsigned long input_valid_seed(void)
         }
 
         unsigned long value = 0;
-        if (parse_ulong(input, &value))
+        if ( ! parse_ulong(input, &value) )
         {
-            return value;
+            printf("invalid ulong");
+            continue;
         }
-
-        printf("invalid ulong");
+        
+        return value;
     }
 }
 
@@ -149,17 +151,19 @@ float input_valid_percentage(void)
         }
 
         float value = 0.0;
-        if (parse_float(input, &value))
+        if ( ! parse_float(input, &value) )
         {
-            if (value < 0.0 || value > 100.0)
-            {
-                printf("value is outside allowed range (0\% - 100\%)\n");
-                continue;
-            }
-            return value;
+            printf("invalid float\n");
+            continue;
         }
-
-        printf("invalid float\n");
+        
+        if (value < 0.0 || value > 100.0)
+        {
+            printf("value is outside allowed range (0\% - 100\%)\n");
+            continue;
+        }
+        
+        return value;
     }
 }
 
