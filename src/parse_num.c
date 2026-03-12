@@ -1,7 +1,18 @@
 #include <parse_num.h>
 
 bool parse_uint(const char *str, unsigned int *p_val) {
+    unsigned long tmp = 0;
+    // TODO: Check if this is defined in a library somewhere
+    const unsigned long MAX_INT = 0xFFFFFFFF;
 
+    bool success = parse_ulong(str, &tmp);
+
+    if (!success || tmp > MAX_INT) {
+        return false;
+    }
+
+    *p_val = (unsigned int) tmp;
+    return true;
 }
 
 bool parse_ulong(const char *str, unsigned long *p_val) {
