@@ -28,5 +28,13 @@ bool parse_ulong(const char *str, unsigned long *p_val) {
 }
 
 bool parse_float(const char *str, float *p_val) {
-    
+    char *end;
+    float value = strtof(str, &end);
+
+    if (str == end) {
+        return false;
+    }
+
+    *p_val = value;
+    return true;
 }
