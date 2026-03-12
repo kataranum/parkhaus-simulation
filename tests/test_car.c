@@ -98,7 +98,6 @@ int main(void) {
     test_unique_id();
     test_random_park_duration();
     test_invalid_park_duration();
-    test_invalid_park_duration();
     test_is_empty();
 
     printf("Alle unit tests sind erfolgreich durchgelaufen\n");
