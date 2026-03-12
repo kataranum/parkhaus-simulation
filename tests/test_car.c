@@ -96,9 +96,13 @@ void test_is_empty(void) {
 int main(void) {
     test_init();
     test_unique_id();
-    test_random_park_duration();
-    test_invalid_park_duration();
     test_is_empty();
+
+    for (int i = 0; i < RNG_SEED_AMOUNT; i++) {
+        long seed = RNG_SEEDS[i];
+        test_random_park_duration(seed);
+        test_invalid_park_duration(seed);
+    }
 
     printf("Alle unit tests sind erfolgreich durchgelaufen\n");
     return 0;
