@@ -137,7 +137,7 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
     //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
     avg_waiting_time_timestep = stats->sum_waiting_time / stats->sum_occupancy;
 
-    //Konsolenausgabe
+    //Erstelle Ausgabe-String
     char buffer[1024];
     sprintf(buffer,
         "------------------------------------------------------------\n"
@@ -154,32 +154,30 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
 
         "Aktuelle Belegung:",
         current_occupancy,
+        simulation_data.params.park_num_spaces,
+        occupancy_percent,
 
+        "Warteschlange:",
+        simulation_data.queue.length,
 
-    printf("------------------------------------------------------------\n");
-    printf("SIMULATIONS-SCHRITT: %d / %d\n", simulation_data.current_step, simulation_data.params.total_time_steps);
-    printf("------------------------------------------------------------\n");
-    printf("Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n", current_occupancy, simulation_data.params.park_num_spaces, occupancy_percent);
-    printf("Warteschlange:          %d Fahrzeuge\n", simulation_data.queue.length);
-    printf("Durchschn. Wartezeit:   %.1f Zeitschritte\n", avg_waiting_time_timestep);
-    printf("Vollbelegungs-Ticks:    %d\n", stats->full_occupancy_steps);
-    printf("Gesamt-Durchsatz:       %d Fahrzeuge\n", stats->finished_cars);
-    printf("------------------------------------------------------------\n");
-     
-    //Datei Ausgabe
+        "Durchschn. Wartezeit:",
+        avg_waiting_time_timestep,  
+
+        "Vollbelegungs-Ticks:",
+        stats->full_occupancy_steps,
+
+        "Gesamt-Durchsatz:",
+        stats->finished_cars
+        );
+
+    //Konselenausgabe
+    printf("%s", buffer);
+
+    //File Ausgabe
     if (stats->log_file != NULL)
     {
-        fprintf(stats->log_file, "------------------------------------------------------------\n");
-        fprintf(stats->log_file, "SIMULATIONS-SCHRITT: %d / %d\n",simulation_data.current_step,simulation_data.params.total_time_steps);    
-        fprintf(stats->log_file, "------------------------------------------------------------\n");
-        fprintf(stats->log_file, "Aktuelle Belegung:      %d / %d Plätze (%.1f %%)\n",current_occupancy,simulation_data.params.park_num_spaces,occupancy_percent);
-        fprintf(stats->log_file, "Warteschlange:          %d Fahrzeuge\n",simulation_data.queue.length);
-        fprintf(stats->log_file, "Durchschn. Wartezeit:   %.1f Zeitschritte\n",avg_waiting_time_timestep);
-        fprintf(stats->log_file, "Vollbelegungs-Ticks:    %d\n",stats->full_occupancy_steps);
-        fprintf(stats->log_file, "Gesamt-Durchsatz:       %d Fahrzeuge\n",stats->finished_cars);
-        fprintf(stats->log_file, "------------------------------------------------------------\n\n");
+        fprintf(stats->log_file, "%s", buffer);
     }
-
 }
 
 
