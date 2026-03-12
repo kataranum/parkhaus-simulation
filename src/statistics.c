@@ -234,6 +234,21 @@ void output_total_statistics(Statistics *stats, InputParams params)
     full_occupancy_percentage = (stats->full_occupancy_steps / params.total_time_steps) *100;
 
     // Ausgabe der Daten über Konsole
+    char buffer[1024];
+    sprintf(buffer,
+        "------------------------------------------------------------\n"
+        "SIMULATIONS-SCHRITT: %d / %d\n"
+        "------------------------------------------------------------\n"
+        "%-35s %10d / %d Plätze (%6.1f %%)\n"
+        "%-35s %10d Fahrzeuge\n"
+        "%-35s %10.1f Zeitschritte\n"
+        "%-35s %10d\n"
+        "%-35s %10d Fahrzeuge\n"
+        "------------------------------------------------------------\n\n",
+        
+
+
+
     printf("==================================================\n");
     printf("              PARKHAUS-SIMULATION\n");
     printf("                Statistikbericht\n");
