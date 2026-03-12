@@ -62,7 +62,7 @@ int init_statistics(Statistics *stats, const char *filename);
 * @param[in] stats pointer auf Statistiks struct
 */
 
-void output_timestep_statistics(Statistics *stats,SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats,struct SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */
@@ -83,5 +83,15 @@ void output_total_statistics(Statistics *stats, InputParams params);
 * @param[in] stats pointer auf Statistiks struct
 **/
 void statistics_car_leave(Statistics *stats);
+
+/*---------------------------------------------------------------*/
+/* Car arrive                                                    */
+/*---------------------------------------------------------------*/
+/**
+* @brief Calculates the waiting time of parked cars
+* @param[in] stats pointer auf Statistiks struct
+* @param[in] new_car car struct of parked car 
+*/
+void statistics_car_arrive(Statistics *stats, Car new_car);
 
 #endif
