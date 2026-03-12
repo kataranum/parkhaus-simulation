@@ -35,7 +35,23 @@ void test_parse_ulong(void) {
 
 // test graceful failure on invalid strings
 void test_parse_invalid_ulong(void) {
-    assert(false);
+    char *test_inputs[] = {
+        "asdf",
+        "-5",
+        "",
+        "5a",
+        "10.0",
+    };
+
+    const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
+
+    for (int i = 0; i < AMOUNT_INPUTS; i++) {
+        unsigned long output = 37;
+        bool success = parse_ulong(test_inputs[i], &output);
+
+        assert( ! success );
+        assert(output == 37);
+    }
 }
 
 // test successful parsing
