@@ -1,5 +1,6 @@
 #include <util.h>
-#define RAND_MAX 2147483647
+#include <stdlib.h>
+
 /*
 ```PSEUDOCODE
 RETURN (float)rand() / (float)RAND_MAX;
