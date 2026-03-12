@@ -12,7 +12,6 @@
  * @param size Size of the buffer
  * @return 0 on success, 1 on failure
  */
-
 bool read_user_text(char *text, size_t size)
 {
     if (fgets(text, size, stdin) == NULL)
@@ -42,7 +41,6 @@ END LOOP
  * @brief Prompt user for a valid unsigned int input
  * @return unsigned int value entered by the user
  */
-
 unsigned int input_valid_uint(void)
 {
     while (1)
@@ -63,6 +61,54 @@ unsigned int input_valid_uint(void)
         printf("invalid uint");
     }
 
+}
+
+/*
+```PSEUDOCODE
+LOOP:
+    input = READ_INPUT
+
+    IF is_empty(input):
+        RETURN time(NULL);
+    END IF
+
+    IF is_parsable(input):
+        RETURN input AS unsigned long;
+    END IF
+
+    PRINT "invalid ulong"
+END LOOP
+```
+*/
+
+/**
+ * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
+ * @return unsigned long seed value
+ */
+unsigned long input_valid_seed(void)
+{
+    while (1)
+    {    
+        char input[INPUT_BUFFER_SIZE];
+        if ( ! read_user_text(input, sizeof(input)) )
+        {
+            printf("Invalid input\n");
+            continue;
+        }
+
+        if (strlen(input) == 0)
+        {
+            return (unsigned int)time(NULL);
+        }
+
+        unsigned long value = 0;
+        if (parse_ulong(input, &value))
+        {
+            return value;
+        }
+
+        printf("invalid ulong");
+    }
 }
 
 /*
@@ -91,7 +137,6 @@ END LOOP
  * @brief Prompt user for a valid percentage input (0 - 100)
  * @return float value entered by the user
  */
-
 float input_valid_percentage(void)
 {
     while (1)
@@ -116,55 +161,6 @@ float input_valid_percentage(void)
         }
 
         printf("invalid float\n");
-    }
-}
-
-/*
-```PSEUDOCODE
-LOOP:
-    input = READ_INPUT
-
-    IF is_empty(input):
-        RETURN time(NULL);
-    END IF
-
-    IF is_parsable(input):
-        RETURN input AS unsigned long;
-    END IF
-
-    PRINT "invalid ulong"
-END LOOP
-```
-*/
-
-/**
- * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
- * @return unsigned long seed value
- */
-
-unsigned long input_valid_seed(void)
-{
-    while (1)
-    {    
-        char input[INPUT_BUFFER_SIZE];
-        if ( ! read_user_text(input, sizeof(input)) )
-        {
-            printf("Invalid input\n");
-            continue;
-        }
-
-        if (strlen(input) == 0)
-        {
-            return (unsigned int)time(NULL);
-        }
-
-        unsigned long value = 0;
-        if (parse_ulong(input, &value))
-        {
-            return value;
-        }
-
-        printf("invalid ulong");
     }
 }
 
