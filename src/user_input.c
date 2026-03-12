@@ -142,7 +142,7 @@ END LOOP
  * @return unsigned long seed value
  */
 
-unsigned int input_valid_seed(void)
+unsigned long input_valid_seed(void)
 {
     while (1)
     {    
