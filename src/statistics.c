@@ -337,7 +337,7 @@ FUNCTION statistics_car_arrive(Statistics *stats, struct Car new_car)
 ENDE
 
 */
-void statistics_car_arrive(Statistics *stats, struct Car new_car)
+void statistics_car_arrive(Statistics *stats, Car new_car)
 {
     stats->sum_waiting_time += new_car.time_arrival_park - new_car.time_arrival_queue;
 }
