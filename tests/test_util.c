@@ -12,6 +12,13 @@ void test_frand(long seed) {
     #define NUM_TESTS 10000
 
     srand(seed);
+
+    for (int i = 0; i < NUM_TESTS; i++) {
+        float num = frand();
+
+        assert(num >= 0.0);
+        assert(num < 1.0);
+    }
 }
 
 int main(void) {
