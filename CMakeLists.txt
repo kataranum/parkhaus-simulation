@@ -13,6 +13,10 @@ add_library(util
     src/util.c
 )
 
+add_library(parse_num
+    src/parse_num.c
+)
+
 add_library(car
     src/car.c
 )
@@ -39,6 +43,9 @@ add_library(simulation
 
 # Dependencies among libraries
 
+target_link_libraries(user_input PRIVATE
+    parse_num
+)
 target_link_libraries(car PUBLIC
     user_input
 )
