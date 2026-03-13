@@ -37,3 +37,15 @@ void test_statistics_car_leave_once()
 
     assert(stats.finished_cars == 1);
 }
+
+void test_statistics_car_leave_multiple()
+{
+    Statistics stats = {0};
+
+    statistics_car_leave(&stats);
+    statistics_car_leave(&stats);
+    statistics_car_leave(&stats);
+    statistics_car_leave(&stats);
+
+    assert(stats.finished_cars == 4);
+}
