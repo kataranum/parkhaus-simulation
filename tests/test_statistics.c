@@ -63,4 +63,15 @@ void test_statistics_car_arrive_once()
     assert(stats.sum_waiting_time == 5);
 }
 
+void test_statistics_car_arrive_multiple()
+{
+    Statistics stats = {0};
 
+    Car car1 = { .time_arrival_queue = 2, .time_arrival_park = 7 };
+    Car car2 = { .time_arrival_queue = 4, .time_arrival_park = 9 };
+
+    statistics_car_arrive(&stats, car1);
+    statistics_car_arrive(&stats, car2);
+
+    assert(stats.sum_waiting_time == 10);
+}
