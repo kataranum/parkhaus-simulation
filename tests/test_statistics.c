@@ -49,3 +49,18 @@ void test_statistics_car_leave_multiple()
 
     assert(stats.finished_cars == 4);
 }
+
+void test_statistics_car_arrive_once()
+{
+    Statistics stats = {0};
+
+    Car car;
+    car.time_arrival_queue = 5;
+    car.time_arrival_park = 10;
+
+    statistics_car_arrive(&stats, car);
+
+    assert(stats.sum_waiting_time == 5);
+}
+
+
