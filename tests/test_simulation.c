@@ -3,6 +3,13 @@
 #include <assert.h>
 #include <simulation.h>
 
+const long RNG_SEEDS[] = {
+    123,
+    67,
+    90,
+};
+const int RNG_SEED_AMOUNT = sizeof(RNG_SEEDS) / sizeof(RNG_SEEDS[0]);
+
 /*
 Die Funktion run_simulation() wird nicht getestet, da diese praktisch alle
 anderen Funktionen von hier in einen Prozess bündelt und selber nicht wirklich
@@ -20,13 +27,13 @@ natürlich getestet.
 #define TOTAL_TIME_STEPS 100
 
 // Create SimulationData with default values
-SimulationData get_simdata_default(void) {
+SimulationData get_simdata_default(long seed) {
     InputParams params;
     params.park_num_spaces = PARK_NUM_SPACES;
     params.park_max_time = PARK_MAX_TIME;
     params.park_chance_arrive = 0.5;
     params.total_time_steps = TOTAL_TIME_STEPS;
-    params.rng_seed = time(NULL);
+    params.rng_seed = seed;
 
     Statistics *p_stats = malloc(sizeof(p_stats));
 
@@ -48,7 +55,7 @@ void free_simdata(SimulationData data) {
 }
 
 void test_remove_due_cars(void) {
-    SimulationData data = get_simdata_default();
+    SimulationData data = get_simdata_default(0);
     data.current_step = 8;
 
     // first car, parking longer than allowed, so should leave
@@ -100,7 +107,7 @@ void test_remove_due_cars(void) {
 }
 
 void test_park_waiting_cars(void) {
-    SimulationData data = get_simdata_default();
+    SimulationData data = get_simdata_default(0);
 
     const int EXCESS_CARS_AMOUNT = 5;
     
@@ -135,8 +142,8 @@ void test_park_waiting_cars(void) {
 }
 
 // rough check that randomness is somewhat behaving as expected
-void test_get_new_cars_arriving(void) {
-    SimulationData data = get_simdata_default();
+void test_get_new_cars_arriving(long seed) {
+    SimulationData data = get_simdata_default(seed);
 
     data.params.park_chance_arrive = 0.5;
 
@@ -154,8 +161,8 @@ void test_get_new_cars_arriving(void) {
 }
 
 // assert that a chance of 1.0 gurantees a new car each timestep
-void test_chance_1(void) {
-    SimulationData data = get_simdata_default();
+void test_chance_1(long seed) {
+    SimulationData data = get_simdata_default(seed);
 
     data.params.park_chance_arrive = 1.0;
 
@@ -170,8 +177,8 @@ void test_chance_1(void) {
 }
 
 // assert that a chance of 0.0 completely prevents cars from arriving
-void test_chance_0(void) {
-    SimulationData data = get_simdata_default();
+void test_chance_0(long seed) {
+    SimulationData data = get_simdata_default(seed);
 
     data.params.park_chance_arrive = 0.0;
 
@@ -188,9 +195,13 @@ void test_chance_0(void) {
 int main(void) {
     test_remove_due_cars();
     test_park_waiting_cars();
-    test_get_new_cars_arriving();
-    test_chance_1();
-    test_chance_0();
+
+    for (int i = 0; i < RNG_SEED_AMOUNT; i++) {
+        long seed = RNG_SEEDS[i];
+        test_get_new_cars_arriving(seed);
+        test_chance_1(seed);
+        test_chance_0(seed);
+    }
 
     printf("All unit tests sind erfolgreich durchgelaufen.\n");
     return 0;
