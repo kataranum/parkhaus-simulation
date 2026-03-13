@@ -21,4 +21,10 @@ void test_init_statistics()
     fclose(stats.log_file);
 }
 
+void test_init_statistics_wrong()
+{
+    //Init without stats
+    int result = init_statistics(NULL, "test_log.txt");
 
+    assert(result == -1);
+}
