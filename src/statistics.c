@@ -121,12 +121,12 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
 
     //Stats Variablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
-    stats->sum_queue_length += simulation_data.queue.length;
+    stats->sum_queue_length += simulation_data.waiting_cars.length;
     
     // Aktualisierung der längsten Warteschlange
-    if (simulation_data.queue.length > stats->max_queue_length)
+    if (simulation_data.waiting_cars.length > stats->max_queue_length)
     {
-        stats->max_queue_length = simulation_data.queue.length;
+        stats->max_queue_length = simulation_data.waiting_cars.length;
     }
     
     // Hochzählen der static Variable wenn Parkhaus ausgelastet
@@ -158,7 +158,7 @@ void output_timestep_statistics(Statistics *stats,struct SimulationData simulati
         occupancy_percent,
 
         "Warteschlange:",
-        simulation_data.queue.length,
+        simulation_data.waiting_cars.length,
 
         "Durchschn. Wartezeit:",
         avg_waiting_time_timestep,  
