@@ -31,8 +31,11 @@ parking_lot.array = NULL;
 parking_lot.length = 0;
 ```
 */
-void free_parking_lot(ParkingLot *p_parking_lot) {
-    // TODO
+void free_parking_lot(ParkingLot *p_parking_lot)
+{
+    free(p_parking_lot->p_array);
+    p_parking_lot->p_array = NULL;
+    p_parking_lot->length = 0;
 }
 
 /*
