@@ -12,6 +12,17 @@ RETURN parking_lot
 ```
 */
 ParkingLot init_parking_lot(unsigned int length);
+{
+    ParkingLot parking_lot;
+    parking_lot.p_array = malloc(length * sizeof(Car));
+    if (parking_lot.p_array == NULL)
+    {
+        fprintf(stderr, "Error: Memory allocation failed for parking lot.\n");
+        exit(EXIT_FAILURE);
+    }
+    parking_lot.length = length;
+    return parking_lot;
+}
 
 /*
 ```PSEUDOCODE
