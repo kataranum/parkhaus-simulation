@@ -131,3 +131,21 @@ void test_output_timestep_statistics()
     assert(strstr(buffer, "SIMULATIONS-SCHRITT") != NULL);
     assert(strstr(buffer, "Warteschlange") != NULL);
 }
+
+void test_output_total_statistics()
+{
+    Statistics stats;
+    init_statistics(&stats, "test_log_total.txt");
+
+    InputParams params;
+
+    params.total_time_steps = 10;
+    params.park_num_spaces = 100;
+
+    //Verbereitete Daten
+    stats.sum_occupancy = 500;
+    stats.sum_queue_length = 20;
+    stats.sum_waiting_time = 100;
+    stats.full_occupancy_steps = 2;
+    stats.max_queue_length = 7;
+    stats.finished_cars = 15;
