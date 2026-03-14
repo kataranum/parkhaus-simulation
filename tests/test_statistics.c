@@ -149,3 +149,42 @@ void test_output_total_statistics()
     stats.full_occupancy_steps = 2;
     stats.max_queue_length = 7;
     stats.finished_cars = 15;
+
+    output_total_statistics(&stats, params);
+
+    //Werte sind geblieben 
+    assert(stats.sum_occupancy == 500);
+    assert(stats.sum_queue_length == 20);
+    assert(stats.finished_cars == 15);
+
+    //File existiert 
+    FILE *file = fopen("test_log_total.txt", "r");
+    assert(file != NULL);
+
+    char buffer[4096];
+    fread(buffer, 1, sizeof(buffer), file);
+
+
+    fclose(file);
+
+    assert(strstr(buffer, "PARKHAUS-SIMULATION") != NULL);
+    assert(strstr(buffer, "AUSLASTUNG") != NULL);
+    assert(strstr(buffer, "WARTESCHLANGE") != NULL);
+    assert(strstr(buffer, "WARTEZEIT") != NULL);
+    assert(strstr(buffer, "FAHRZEUG-DURCHSATZ") != NULL);
+}
+int main()
+{
+    test_init_statistics();
+    test_init_statistics_wrong();
+    test_statistics_car_leave_once();
+    test_statistics_car_leave_multiple();
+    test_statistics_car_arrive_once();
+    test_statistics_car_arrive_multiple();
+    test_output_timestep_statistics();
+    test_output_total_statistics();
+
+    printf("Alle Tests erfolgreich bestanden!\n");
+
+    return 0;
+}
