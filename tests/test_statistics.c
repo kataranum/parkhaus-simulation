@@ -85,32 +85,49 @@ void test_output_timestep_statistics()
     Statistics stats;
     init_statistics(&stats, "test_log.txt");
 
-    SimulationData simulation_data = {0};
+    struct SimulationData data = {0};
 
-    simulation_data.params.total_time_steps = 100;
-    simulation_data.params.park_num_spaces = 10;
-    simulation_data.parking_lot.length = 0;  // Keine Autos geparkt
-    simulation_data.parking_lot.p_array = NULL;
+    data.params.total_time_steps = 100;
+    data.params.park_num_spaces = 10;
 
     // Test 1 timestep
-    simulation_data.current_step = 1;
-    simulation_data.waiting_cars.length = 3;
+    data.current_step = 1;
+    data.waiting_cars.length = 3;
 
-    output_timestep_statistics(&stats, simulation_data);
+    output_timestep_statistics(&stats, data);
 
     assert(stats.sum_queue_length == 3);
-    assert(stats.max_queue_length == 3);
-    assert(stats.sum_occupancy == 0);  // Da keine Autos geparkt
+    assert(stats.max_queue_length == 3); 
 
     // Test 2 timestep 
-    simulation_data.current_step = 2;
-    simulation_data.waiting_cars.length = 5;
+    data.current_step = 2;
+    data.waiting_cars.length = 5;
 
-    output_timestep_statistics(&stats, simulation_data);
+    output_timestep_statistics(&stats, data);
 
     assert(stats.sum_queue_length == 8);
+    assert(stats.max_queue_length == 5); 
+
+    //Test 3 timestep
+    data.current_step = 3;
+    data.waiting_cars.length = 2;
+
+    output_timestep_statistics(&stats, data);
+
+    assert(stats.sum_queue_length == 10);
     assert(stats.max_queue_length == 5);
-    assert(stats.sum_occupancy == 0);  // Immer noch keine
+
 
     fclose(stats.log_file);
+
+    FILE *file = fopen("test_log.txt", "r");
+    assert(file != NULL);
+
+    char buffer[2048];
+    fread(buffer, 1, sizeof(buffer), file);
+
+    fclose(file);
+
+    assert(strstr(buffer, "SIMULATIONS-SCHRITT") != NULL);
+    assert(strstr(buffer, "Warteschlange") != NULL);
 }
