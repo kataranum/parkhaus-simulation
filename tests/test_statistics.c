@@ -1,7 +1,11 @@
 #include <assert.h>
 #include <stdio.h>
+#include <string.h>
+#include "../inc/simulation.h"
 #include "../inc/statistics.h"
 #include "../inc/car.h"
+
+
 
 //Test for init_statistics()
 void test_init_statistics()
@@ -74,4 +78,39 @@ void test_statistics_car_arrive_multiple()
     statistics_car_arrive(&stats, car2);
 
     assert(stats.sum_waiting_time == 10);
+}
+
+void test_output_timestep_statistics()
+{
+    Statistics stats;
+    init_statistics(&stats, "test_log.txt");
+
+    SimulationData simulation_data = {0};
+
+    simulation_data.params.total_time_steps = 100;
+    simulation_data.params.park_num_spaces = 10;
+    simulation_data.parking_lot.length = 0;  // Keine Autos geparkt
+    simulation_data.parking_lot.p_array = NULL;
+
+    // Test 1 timestep
+    simulation_data.current_step = 1;
+    simulation_data.waiting_cars.length = 3;
+
+    output_timestep_statistics(&stats, simulation_data);
+
+    assert(stats.sum_queue_length == 3);
+    assert(stats.max_queue_length == 3);
+    assert(stats.sum_occupancy == 0);  // Da keine Autos geparkt
+
+    // Test 2 timestep 
+    simulation_data.current_step = 2;
+    simulation_data.waiting_cars.length = 5;
+
+    output_timestep_statistics(&stats, simulation_data);
+
+    assert(stats.sum_queue_length == 8);
+    assert(stats.max_queue_length == 5);
+    assert(stats.sum_occupancy == 0);  // Immer noch keine
+
+    fclose(stats.log_file);
 }
