@@ -21,3 +21,11 @@ Die Flowcharts sind unter `flowcharts/`
 
 Zusätzliche Dokumentation, die nicht spezifisch auf eine Funktion ist, ist unter
 `docs/`.
+
+## Exit codes
+
+Bei kritischen Fehlern bricht das Programm mit einem Exit Code ab. Hier eine
+Liste aller Exit Codes:
+
+- 0 | Erfolgreicher durchlauf
+- 1 | Allgemeiner Fehler bei Statistik initialisierung
