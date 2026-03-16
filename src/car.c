@@ -38,7 +38,7 @@ int random_park_duration(InputParams params)
 RETURN car.id == -1
 ```
 */
-int is_empty(Car car)
+bool is_empty(Car car)
 {
     return car.id == -1;
 }
