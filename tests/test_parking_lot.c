@@ -33,5 +33,15 @@ void test_room_available()
 
     free_parking_lot(&lot);
 
-    printf("test_room_available passed\n");
+}
+
+void test_find_empty_space()
+{
+    ParkingLot lot = init_parking_lot(5);
+
+    int index = find_empty_space(lot);
+    assert(index == 0);
+
+    free_parking_lot(&lot);
+
 }
