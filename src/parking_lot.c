@@ -79,8 +79,17 @@ END FOR
 RETURN False;
 ```
 */
-int room_available(ParkingLot parking_lot) {
-    // TODO
+int room_available(ParkingLot parking_lot)
+{
+    for (unsigned int i = 0; i < parking_lot.length; i++)
+    {
+        Car car = parking_lot.p_array[i];
+        if (is_empty(car))
+        {
+            return true;
+        }
+    }
+    return false;
 }
 
 /*
