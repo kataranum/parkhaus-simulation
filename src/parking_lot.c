@@ -52,8 +52,18 @@ END FOR
 RETURN occupancy;
 ```
 */
-int get_occupancy(ParkingLot parking_lot) {
-    // TODO
+int get_occupancy(ParkingLot parking_lot)
+{
+    int occupancy = 0;
+    for (unsigned int i = 0; i < parking_lot.length; i++)
+    {
+        Car car = parking_lot.p_array[i];
+        if (!is_empty(car))
+        {
+            occupancy++;
+        }
+    }
+    return occupancy;
 }
 
 /*
