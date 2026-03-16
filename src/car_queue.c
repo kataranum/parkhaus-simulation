@@ -117,7 +117,7 @@ int dequeue(CarQueue *p_queue, Car *p_car)
 
     if (p_frontmost == NULL)
     {
-        return 0;
+        return false;
     }
 
     *p_car = p_frontmost->car;
