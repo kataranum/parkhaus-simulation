@@ -2,6 +2,7 @@
 #include <stdbool.h>
 #include <stdio.h>
 #include "../inc/parking_lot.h"
+#include "../inc/car.h"
 
 // Test init_parking_lot 
 void test_init_parking_lot()
@@ -41,6 +42,21 @@ void test_find_empty_space()
 
     int index = find_empty_space(lot);
     assert(index == 0);
+
+    free_parking_lot(&lot);
+
+}
+
+void test_get_occupancy_after_parking()
+{
+    ParkingLot lot = init_parking_lot(5);
+
+    Car car;
+
+    lot.p_array[0] = car;
+
+    int occ = get_occupancy(lot);
+    assert(occ == 1);
 
     free_parking_lot(&lot);
 
