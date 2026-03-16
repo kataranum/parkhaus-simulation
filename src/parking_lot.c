@@ -105,6 +105,16 @@ END FOR
 RETURN -1
 ```
 */
-int find_empty_space(ParkingLot parking_lot) {
-    // TODO
+int find_empty_space(ParkingLot parking_lot)
+{
+    for (unsigned int i = 0; i < parking_lot.length; i++)
+    {
+        Car car = parking_lot.p_array[i];
+        if (is_empty(car))
+        {
+            return i;
+        }
+    }
+    return -1;
+    
 }
