@@ -61,3 +61,14 @@ void test_get_occupancy_after_parking()
     free_parking_lot(&lot);
 
 }
+
+void test_free_parking_lot()
+{
+    ParkingLot lot = init_parking_lot(5);
+
+    free_parking_lot(&lot);
+
+    assert(lot.p_array == NULL);
+    assert(lot.length == 0);
+
+}
