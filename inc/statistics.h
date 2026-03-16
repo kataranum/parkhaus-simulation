@@ -40,7 +40,7 @@ int init_statistics(Statistics *stats, const char *filename);
 * @param[in] stats pointer auf Statistiks struct
 */
 
-void output_timestep_statistics(Statistics *stats,struct SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats, SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */
