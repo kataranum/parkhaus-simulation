@@ -13,6 +13,10 @@ add_library(util
     src/util.c
 )
 
+add_library(test_utils
+    src/test_utils.c
+)
+
 add_library(parse_num
     src/parse_num.c
 )
@@ -79,6 +83,7 @@ add_executable(test_parse_num
     tests/test_parse_num.c
 )
 target_link_libraries(test_parse_num
+    test_utils
     parse_num
 )
 
