@@ -133,7 +133,7 @@ int dequeue(CarQueue *p_queue, Car *p_car)
         p_queue->p_back = NULL;
     }
 
-    return 1;
+    return true;
 }
 
 /*
