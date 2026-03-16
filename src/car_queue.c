@@ -1,4 +1,5 @@
 #include <car_queue.h>
+#include <stdlib.h>
 
 /*
 ```PSEUDOCODE
