@@ -3,6 +3,13 @@
 #include <stdbool.h>
 #include <car.h>
 
+const long RNG_SEEDS[] = {
+    123,
+    67,
+    90,
+};
+const int RNG_SEED_AMOUNT = sizeof(RNG_SEEDS) / sizeof(RNG_SEEDS[0]);
+
 // check if Car fields are set correctly
 void test_init(void) {
     // InputParams remain unused here, but are required for code to compile
@@ -34,11 +41,11 @@ void test_unique_id(void) {
 }
 
 // check if random_park_duration() is within defined bounds
-void test_random_park_duration(void) {
+void test_random_park_duration(long seed) {
     const int MAX_PARK_TIME = 10;
 
     InputParams params;
-    params.rng_seed = time(NULL); // I wonder if doing this randomly is idiomatic for unit tests
+    params.rng_seed = seed;
     params.park_max_time = MAX_PARK_TIME;
 
     const int TOTAL_TESTS = 1024;
@@ -52,12 +59,12 @@ void test_random_park_duration(void) {
 }
 
 // make sure that random_park_duration returns 1 for technically invalid bounds
-void test_invalid_park_duration(void) {
+void test_invalid_park_duration(long seed) {
     InputParams params_1, params_2;
-    params_1.rng_seed = time(NULL);
+    params_1.rng_seed = seed;
     params_1.park_max_time = 0;
 
-    params_2.rng_seed = time(NULL);
+    params_2.rng_seed = seed;
     params_2.park_max_time = 1;
 
     const int TOTAL_TESTS = 1024;
@@ -89,10 +96,13 @@ void test_is_empty(void) {
 int main(void) {
     test_init();
     test_unique_id();
-    test_random_park_duration();
-    test_invalid_park_duration();
-    test_invalid_park_duration();
     test_is_empty();
+
+    for (int i = 0; i < RNG_SEED_AMOUNT; i++) {
+        long seed = RNG_SEEDS[i];
+        test_random_park_duration(seed);
+        test_invalid_park_duration(seed);
+    }
 
     printf("Alle unit tests sind erfolgreich durchgelaufen\n");
     return 0;
