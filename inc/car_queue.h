@@ -73,7 +73,7 @@ void enqueue(CarQueue *p_queue, Car car);
  * 
  * @param[in/out] p_queue Pointer to queue
  * @param[out] p_car Pointer to where dequeued car should be written
- @ return int 1 if dequeue was successful, 0 if not
+ @ return bool true if dequeue was successful, false if not
  */
 bool dequeue(CarQueue *p_queue, Car *p_car);
 
@@ -81,7 +81,7 @@ bool dequeue(CarQueue *p_queue, Car *p_car);
  * @brief Check if the queue is empty
  *
  * @param[in] queue Given queue
- * @return int (bool) whether the queue is empty
+ * @return bool whether the queue is empty
  */
 bool is_empty(CarQueue queue);
 
