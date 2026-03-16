@@ -35,7 +35,8 @@ void test_init_statistics_wrong()
 
 void test_statistics_car_leave_once()
 {
-    Statistics stats = {0};
+    Statistics stats;
+    init_statistics(&stats, "test_log.txt");    
 
     statistics_car_leave(&stats);
 
@@ -44,7 +45,8 @@ void test_statistics_car_leave_once()
 
 void test_statistics_car_leave_multiple()
 {
-    Statistics stats = {0};
+    Statistics stats;
+    init_statistics(&stats, "test_log.txt");
 
     statistics_car_leave(&stats);
     statistics_car_leave(&stats);
@@ -56,7 +58,8 @@ void test_statistics_car_leave_multiple()
 
 void test_statistics_car_arrive_once()
 {
-    Statistics stats = {0};
+    Statistics stats;
+    init_statistics(&stats, "test_log.txt");
 
     Car car;
     car.time_arrival_queue = 5;
@@ -69,7 +72,8 @@ void test_statistics_car_arrive_once()
 
 void test_statistics_car_arrive_multiple()
 {
-    Statistics stats = {0};
+    Statistics stats;
+    init_statistics(&stats, "test_log.txt");
 
     Car car1 = { .time_arrival_queue = 2, .time_arrival_park = 7 };
     Car car2 = { .time_arrival_queue = 4, .time_arrival_park = 9 };
@@ -85,7 +89,7 @@ void test_output_timestep_statistics()
     Statistics stats;
     init_statistics(&stats, "test_log.txt");
 
-    struct SimulationData data = {0};
+    SimulationData data = get_simdata_default();
 
     data.params.total_time_steps = 100;
     data.params.park_num_spaces = 10;
@@ -130,6 +134,8 @@ void test_output_timestep_statistics()
 
     assert(strstr(buffer, "SIMULATIONS-SCHRITT") != NULL);
     assert(strstr(buffer, "Warteschlange") != NULL);
+
+    free_simdata(data);
 }
 
 void test_output_total_statistics()
@@ -172,6 +178,7 @@ void test_output_total_statistics()
     assert(strstr(buffer, "WARTESCHLANGE") != NULL);
     assert(strstr(buffer, "WARTEZEIT") != NULL);
     assert(strstr(buffer, "FAHRZEUG-DURCHSATZ") != NULL);
+
 }
 int main()
 {
