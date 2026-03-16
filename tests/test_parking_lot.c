@@ -12,3 +12,25 @@ void test_init_parking_lot()
 
     free_parking_lot(&lot);
 }
+
+/* Test get_occupancy on empty parking lot */
+void test_get_occupancy_empty()
+{
+    ParkingLot lot = init_parking_lot(5);
+
+    int occ = get_occupancy(lot);
+    assert(occ == 0);
+
+    free_parking_lot(&lot);
+}
+
+void test_room_available()
+{
+    ParkingLot lot = init_parking_lot(5);
+
+    assert(room_available(lot) == true);
+
+    free_parking_lot(&lot);
+
+    printf("test_room_available passed\n");
+}
