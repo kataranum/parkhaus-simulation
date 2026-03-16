@@ -144,7 +144,7 @@ void test_parse_float(void) {
 
     for (int i = 0; i < AMOUNT_INPUTS; i++) {
         float output = 0;
-        bool success = parse_ufloat(test_inputs[i], &output);
+        bool success = parse_float(test_inputs[i], &output);
 
         assert(success);
         assert(cmp_float(output, expected_outputs[i]));
@@ -167,7 +167,7 @@ void test_parse_invalid_float(void) {
 
     for (int i = 0; i < AMOUNT_INPUTS; i++) {
         float output = 2.0;
-        bool success = parse_ufloat(test_inputs[i], &output);
+        bool success = parse_float(test_inputs[i], &output);
 
         assert( ! success );
         assert(output == 2.0);
