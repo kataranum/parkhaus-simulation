@@ -72,3 +72,18 @@ void test_free_parking_lot()
     assert(lot.length == 0);
 
 }
+
+// Main Funktion
+int main()
+{
+    test_init_parking_lot();
+    test_get_occupancy_empty();
+    test_room_available();
+    test_find_empty_space();
+    test_get_occupancy_after_parking();
+    test_free_parking_lot();
+
+    printf("\nAlle Tests bestanden!\n");
+
+    return 0;
+}
