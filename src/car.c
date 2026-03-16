@@ -12,8 +12,15 @@ car.time_park_duration = random_park_duration(params);
 RETURN car
 ```
 */
-Car init_new_car(InputParams params) {
-    // TODO
+Car init_new_car(InputParams params)
+{
+    Car car;
+    car.id = get_unique_id();
+    car.time_arrival_park = 0;
+    car.time_arrival_queue = 0;
+    car.time_park_duration = random_park_duration(params);
+
+    return car;
 }
 
 int get_unique_id() {
@@ -25,8 +32,9 @@ int get_unique_id() {
 RETURN (rand() % (params.max_park_duration - 1)) + 1
 ```
 */
-int random_park_duration(InputParams params) {
-    // TODO
+int random_park_duration(InputParams params)
+{
+    return (rand() % (params.park_max_time - 1)) + 1;
 }
 
 /*
@@ -34,6 +42,6 @@ int random_park_duration(InputParams params) {
 RETURN car.id == -1
 ```
 */
-int car_empty(Car car) {
-    // TODO
+bool car_empty(Car car) {
+    return car.id == -1;
 }

@@ -8,6 +8,8 @@
 
 #include <user_input.h>
 
+#include <stdbool.h>
+
 /**
  * @brief All values related to a car.
  * 
@@ -64,8 +66,8 @@ int random_park_duration(InputParams params);
  * A parking space is empty if the id of the car is -1.
  * 
  * @param car[in] Car to check
- * @return int (boolean) whether the parking space is empty
+ * @return bool whether the parking space is empty
  */
-int car_empty(Car car);
+bool car_empty(Car car);
 
 #endif
