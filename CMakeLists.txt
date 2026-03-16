@@ -68,6 +68,13 @@ target_link_libraries(simulation PUBLIC
 )
 
 # Unit test executables
+add_executable(test_util
+    tests/test_util.c
+)
+target_link_libraries(test_util
+    util
+)
+
 add_executable(test_parse_num
     tests/test_parse_num.c
 )
@@ -101,6 +108,10 @@ target_link_libraries(test_simulation
 enable_testing()
 
 add_test(
+    NAME UtilTests
+    COMMAND test_util
+)
+add_test(
     NAME ParseTests
     COMMAND test_parse_num
 )
@@ -121,6 +132,7 @@ add_test(
 add_custom_target(run_tests
     COMMAND ${CMAKE_CTEST_COMMAND} --output-on-failure
     DEPENDS
+        test_util
         test_parse_num
         test_car
         test_car_queue
