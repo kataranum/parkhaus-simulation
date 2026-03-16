@@ -111,7 +111,7 @@ END IF
 RETURN car;
 ```
 */
-int dequeue(CarQueue *p_queue, Car *p_car)
+bool dequeue(CarQueue *p_queue, Car *p_car)
 {
     CarNode *p_frontmost = p_queue->p_front;
 
@@ -141,7 +141,7 @@ int dequeue(CarQueue *p_queue, Car *p_car)
 RETURN queue.length == 0;
 ```
 */
-int is_empty(CarQueue queue)
+bool is_empty(CarQueue queue)
 {
     return queue.length == 0;
 }
