@@ -1,3 +1,8 @@
+/**
+ * File: parse_num.h
+ * Description: Functions to parse strings to certain values
+ */
+
 #ifndef PARSE_NUM_H
 #define PARSE_NUM_H
 
@@ -9,7 +14,7 @@
  * Return true on success, return false on parsing error (p_val remains
  * untouched in that case)
  *
- * @param[in] str    Given string
+ * @param[in]  str    Given string
  * @param[out] p_val Parsed value
  * @return           Success
  */
