@@ -21,3 +21,17 @@ Die Flowcharts sind unter `flowcharts/`
 
 Zusätzliche Dokumentation, die nicht spezifisch auf eine Funktion ist, ist unter
 `docs/`.
+
+## Build mit CMake
+
+Das Projekt kann mit CMake kompiliert werden. Dafür folgende Befehle ausführen:
+
+```BASH
+cmake -S . -B build   # Muss nur ein mal ausgeführt werden
+cmake --build build
+```
+
+CMake sollte ebenfalls automatisch alle Unit-Tests kompilieren und ausführen.
+
+Die ausführbare Datei ist dann im Build-Ordner als `parkhaus` oder
+`parkhaus.exe` zu finden.

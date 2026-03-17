@@ -8,7 +8,7 @@
 #ifndef CAR_QUEUE_H
 #define CAR_QUEUE_H
 
-#include "car.h"
+#include <car.h>
 #include <stdbool.h>
 
 /**
@@ -83,6 +83,6 @@ bool dequeue(CarQueue *p_queue, Car *p_car);
  * @param[in] queue Given queue
  * @return bool whether the queue is empty
  */
-bool is_empty(CarQueue queue);
+bool queue_empty(CarQueue queue);
 
 #endif

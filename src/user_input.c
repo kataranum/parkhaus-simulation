@@ -1,8 +1,9 @@
-#include "../inc/user_input.h"
+#include <user_input.h>
 #include <parse_num.h>
 #include <stdio.h>
 #include <string.h>
 #include <stdbool.h>
+#include <time.h>
 
 #define INPUT_BUFFER_SIZE 256
 

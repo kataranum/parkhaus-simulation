@@ -1,4 +1,5 @@
-#include "../inc/car.h"
+#include <car.h>
+#include <stdlib.h>
 
 /*
 ```PSEUDOCODE
@@ -23,6 +24,10 @@ Car init_new_car(InputParams params)
     return car;
 }
 
+int get_unique_id() {
+    // TODO
+}
+
 /*
 ```PSEUDOCODE
 RETURN (rand() % (params.max_park_duration - 1)) + 1
@@ -38,7 +43,6 @@ int random_park_duration(InputParams params)
 RETURN car.id == -1
 ```
 */
-bool is_empty(Car car)
-{
+bool car_empty(Car car) {
     return car.id == -1;
 }

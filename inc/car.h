@@ -3,8 +3,10 @@
  * Description: This file contains the Car struct and Car functions.
  */
 
-#ifndef SIMULATION_H
-#define SIMULATION_H
+#ifndef CAR_H
+#define CAR_H
+
+#include <user_input.h>
 
 #include <stdbool.h>
 
@@ -66,6 +68,6 @@ int random_park_duration(InputParams params);
  * @param car[in] Car to check
  * @return bool whether the parking space is empty
  */
-bool is_empty(Car car);
+bool car_empty(Car car);
 
 #endif
