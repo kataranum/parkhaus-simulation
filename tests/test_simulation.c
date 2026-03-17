@@ -2,7 +2,6 @@
 #include <stdlib.h>
 #include <stdbool.h>
 #include <assert.h>
-#include <time.h>
 #include <simulation.h>
 
 const long RNG_SEEDS[] = {
