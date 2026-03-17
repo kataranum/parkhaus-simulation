@@ -49,6 +49,13 @@ bool parse_float(const char *str, float *p_val)
         return false;
     }
 
+    // ensure whole string was parsed
+    int parsed_len = (int) (end - str);
+    if (strlen(str) != parsed_len)
+    {
+        return false;
+    }    
+
     *p_val = value;
     return true;
 }
