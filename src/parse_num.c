@@ -2,6 +2,7 @@
 #include <limits.h>
 #include <stdlib.h>
 #include <string.h>
+#include <math.h>
 
 bool parse_uint(const char *str, unsigned int *p_val)
 {
@@ -44,6 +45,7 @@ bool parse_float(const char *str, float *p_val)
     char *end;
     float value = strtof(str, &end);
 
+    // ensure strtof succeeded
     if (str == end)
     {
         return false;
@@ -54,7 +56,13 @@ bool parse_float(const char *str, float *p_val)
     if (strlen(str) != parsed_len)
     {
         return false;
-    }    
+    }
+
+    // ensure float value is a number (not NaN or INF)
+    if (!isfinite(value))
+    {
+        return false;
+    }
 
     *p_val = value;
     return true;
