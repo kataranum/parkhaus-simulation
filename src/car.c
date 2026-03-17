@@ -34,5 +34,5 @@ RETURN car.id == -1
 ```
 */
 bool car_empty(Car car) {
-    return car.id == -1;
+    return car.id < 0;
 }
