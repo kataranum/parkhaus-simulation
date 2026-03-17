@@ -1,41 +1,7 @@
 #include "../inc/simulation.h"
 
-/*
-```PSEUDOCODE
-parking_lot = init_parking_lot(params.num_parking_spaces);
-waiting_cars = queue_init();
-
-srand(params.rng_seed);
-
-SimulationData simulation_data;
-simulation_data.params = params;
-simulation_data.current_step = 0;
-simulation_data.p_stats = p_stats;
-simulation_data.parking_lot = parking_lot;
-simulation_data.waiting_cars = waiting_cars;
-
-FOR current_step IN 0 TO params.total_time_steps:
-    simulation_data.current_step = current_step;
-
-    get_new_cars_arriving(simulation_data);
-    remove_due_cars(simulation_data);
-    park_waiting_cars(simulation_data);
-
-    output_timestep_statistics(
-        simulation_data.current_step,
-        get_occupancy(simulation_data.parking_lot),
-        simulation_data.waiting_cars.length,
-        TODO, // Sollte bei statistics_car_leave() berechnet werden
-        simulation_data.waiting_cars.length, // Gesamtwartezeit der Schlange ist 1 Timestep pro Auto, also einfach die Länge der Schlange
-        simulation_data.parking_lot.length,
-    );
-END FOR
-
-FREE simulation_data.parking_lot
-FREE simulation_data.waiting_cars
-```
-*/
-void run_simulation(InputParams params, Statistics *p_stats) {
+void run_simulation(InputParams params, Statistics *p_stats)
+{
     ParkingLot parking_lot = init_parking_lot(params.park_num_spaces);
     CarQueue waiting_cars = queue_init();
 
@@ -48,7 +14,8 @@ void run_simulation(InputParams params, Statistics *p_stats) {
     simulation_data.parking_lot = parking_lot;
     simulation_data.waiting_cars = waiting_cars;
 
-    for (int i = 0; i < params.total_time_steps; i++) {
+    for (int i = 0; i < params.total_time_steps; i++)
+    {
         simulation_data.current_step = i;
 
         get_new_cars_arriving(simulation_data);
@@ -62,29 +29,8 @@ void run_simulation(InputParams params, Statistics *p_stats) {
     queue_delete(&simulation_data.waiting_cars);
 }
 
-/*
-```PSEUDOCODE
-parking_lot = simulation_data.parking_lot;
-FOR i IN 0 TO parking_lot.length:
-    car = parking_lot.array[i];
-
-    IF is_empty(car):
-        CONTINUE
-    END IF
-
-    park_duration = simulation_data.current_step - car.time_arrival;
-
-    IF park_duration < car.time_park_duration:
-        CONTINUE
-    END IF
-
-    statistics_car_leave(car);
-    parking_lot.array[i] = EMPTY_CAR;
-    FREE car; // only in case car is allocated in heap
-END FOR
-```
-*/
-void remove_due_cars(SimulationData simulation_data) {
+void remove_due_cars(SimulationData simulation_data)
+{
     ParkingLot parking_lot = simulation_data.parking_lot;
 
     for (int i = 0; i < parking_lot.length; i++)
@@ -108,27 +54,8 @@ void remove_due_cars(SimulationData simulation_data) {
     }
 }
 
-/*
-```PSEUDOCODE
-parking_lot = simulation_data.parking_lot;
-waiting_cars = simulation_data.waiting_cars;
-
-WHILE room_available(parking_lot):
-    Car new_car;
-    IF dequeue(&waiting_cars, &new_car) == 0:
-        // No more cars waiting in queue
-        RETURN
-    END IF
-
-    new_car.arrival_time_park = simulation_data.current_step;
-
-    available_spot = find_empty_space(parking_lot);
-    statistics_car_arrive(new_car);
-    parking_lot.array[available_spot] = new_car;
-END WHILE
-```
-*/
-void park_waiting_cars(SimulationData simulation_data) {
+void park_waiting_cars(SimulationData simulation_data)
+{
     ParkingLot parking_lot = simulation_data.parking_lot;
     CarQueue waiting_cars = simulation_data.waiting_cars;
 
@@ -150,23 +77,8 @@ void park_waiting_cars(SimulationData simulation_data) {
     }
 }
 
-/*
-```PSEUDOCODE
-// Random float between 0 and 1
-random_float = frand();
-
-IF (random_float >= simulation_data.params.park_chance_arrive):
-    RETURN
-END IF
-
-new_car = init_new_car();
-new_car.time_arrival_queue = simulation_data.current_step;
-enqueue(&simulation_data.waiting_cars, new_car);
-
-statistics_car_enqueue(new_car);
-```
-*/
-void get_new_cars_arriving(SimulationData simulation_data) {
+void get_new_cars_arriving(SimulationData simulation_data)
+{
     float random_float = frand();
 
     if (random_float >= simulation_data.params.park_chance_arrive)
