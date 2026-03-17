@@ -9,10 +9,9 @@
  * Return true on success, return false on parsing error (p_val remains
  * untouched in that case)
  *
- * @param[in] str Given string
+ * @param[in] str    Given string
  * @param[out] p_val Parsed value
- * @return true On success
- * @return false On failure
+ * @return           Success
  */
 bool parse_uint(const char *str, unsigned int *p_val);
 
@@ -22,10 +21,9 @@ bool parse_uint(const char *str, unsigned int *p_val);
  * Return true on success, return false on parsing error (p_val remains
  * untouched in that case)
  *
- * @param[in] str Given string
+ * @param[in]  str   Given string
  * @param[out] p_val Parsed value
- * @return true On success
- * @return false On failure
+ * @return           Success
  */
 bool parse_ulong(const char *str, unsigned long *p_val);
 
@@ -35,10 +33,9 @@ bool parse_ulong(const char *str, unsigned long *p_val);
  * Return true on success, return false on parsing error (p_val remains
  * untouched in that case)
  *
- * @param[in] str Given string
+ * @param[in]  str   Given string
  * @param[out] p_val Parsed value
- * @return true On success
- * @return false On failure
+ * @return           Success
  */
 bool parse_float(const char *str, float *p_val);
 
