@@ -1,6 +1,6 @@
 /**
  * File: sim_data.h
- * Description: Struct definitions used for the simulation loop
+ * Description: Struct definitions used for the simulation loop and statistics
  */
 #ifndef SIM_DATA_H
 #define SIM_DATA_H
@@ -10,10 +10,11 @@
 #include <car_queue.h>
 #include <user_input.h>
 
-/*---------------------------------------------------------------*/
-/* Statistics state                                              */
-/*---------------------------------------------------------------*/
-typedef struct {
+/**
+ * @brief All values relevant for statistics calculations
+ */
+typedef struct
+{
     FILE *log_file;
 
     /* Occupancy */
@@ -36,7 +37,8 @@ typedef struct {
 /**
  * @brief All data relevant for the simulation in one struct
  */
-typedef struct {
+typedef struct
+{
     InputParams params;
     /** The current time step */
     unsigned int current_step;
