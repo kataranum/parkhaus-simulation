@@ -56,32 +56,34 @@ CarQueue queue_init();
  * Frees all memory allocated by the queue. The struct can be reused without
  * calling `queue_init()` a second time.
  *
- * @param[in/out] p_queue Pointer to queue
+ * @param p_queue[in/out] Pointer to queue
  */
 void queue_delete(CarQueue *p_queue);
 
 /**
  * @brief Enqueue a new car to the back of the queue
  *
- * @param[in/out] p_queue Pointer to queue
- * @param[in] car Car to enqueue
+ * @param p_queue[in/out] Pointer to queue
+ * @param car[in] Car to enqueue
  */
 void enqueue(CarQueue *p_queue, Car car);
 
 /**
  * @brief Pop the frontmost car off the queue and return it.
  * 
- * @param[in/out] p_queue Pointer to queue
- * @param[out] p_car Pointer to where dequeued car should be written
- @ return bool true if dequeue was successful, false if not
+ * @param p_queue[in/out] Pointer to queue
+ * @param p_car[out] Pointer to where dequeued car should be written
+ * @return true dequeue popped a car of the queue
+ * @return false no car popped of the queue (e.g. queue is empty)
  */
 bool dequeue(CarQueue *p_queue, Car *p_car);
 
 /**
  * @brief Check if the queue is empty
  *
- * @param[in] queue Given queue
- * @return bool whether the queue is empty
+ * @param queue[in] Given queue
+ * @return true Queue is empty
+ * @return false Queue contains at least 1 car
  */
 bool queue_empty(CarQueue queue);
 
