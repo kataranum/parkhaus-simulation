@@ -1,10 +1,7 @@
 #include <user_input.h>
 #include <statistics.h>
 #include <simulation.h>
-
-#define EXIT_SUCCESS 0
-#define EXIT_FAIL_STATS 1
-#define EXIT_FAIL_MALLOC -1
+#include <exit_codes.h>
 
 int main(void) {
     InputParams params = get_user_input();
