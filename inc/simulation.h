@@ -28,9 +28,9 @@ void run_simulation(InputParams params, Statistics *p_stats);
  * This function also makes calls to statistics functions to mark the departure
  * in statistics.
  *
- * @param simulation_data[in] simulation_data
+ * @param simulation_data[in/out] simulation_data
  */
-void remove_due_cars(SimulationData simulation_data);
+void remove_due_cars(SimulationData *p_simulation_data);
 
 /**
  * @brief Move cars from the queue in the parking lot until the lot is full
@@ -40,9 +40,9 @@ void remove_due_cars(SimulationData simulation_data);
  * or the queue becomes empty. If the lot is full, the remaining cars in
  * `waiting_cars` remain in queue until next time step (or longer).
  *
- * @param simulation_data[in] simulation_data
+ * @param simulation_data[in/out] simulation_data
  */
-void park_waiting_cars(SimulationData simulation_data);
+void park_waiting_cars(SimulationData *p_simulation_data);
 
 /**
  * @brief Randomly enqueue a new car to `waiting_cars`
@@ -51,8 +51,8 @@ void park_waiting_cars(SimulationData simulation_data);
  * duration will want to enter the parking lot. This function randomly decides
  * whether to create and enqueue a new car, or to do nothing (0 new arrivals).
  * 
- * @param simulation_data[in] simulation_data
+ * @param simulation_data[in/out] simulation_data
  */
-void get_new_cars_arriving(SimulationData simulation_data);
+void get_new_cars_arriving(SimulationData *p_simulation_data);
 
 #endif

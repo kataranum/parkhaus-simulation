@@ -49,10 +49,10 @@ SimulationData get_simdata_default(long seed) {
 }
 
 // Free all memory allocated from get_simdata_default()
-void free_simdata(SimulationData data) {
-    free(data.p_stats);
-    free_parking_lot(&data.parking_lot);
-    queue_delete(&data.waiting_cars);
+void free_simdata(SimulationData *p_data) {
+    free(p_data->p_stats);
+    free_parking_lot(&p_data->parking_lot);
+    queue_delete(&p_data->waiting_cars);
 }
 
 void test_remove_due_cars(void) {
@@ -96,7 +96,7 @@ void test_remove_due_cars(void) {
     assert( car_empty(data.parking_lot.p_array[3]) == false );
     assert( car_empty(data.parking_lot.p_array[4]) == false );
 
-    remove_due_cars(data);
+    remove_due_cars(&data);
 
     assert( car_empty(data.parking_lot.p_array[0]) == true );
     assert( car_empty(data.parking_lot.p_array[1]) == false );
@@ -104,7 +104,7 @@ void test_remove_due_cars(void) {
     assert( car_empty(data.parking_lot.p_array[3]) == false );
     assert( car_empty(data.parking_lot.p_array[4]) == true );
 
-    free_simdata(data);
+    free_simdata(&data);
 }
 
 void test_park_waiting_cars(void) {
@@ -118,9 +118,10 @@ void test_park_waiting_cars(void) {
         car.id = i;
         enqueue(&data.waiting_cars, car);
     }
-    park_waiting_cars(data);
+    park_waiting_cars(&data);
 
     // all spots should be full now
+    printf("len: %d\n", data.waiting_cars.length);
     assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
     for (int i = 0; i < PARK_NUM_SPACES; i++) {
         Car car = data.parking_lot.p_array[i];
@@ -130,7 +131,7 @@ void test_park_waiting_cars(void) {
     }
 
     // calling park_waiting_cars() again shouldn't change anything
-    park_waiting_cars(data);
+    park_waiting_cars(&data);
     assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
     for (int i = 0; i < PARK_NUM_SPACES; i++) {
         Car car = data.parking_lot.p_array[i];
@@ -139,7 +140,7 @@ void test_park_waiting_cars(void) {
         assert(car.id < PARK_NUM_SPACES);
     }
 
-    free_simdata(data);
+    free_simdata(&data);
 }
 
 // rough check that randomness is somewhat behaving as expected
@@ -150,7 +151,7 @@ void test_get_new_cars_arriving(long seed) {
 
     const int TEST_AMOUNT = 10000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        get_new_cars_arriving(data);
+        get_new_cars_arriving(&data);
     }
 
     // I'll define loose bounds that you'd need to be really unlucky to exceed
@@ -158,7 +159,7 @@ void test_get_new_cars_arriving(long seed) {
     assert(data.waiting_cars.length > TEST_AMOUNT * 0.1);
     assert(data.waiting_cars.length < TEST_AMOUNT * 0.9);
 
-    free_simdata(data);
+    free_simdata(&data);
 }
 
 // assert that a chance of 1.0 gurantees a new car each timestep
@@ -169,12 +170,12 @@ void test_chance_1(long seed) {
 
     const int TEST_AMOUNT = 1000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        get_new_cars_arriving(data);
+        get_new_cars_arriving(&data);
     }
 
     assert(data.waiting_cars.length == TEST_AMOUNT);
 
-    free_simdata(data);
+    free_simdata(&data);
 }
 
 // assert that a chance of 0.0 completely prevents cars from arriving
@@ -185,12 +186,12 @@ void test_chance_0(long seed) {
 
     const int TEST_AMOUNT = 1000;
     for (int i = 0; i < TEST_AMOUNT; i++) {
-        get_new_cars_arriving(data);
+        get_new_cars_arriving(&data);
     }
 
     assert(data.waiting_cars.length == 0);
 
-    free_simdata(data);
+    free_simdata(&data);
 }
 
 int main(void) {
