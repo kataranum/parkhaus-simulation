@@ -32,7 +32,7 @@ bool parse_ulong(const char *str, unsigned long *p_val)
     }
 
     // ensure whole string was parsed
-    int parsed_len = (int) (end - str);
+    size_t parsed_len = (size_t) (end - str);
     if (strlen(str) != parsed_len)
     {
         return false;
@@ -54,7 +54,7 @@ bool parse_float(const char *str, float *p_val)
     }
 
     // ensure whole string was parsed
-    int parsed_len = (int) (end - str);
+    size_t parsed_len = (size_t) (end - str);
     if (strlen(str) != parsed_len)
     {
         return false;
