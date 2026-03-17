@@ -1,7 +1,6 @@
 #include <stdio.h>
 #include <assert.h>
 #include <stdbool.h>
-#include <time.h>
 #include <car.h>
 
 const long RNG_SEEDS[] = {
