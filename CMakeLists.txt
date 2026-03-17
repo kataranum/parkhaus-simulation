@@ -104,9 +104,15 @@ target_link_libraries(test_car_queue
 add_executable(test_parking_lot
     tests/test_parking_lot.c
 )
-
 target_link_libraries(test_parking_lot
     parking_lot
+)
+
+add_executable(test_statistics
+    tests/test_statistics.c
+)
+target_link_libraries(test_statistics
+    statistics
 )
 
 add_executable(test_simulation
@@ -141,6 +147,10 @@ add_test(
     COMMAND test_parking_lot
 )
 add_test(
+    NAME StatisticsTests
+    COMMAND test_statistics
+)
+add_test(
     NAME SimulationUnitTests
     COMMAND test_simulation
 )
@@ -154,6 +164,7 @@ add_custom_target(run_tests
         test_car
         test_car_queue
         test_parking_lot
+        test_statistics
         test_simulation
     COMMENT "Running unit tests"
 )
