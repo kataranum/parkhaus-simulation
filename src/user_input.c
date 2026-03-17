@@ -134,7 +134,7 @@ InputParams get_user_input(void)
     params.park_num_spaces = input_valid_uint("Please input number of parking spaces: ");   
     params.park_max_time = input_valid_uint("Please input maximum number of timesteps that cars will park for: "); 
 
-    float percentage = input_valid_percentage("Please enter a percentage chance of cars arriving on a new timestep: ");
+    float percentage = input_valid_percentage("Please enter a percentage chance of cars arriving on a new timestep (0 - 100): ");
     params.park_chance_arrive = percentage / 100.0;
 
     params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ");
