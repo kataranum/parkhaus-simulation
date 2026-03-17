@@ -13,7 +13,9 @@ Car init_new_car(InputParams params)
 }
 
 int get_unique_id() {
-    // TODO
+    static int GLOBAL_ID = 0;
+
+    return GLOBAL_ID++;
 }
 
 /*
