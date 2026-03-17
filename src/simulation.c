@@ -47,7 +47,7 @@ void remove_due_cars(SimulationData simulation_data)
 
         int park_duration = simulation_data.current_step - car.time_arrival_park;
 
-        if (park_duration < car.time_park_duration)
+        if (park_duration <= car.time_park_duration)
         {
             continue;
         }
