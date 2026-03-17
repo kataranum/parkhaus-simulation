@@ -14,7 +14,7 @@ const int RNG_SEED_AMOUNT = sizeof(RNG_SEEDS) / sizeof(RNG_SEEDS[0]);
 void test_init(void) {
     // InputParams remain unused here, but are required for code to compile
     InputParams params;
-    params.park_max_time = 1;
+    params.park_max_time = 10;
 
     Car car = init_new_car(params);
 
