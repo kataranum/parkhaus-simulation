@@ -59,7 +59,7 @@ void test_enqueue(void) {
         car.id = id;
         enqueue(&q, car);
 
-        assert(q.length == id + 1),
+        assert((int)q.length == id + 1),
 
         assert(q.p_front->car.id == 0);
         assert(q.p_back->car.id == id);
@@ -107,7 +107,7 @@ void test_dequeue(void) {
 
         assert(result);
         assert(dequeued.id == i);
-        assert(q.length == AMOUNT_CARS - i - 1);
+        assert((int)q.length == AMOUNT_CARS - i - 1);
     }
 
     const int SOME_ID = 123;
