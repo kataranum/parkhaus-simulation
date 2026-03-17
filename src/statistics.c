@@ -54,7 +54,12 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
         stats->full_occupancy_steps += 1; 
     }
     //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
-    avg_waiting_time_timestep = (float)stats->sum_waiting_time / (float)stats->sum_occupancy;
+    if (stats->sum_occupancy == 0) {
+        avg_waiting_time_timestep = 0.0;
+    }
+    else {
+        avg_waiting_time_timestep = (float)stats->sum_waiting_time / (float)stats->sum_occupancy;
+    }
 
     //Erstelle Ausgabe-String
     char buffer[1024];
@@ -114,7 +119,14 @@ void output_total_statistics(Statistics *stats, InputParams params)
     avg_queue_length = stats->sum_queue_length / params.total_time_steps;
 
     //Berechne durschnittliche Wartezeit (Summe aller Wartezeiten(sum_waiting_time) / Anzahl geparkter Autos (sum_occupancy))
-    avg_waiting_time = stats->sum_waiting_time / stats->sum_occupancy;
+    if (stats->sum_occupancy == 0)
+    {
+        avg_waiting_time = 0.0;
+    }
+    else 
+    {
+        avg_waiting_time = (float)stats->sum_waiting_time / (float)stats->sum_occupancy;
+    }
 
     // Zeit mit Vollbelegung (stats.full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
     full_occupancy_percentage = (stats->full_occupancy_steps / params.total_time_steps) *100;
