@@ -29,12 +29,11 @@ Weil einfachere Unterscheidung der Ausgabewerte und einfacherer Datentyp mit nur
 
 ## Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
 
-- Zeitdruck
-- Pull Requests haben lange gebraucht, weil nicht jeden Tag gearbeitet wurde
+Eine der größten Herausforderungen im Projekt war der Zeitdruck, da nicht alle Teammitglieder jeden Tag am Projekt arbeiten konnten. Dadurch haben sich manche Aufgaben etwas nach hinten verschoben, vor allem gegen Ende der Bearbeitungszeit.
+Außerdem haben Pull Requests teilweise länger gedauert, weil Änderungen nicht immer sofort geprüft und gemergt werden konnten. Das hat stellenweise den Arbeitsfluss gebremst, besonders wenn Aufgaben voneinander abhängig waren.
 
 ## Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
 
-- Regelmäßigen Besprechungen
-- Untereinander geholfen bei Schwierigkeiten
-- Mann konnte Ideen besprechen und einbringen
-- Gute Projektplanung
+Sehr gut funktioniert haben die regelmäßigen Team‑Besprechungen, in denen wir den aktuellen Stand, offene Aufgaben und Probleme besprochen haben. Dadurch waren alle immer auf dem gleichen Stand.
+Auch die gegenseitige Unterstützung im Team war sehr hilfreich. Bei Schwierigkeiten konnte man jederzeit nachfragen und bekam Unterstützung, egal ob es um Code, Tests oder Verständnisfragen ging. Ideen konnten offen eingebracht und gemeinsam diskutiert werden.
+Ebenfalls positiv war die Projektplanung, da die Aufgaben klar verteilt waren und jeder wusste, wofür jeder verantwortlich ist. Dadurch lief die Zusammenarbeit insgesamt sehr angenehm und strukturiert.
