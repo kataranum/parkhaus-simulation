@@ -28,9 +28,11 @@ void test_init_statistics()
 void test_init_statistics_wrong()
 {
     //Init without stats
+    Statistics stats;
     int result = init_statistics(NULL, "test_log.txt");
 
     assert(result == -1);
+    fclose(stats.log_file);
 }
 
 void test_statistics_car_leave_once()
@@ -41,6 +43,7 @@ void test_statistics_car_leave_once()
     statistics_car_leave(&stats);
 
     assert(stats.finished_cars == 1);
+    fclose(stats.log_file);
 }
 
 void test_statistics_car_leave_multiple()
@@ -54,6 +57,8 @@ void test_statistics_car_leave_multiple()
     statistics_car_leave(&stats);
 
     assert(stats.finished_cars == 4);
+
+    fclose(stats.log_file); 
 }
 
 void test_statistics_car_arrive_once()
@@ -68,6 +73,8 @@ void test_statistics_car_arrive_once()
     statistics_car_arrive(&stats, car);
 
     assert(stats.sum_waiting_time == 5);
+
+    fclose(stats.log_file);
 }
 
 void test_statistics_car_arrive_multiple()
@@ -82,6 +89,8 @@ void test_statistics_car_arrive_multiple()
     statistics_car_arrive(&stats, car2);
 
     assert(stats.sum_waiting_time == 10);
+
+    fclose(stats.log_file);
 }
 
 void test_output_timestep_statistics()
