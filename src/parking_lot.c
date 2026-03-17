@@ -1,6 +1,7 @@
 #include <parking_lot.h>
 #include <stdlib.h>
 #include <stdio.h>
+#include <exit_codes.h>
 
 ParkingLot init_parking_lot(unsigned int length)
 {
@@ -8,8 +9,7 @@ ParkingLot init_parking_lot(unsigned int length)
     parking_lot.p_array = malloc(length * sizeof(*parking_lot.p_array));
     if (parking_lot.p_array == NULL)
     {
-        fprintf(stderr, "Error: Memory allocation failed for parking lot.\n");
-        exit(EXIT_FAILURE);
+        exit(EXIT_FAIL_MALLOC);
     }
 
     parking_lot.length = length;

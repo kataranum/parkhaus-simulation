@@ -6,6 +6,7 @@
 #include <simulation.h>
 #include <statistics.h>
 #include <car.h>
+#include <exit_codes.h>
 
 // default values for SimData
 #define PARK_NUM_SPACES 10
@@ -23,6 +24,11 @@ SimulationData get_simdata_default(long seed) {
     params.rng_seed = seed;
 
     Statistics *p_stats = malloc(sizeof(*p_stats));
+
+    if (p_stats == NULL)
+    {
+        exit(EXIT_FAIL_MALLOC);
+    }
 
     SimulationData data;
     data.params = params;

@@ -1,5 +1,6 @@
 #include <car_queue.h>
 #include <stdlib.h>
+#include <exit_codes.h>
 
 CarQueue queue_init()
 {
@@ -29,6 +30,12 @@ void queue_delete(CarQueue *p_queue)
 void enqueue(CarQueue *p_queue, Car car)
 {
     CarNode *p_new = malloc(sizeof(CarNode));
+
+    if (p_new == NULL)
+    {
+        exit(EXIT_FAIL_MALLOC);
+    }
+
     p_new->car = car;
     p_new->p_behind = NULL;
 
