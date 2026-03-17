@@ -1,6 +1,7 @@
 #include <parse_num.h>
 #include <limits.h>
 #include <stdlib.h>
+#include <string.h>
 
 bool parse_uint(const char *str, unsigned int *p_val)
 {
@@ -23,6 +24,13 @@ bool parse_ulong(const char *str, unsigned long *p_val)
     long value = strtol(str, &end, 10);
 
     if (str == end || value < 0)
+    {
+        return false;
+    }
+
+    // ensure whole string was parsed
+    int parsed_len = (int) (end - str);
+    if (strlen(str) != parsed_len)
     {
         return false;
     }
