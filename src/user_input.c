@@ -28,10 +28,12 @@ bool read_user_text(char *text, size_t size)
  * @brief Prompt user for a valid unsigned int input
  * @return unsigned int value entered by the user
  */
-unsigned int input_valid_uint(void)
+unsigned int input_valid_uint(const char *prompt_str)
 {
     while (true)
     {
+        printf("%s", prompt_str);
+
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
         {
@@ -55,10 +57,12 @@ unsigned int input_valid_uint(void)
  * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
  * @return unsigned long seed value
  */
-unsigned long input_valid_seed(void)
+unsigned long input_valid_seed(const char *prompt_str)
 {
     while (true)
-    {    
+    {
+        printf("%s", prompt_str);
+
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
         {
@@ -86,10 +90,12 @@ unsigned long input_valid_seed(void)
  * @brief Prompt user for a valid percentage input (0 - 100)
  * @return float value entered by the user
  */
-float input_valid_percentage(void)
+float input_valid_percentage(const char *prompt_str)
 {
     while (true)
     {
+        printf("%s", prompt_str);
+
         char input[INPUT_BUFFER_SIZE];
         if ( ! read_user_text(input, sizeof(input)) )
         {
@@ -118,21 +124,14 @@ InputParams get_user_input(void)
 {
     InputParams params;
 
-    printf("Please input number of parking spaces: ");
-    params.park_num_spaces = input_valid_uint();   
+    params.park_num_spaces = input_valid_uint("Please input number of parking spaces: ");   
+    params.park_max_time = input_valid_uint("Please input maximum number of timesteps that cars will park for: "); 
 
-    printf("Please input maximum number of timesteps that cars will park for: ");
-    params.park_max_time = input_valid_uint(); 
-
-    printf("Please enter a percentage chance of cars arriving on a new timestep: ");
-    float percentage = input_valid_percentage();
+    float percentage = input_valid_percentage("Please enter a percentage chance of cars arriving on a new timestep: ");
     params.park_chance_arrive = percentage / 100.0;
 
-    printf("Please input how many timesteps should be simulated: ");
-    params.total_time_steps = input_valid_uint();
-
-    printf("Enter seed (leave empty for random seed): ");
-    params.rng_seed = input_valid_seed();
+    params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ");
+    params.rng_seed = input_valid_seed("Enter seed (leave empty for random seed): ");
 
     return params;
 }
