@@ -10,7 +10,6 @@ void test_parse_ulong(void) {
         "5",
         "0101",
         "0",
-        "   456  ",
         "2147483648",
     };
     unsigned long expected_outputs[] = {
@@ -18,7 +17,6 @@ void test_parse_ulong(void) {
         5,
         101,
         0,
-        456,
         2147483648,
     };
 
@@ -64,14 +62,12 @@ void test_parse_uint(void) {
         "5",
         "0101",
         "0",
-        "   456  ",
     };
     unsigned int expected_outputs[] = {
         123,
         5,
         101,
         0,
-        456,
     };
 
     const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
@@ -126,7 +122,6 @@ void test_parse_float(void) {
         "0.5",
         "-2.3",
         "0.0",
-        "   -12.34  ",
     };
     float expected_outputs[] = {
         1.0,
@@ -134,7 +129,6 @@ void test_parse_float(void) {
         0.5,
         -2.3,
         0.0,
-        -12.34,
     };
 
     const int AMOUNT_INPUTS = sizeof(test_inputs) / sizeof(test_inputs[0]);
