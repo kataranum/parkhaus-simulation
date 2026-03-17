@@ -10,6 +10,7 @@ bool parse_uint(const char *str, unsigned int *p_val)
 
     bool success = parse_ulong(str, &tmp);
 
+    // ensure parse_ulong succeeded and value fits into int
     if (!success || tmp > INT_MAX)
     {
         return false;
@@ -24,6 +25,7 @@ bool parse_ulong(const char *str, unsigned long *p_val)
     char *end;
     long value = strtol(str, &end, 10);
 
+    // ensure strtol succeded and value is positive
     if (str == end || value < 0)
     {
         return false;
