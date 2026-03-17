@@ -17,7 +17,7 @@ void run_simulation(InputParams params, Statistics *p_stats)
     simulation_data.parking_lot = parking_lot;
     simulation_data.waiting_cars = waiting_cars;
 
-    for (int i = 0; i < params.total_time_steps; i++)
+    for (unsigned int i = 0; i < params.total_time_steps; i++)
     {
         simulation_data.current_step = i;
 
@@ -36,7 +36,7 @@ void remove_due_cars(SimulationData *p_simulation_data)
 {
     ParkingLot *p_parking_lot = &p_simulation_data->parking_lot;
 
-    for (int i = 0; i < p_parking_lot->length; i++)
+    for (unsigned int i = 0; i < p_parking_lot->length; i++)
     {
         Car car = p_parking_lot->p_array[i];
 
