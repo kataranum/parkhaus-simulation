@@ -25,6 +25,12 @@ RETURN (rand() % (params.max_park_duration - 1)) + 1
 */
 int random_park_duration(InputParams params)
 {
+    // return default for invalid values
+    if (params.park_max_time <= 1)
+    {
+        return 1;
+    }
+
     return (rand() % (params.park_max_time - 1)) + 1;
 }
 
