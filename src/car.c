@@ -18,11 +18,6 @@ int get_unique_id() {
     return GLOBAL_ID++;
 }
 
-/*
-```PSEUDOCODE
-RETURN (rand() % (params.max_park_duration - 1)) + 1
-```
-*/
 int random_park_duration(InputParams params)
 {
     // return default for invalid values
@@ -34,11 +29,6 @@ int random_park_duration(InputParams params)
     return (rand() % (params.park_max_time - 1)) + 1;
 }
 
-/*
-```PSEUDOCODE
-RETURN car.id == -1
-```
-*/
 bool car_empty(Car car) {
     return car.id < 0;
 }
