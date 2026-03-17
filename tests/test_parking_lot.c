@@ -32,6 +32,16 @@ void test_room_available()
 
     assert(room_available(lot) == true);
 
+    Car car;
+    car.id = 1;
+
+    for (unsigned int i = 0; i < lot.length; i++)
+    {
+        lot.p_array[i] = car;
+    }
+
+    assert(room_available(lot) == false);
+
     free_parking_lot(&lot);
 
 }
@@ -42,6 +52,16 @@ void test_find_empty_space()
 
     int index = find_empty_space(lot);
     assert(index == 0);
+
+    Car car;
+    car.id = 1;
+
+    for (unsigned int i = 0; i < lot.length; i++)
+    {
+        lot.p_array[i] = car;
+    }
+
+    assert(find_empty_space(lot) == -1);
 
     free_parking_lot(&lot);
 
