@@ -2,39 +2,39 @@
 
 ## Wie haben Sie die Aufgabenstellung gelöst?
 
-teil 1
+Teil 1
 - Mündlich besprochen
-- ungefähre aufgaben aufteilung
-- allgemeine funktionen definiert
-- pseudocode geschrieben mit vorlesungswissen
-- gegenseitige kontrolle mit github
-- funktionen auf einander angepasst
+- Ungefähre Aufgabenaufteilung
+- Allgemeine Funktionen definiert
+- Pseudocode geschrieben mit Vorlesungswissen
+- Gegenseitige Kontrolle mit github
+- Funktionen auf einander angepasst
 
-teil 2
-- funktionen von pseudocode in C um schreiben
-- fehlerbehebung
-- paralell unit tests geschrieben
-- c-make konfiguriert
-- fertigstellung und kompilierfehlerbehebung
-- unit tests
-- final test
+Teil 2
+- Funktionen von Fseudocode in C umschreiben
+- Fehlerbehebung
+- Paralell Unit-Tests geschrieben
+- C-Make konfiguriert
+- Fertigstellung und Kompilierfehlerbehebung
+- Unit-Tests
+- Final Tests
 
 ## Welche anderen Optionen hatten Sie im Team hinsichtlich der Struktur oder Umsetzung diskutiert?
 
-rückgabewerte bool statt int um erfolg anzuzeigen
+Rückgabewerte bool statt int um Erfolg anzuzeigen
 
 ## Warum haben Sie sich gegen die anderen Optionen entschieden bzw. für die gewählte Variante gemeinsam entschieden?
 
-weil einfachere unterscheidung der ausgabewerte und einfacherer datentyp mit nur 2 ausgabewerten und intuitivere überprüfung
+Weil einfachere Unterscheidung der Ausgabewerte und einfacherer Datentyp mit nur 2 Ausgabewerten und intuitivere Überprüfung
 
 ## Gab es Schwierigkeiten, Herausforderungen bei der Zusammenarbeit?
 
-- zeitdruck
-- pull request haben lange gebraucht, weil nicht jeden tag gearbeitet
+- Zeitdruck
+- Pull Requests haben lange gebraucht, weil nicht jeden Tag gearbeitet wurde
 
 ## Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
 
-- regelmäßigen besprechungen
-- untereinander geholfen bei schwierigkeiten
-- am konnte ideen besprechen und einbringen
-- gute projektplanung
+- Regelmäßigen Besprechungen
+- Untereinander geholfen bei Schwierigkeiten
+- Mann konnte Ideen besprechen und einbringen
+- Gute Projektplanung
