@@ -7,7 +7,6 @@
 #define CAR_H
 
 #include <user_input.h>
-
 #include <stdbool.h>
 
 /**
@@ -20,12 +19,13 @@
  */
 typedef struct 
 {
+    /// ID of car; "-1" indicating an invalid or "empty" car (in the context of parking_lot)
     int id;
-    // The time of arrival at the parking lot, in timesteps.
+    /// The time of arrival at the parking lot, in timesteps.
     int time_arrival_park;
-    // The time of arrival at the queue, in timesteps.
+    /// The time of arrival at the queue, in timesteps.
     int time_arrival_queue;
-    // The duration of parking, in timesteps.
+    /// The duration of parking, in timesteps.
     int time_park_duration;
 } Car;
 
@@ -70,10 +70,11 @@ int random_park_duration(InputParams params);
 /**
  * @brief Determine whether a parking space is empty
  * 
- * A parking space is empty if the id of the car is -1.
+ * A parking space is empty if the id of the car is negative.
  * 
  * @param car[in] Car to check
- * @return bool whether the parking space is empty
+ * @return true Car invalid; parking space is empty
+ * @return false Car valid; parking space is occupied
  */
 bool car_empty(Car car);
 
