@@ -35,9 +35,9 @@ void free_parking_lot(ParkingLot *p_parking_lot)
     p_parking_lot->length = 0;
 }
 
-int get_occupancy(ParkingLot parking_lot)
+unsigned int get_occupancy(ParkingLot parking_lot)
 {
-    int occupancy = 0;
+    unsigned int occupancy = 0;
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
         Car car = parking_lot.p_array[i];
@@ -49,7 +49,7 @@ int get_occupancy(ParkingLot parking_lot)
     return occupancy;
 }
 
-int room_available(ParkingLot parking_lot)
+bool room_available(ParkingLot parking_lot)
 {
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
@@ -62,7 +62,7 @@ int room_available(ParkingLot parking_lot)
     return false;
 }
 
-int find_empty_space(ParkingLot parking_lot)
+unsigned int find_empty_space(ParkingLot parking_lot)
 {
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
