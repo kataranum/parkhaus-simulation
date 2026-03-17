@@ -110,10 +110,10 @@ void test_remove_due_cars(void) {
 void test_park_waiting_cars(void) {
     SimulationData data = get_simdata_default(0);
 
-    const int EXCESS_CARS_AMOUNT = 5;
+    const unsigned int EXCESS_CARS_AMOUNT = 5;
     
     // make parking lot completely full
-    for (int i = 0; i < PARK_NUM_SPACES + EXCESS_CARS_AMOUNT; i++) {
+    for (unsigned int i = 0; i < PARK_NUM_SPACES + EXCESS_CARS_AMOUNT; i++) {
         Car car = init_new_car(data.params);
         car.id = i;
         enqueue(&data.waiting_cars, car);
@@ -167,8 +167,8 @@ void test_chance_1(long seed) {
 
     data.params.park_chance_arrive = 1.0;
 
-    const int TEST_AMOUNT = 1000;
-    for (int i = 0; i < TEST_AMOUNT; i++) {
+    const unsigned int TEST_AMOUNT = 1000;
+    for (unsigned int i = 0; i < TEST_AMOUNT; i++) {
         get_new_cars_arriving(&data);
     }
 
