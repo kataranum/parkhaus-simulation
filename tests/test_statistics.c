@@ -1,11 +1,45 @@
 #include <assert.h>
+#include <stdlib.h>
 #include <stdio.h>
 #include <string.h>
-#include "../inc/simulation.h"
-#include "../inc/statistics.h"
-#include "../inc/car.h"
 
+#include <simulation.h>
+#include <statistics.h>
+#include <car.h>
 
+// default values for SimData
+#define PARK_NUM_SPACES 10
+#define PARK_MAX_TIME 10
+#define PARK_CHANCE_ARRIVE 0.5
+#define TOTAL_TIME_STEPS 100
+
+// Create SimulationData with default values
+SimulationData get_simdata_default(long seed) {
+    InputParams params;
+    params.park_num_spaces = PARK_NUM_SPACES;
+    params.park_max_time = PARK_MAX_TIME;
+    params.park_chance_arrive = 0.5;
+    params.total_time_steps = TOTAL_TIME_STEPS;
+    params.rng_seed = seed;
+
+    Statistics *p_stats = malloc(sizeof(p_stats));
+
+    SimulationData data;
+    data.params = params;
+    data.current_step = 0;
+    data.p_stats = p_stats;
+    data.parking_lot = init_parking_lot(PARK_NUM_SPACES);
+    data.waiting_cars = queue_init();
+
+    return data;
+}
+
+// Free all memory allocated from get_simdata_default()
+void free_simdata(SimulationData data) {
+    free(data.p_stats);
+    free_parking_lot(&data.parking_lot);
+    queue_delete(&data.waiting_cars);
+}
 
 //Test for init_statistics()
 void test_init_statistics()
@@ -98,7 +132,7 @@ void test_output_timestep_statistics()
     Statistics stats;
     init_statistics(&stats, "test_log.txt");
 
-    SimulationData data = get_simdata_default();
+    SimulationData data = get_simdata_default(0);
 
     data.params.total_time_steps = 100;
     data.params.park_num_spaces = 10;
