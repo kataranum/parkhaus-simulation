@@ -18,9 +18,9 @@
  * one car more in back of the queue. The backmost car has NULL for p_next.
  */
 typedef struct CarNode {
-    /** The car */
+    /// The car
     Car car;
-    /** Pointer to the car in back, NULL if backmost car */
+    /// Pointer to the car in back, NULL if backmost car
     struct CarNode *p_behind;
 } CarNode;
 
@@ -35,11 +35,11 @@ typedef struct CarNode {
  * p_back points to the back of the queue, where enqueueing will add cars to.
  */
 typedef struct {
-    /** Pointer to frontmost car node */
+    /// Pointer to frontmost car node
     CarNode *p_front;
-    /** Pointer to backmost car node */
+    /// Pointer to backmost car node
     CarNode *p_back;
-    /** Length of the queue */
+    /// Length of the queue
     unsigned int length;
 } CarQueue;
 
