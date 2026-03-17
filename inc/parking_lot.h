@@ -10,19 +10,20 @@
 
 /**
  * @brief All values related to a parking lot.
- * 
- * Contains an array of cars and the length of the array.
  */
 typedef struct 
 {
+    /// Pointer to array
     Car *p_array;
+    /// Length of the array
     unsigned int length;
 } ParkingLot;
 
 /**
  * @brief Initialize a new parking lot with given length
  * 
- * This arry is allocated on the heap, so it must be freed after use with `free_parking_lot()`.
+ * This array is allocated on the heap, so it must be free'd after use with
+ * `free_parking_lot()`.
  * 
  * @param length[in] Length of the parking lot
  * @return ParkingLot Newly initialized parking lot
@@ -32,7 +33,7 @@ ParkingLot init_parking_lot(unsigned int length);
 /**
  * @brief Free the memory allocated for the parking lot
  * 
- * @param parking_lot[in] Given parking lot
+ * @param parking_lot[in/out] Parking lot to delete
  */
 void free_parking_lot(ParkingLot *p_parking_lot);
 
@@ -45,21 +46,22 @@ void free_parking_lot(ParkingLot *p_parking_lot);
 unsigned int get_occupancy(ParkingLot parking_lot);
 
 /**
- * @brief Determine whether there are free spots in `parking_lot`
+ * @brief Determine whether there are free spots in the parking lot
  * 
  * @param parking_lot[in] Given parking lot
- * @return bool whether there is at least one free spot
+ * @return true At least 1 free spot available
+ * @return false Parking lot is completely occupied
  */
 bool room_available(ParkingLot parking_lot);
 
 /**
- * @brief Find any empty free spot in `parking_lot`
+ * @brief Find any empty free spot in the parking lot
  * 
  * In case there are no free spots, return -1. Otherwise return the index of
  * a free spot.
  *
  * @param parking_lot[in] Given parking lot 
- * @return int Index to a free parking space
+ * @return int Index to a free parking space or -1 if no space is available
  */
 int find_empty_space(ParkingLot parking_lot);
 
