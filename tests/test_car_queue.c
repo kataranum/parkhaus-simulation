@@ -24,7 +24,7 @@ void test_queue_delete(void) {
     // make long queue to increase chance of SEGFAULT triggering if something
     // wrong is going on
     const int QUEUE_LEN = 100;
-    for (int i = 0; QUEUE_LEN; i++) {
+    for (int i = 0; i < QUEUE_LEN; i++) {
         enqueue(&q, car);
     }
 
