@@ -1,4 +1,6 @@
 #include <parse_num.h>
+#include <limits.h>
+#include <stdlib.h>
 
 bool parse_uint(const char *str, unsigned int *p_val)
 {

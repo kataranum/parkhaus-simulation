@@ -8,30 +8,8 @@
 #ifndef STATISTICS_H
 #define STATISTICS_H
 
-/*---------------------------------------------------------------*/
-/* Statistics state                                              */
-/*---------------------------------------------------------------*/
-typedef struct {
-    FILE *log_file;
-
-    /* Occupancy */
-    int sum_occupancy;
-
-    /* Waiting time */
-    int sum_waiting_time;
-
-    /* Queue statistics */
-    int sum_queue_length;
-    int max_queue_length;
-
-    /* Full occupancy */
-    int full_occupancy_steps;
-
-    /* Finished cars */
-    int finished_cars;
-
-} Statistics;
-
+#include <stdio.h>
+#include <sim_data.h>
 
 /*---------------------------------------------------------------*/
 /* Initialization                                                */
@@ -62,7 +40,7 @@ int init_statistics(Statistics *stats, const char *filename);
 * @param[in] stats pointer auf Statistiks struct
 */
 
-void output_timestep_statistics(Statistics *stats,struct SimulationData simulation_data);
+void output_timestep_statistics(Statistics *stats, SimulationData simulation_data);
 
 /*---------------------------------------------------------------*/
 /* End statistics output                                         */

@@ -1,4 +1,5 @@
-#include "../inc/car_queue.h"
+#include <car_queue.h>
+#include <stdlib.h>
 
 CarQueue queue_init()
 {
@@ -71,7 +72,7 @@ bool dequeue(CarQueue *p_queue, Car *p_car)
     return true;
 }
 
-bool is_empty(CarQueue queue)
+bool queue_empty(CarQueue queue)
 {
     return queue.length == 0;
 }

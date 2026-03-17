@@ -1,4 +1,7 @@
-#include "../inc/simulation.h"
+#include <simulation.h>
+#include <stdlib.h>
+#include <statistics.h>
+#include <util.h>
 
 void run_simulation(InputParams params, Statistics *p_stats)
 {
@@ -22,7 +25,7 @@ void run_simulation(InputParams params, Statistics *p_stats)
         remove_due_cars(simulation_data);
         park_waiting_cars(simulation_data);
 
-        output_timestep_statistics(simulation_data);
+        output_timestep_statistics(simulation_data.p_stats, simulation_data);
     }
 
     free_parking_lot(&simulation_data.parking_lot);
@@ -37,12 +40,12 @@ void remove_due_cars(SimulationData simulation_data)
     {
         Car car = parking_lot.p_array[i];
 
-        if (is_empty(car))
+        if (car_empty(car))
         {
             continue;
         }
 
-        int park_duration = simulation_data.current_step - car.time_arrival;
+        int park_duration = simulation_data.current_step - car.time_arrival_park;
 
         if (park_duration < car.time_park_duration)
         {
@@ -63,13 +66,13 @@ void park_waiting_cars(SimulationData simulation_data)
     {
         Car new_car;
 
-        if (dequeue(&waiting_cars, &new_cars) == 0)
+        if (dequeue(&waiting_cars, &new_car) == 0)
         {
             // No more cars waiting in queue
             return;
         }
 
-        new_car.arrival_time_park = simulation_data.current_step;
+        new_car.time_arrival_park = simulation_data.current_step;
 
         int available_spot = find_empty_space(parking_lot);
         // statistics_car_arrive()
@@ -86,9 +89,9 @@ void get_new_cars_arriving(SimulationData simulation_data)
         return;
     }
 
-    Car new_car = init_new_car();
+    Car new_car = init_new_car(simulation_data.params);
     new_car.time_arrival_queue = simulation_data.current_step;
-    enqueue(&simulation_data.queue, new_car);
+    enqueue(&simulation_data.waiting_cars, new_car);
 
     //statistics_car_enqueue();
 }

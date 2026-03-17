@@ -6,6 +6,8 @@
 #ifndef PARKING_LOT_H
 #define PARKING_LOT_H
 
+#include <car.h>
+
 /**
  * @brief All values related to a parking lot.
  * 

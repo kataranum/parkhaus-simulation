@@ -1,5 +1,5 @@
-#include <../inc/util.h>
-#define RAND_MAX 2147483647
+#include <util.h>
+#include <stdlib.h>
 
 float frand()
 {

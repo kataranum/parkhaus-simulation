@@ -1,6 +1,8 @@
-#include "../inc/parking_lot.h"
+#include <parking_lot.h>
+#include <stdlib.h>
+#include <stdio.h>
 
-ParkingLot init_parking_lot(unsigned int length);
+ParkingLot init_parking_lot(unsigned int length)
 {
     ParkingLot parking_lot;
     parking_lot.p_array = malloc(length * sizeof(Car));
@@ -26,7 +28,7 @@ int get_occupancy(ParkingLot parking_lot)
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
         Car car = parking_lot.p_array[i];
-        if (!is_empty(car))
+        if (!car_empty(car))
         {
             occupancy++;
         }
@@ -39,7 +41,7 @@ int room_available(ParkingLot parking_lot)
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
         Car car = parking_lot.p_array[i];
-        if (is_empty(car))
+        if (car_empty(car))
         {
             return true;
         }
@@ -52,7 +54,7 @@ int find_empty_space(ParkingLot parking_lot)
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
         Car car = parking_lot.p_array[i];
-        if (is_empty(car))
+        if (car_empty(car))
         {
             return i;
         }
