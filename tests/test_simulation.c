@@ -121,7 +121,6 @@ void test_park_waiting_cars(void) {
     park_waiting_cars(&data);
 
     // all spots should be full now
-    printf("len: %d\n", data.waiting_cars.length);
     assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
     for (int i = 0; i < PARK_NUM_SPACES; i++) {
         Car car = data.parking_lot.p_array[i];

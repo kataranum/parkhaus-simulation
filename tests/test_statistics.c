@@ -224,23 +224,14 @@ void test_output_total_statistics()
 }
 int main()
 {
-    printf("a\n");
     test_init_statistics();
-    printf("b\n");
     test_init_statistics_wrong();
-    printf("c\n");
     test_statistics_car_leave_once();
-    printf("d\n");
     test_statistics_car_leave_multiple();
-    printf("e\n");
     test_statistics_car_arrive_once();
-    printf("f\n");
     test_statistics_car_arrive_multiple();
-    printf("g\n");
     test_output_timestep_statistics();
-    printf("h\n");
     test_output_total_statistics();
-    printf("i\n");
 
     printf("Alle Tests erfolgreich bestanden!\n");
 
