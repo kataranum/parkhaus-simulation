@@ -23,20 +23,6 @@ bool read_user_text(char *text, size_t size)
     return true;
 }
 
-/*
-```PSEUDOCODE
-LOOP:
-    input = READ_INPUT
-
-    IF is_parsable(input):
-        RETURN input AS unsigned int;
-    END IF
-
-    PRINT "invalid uint"
-END LOOP
-```
-*/
-
 /**
  * @brief Prompt user for a valid unsigned int input
  * @return unsigned int value entered by the user
@@ -63,24 +49,6 @@ unsigned int input_valid_uint(void)
     }
 
 }
-
-/*
-```PSEUDOCODE
-LOOP:
-    input = READ_INPUT
-
-    IF is_empty(input):
-        RETURN time(NULL);
-    END IF
-
-    IF is_parsable(input):
-        RETURN input AS unsigned long;
-    END IF
-
-    PRINT "invalid ulong"
-END LOOP
-```
-*/
 
 /**
  * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
@@ -112,28 +80,6 @@ unsigned long input_valid_seed(void)
         return value;
     }
 }
-
-/*
-```PSEUDOCODE
-LOOP:
-    input = READ_INPUT
-
-    IF !is_parsable(input):
-        PRINT "invalid float"
-        CONTINUE;
-    END IF
-
-    value = input AS float;
-
-    IF value < 0.0 OR value > 100.0:
-        PRINT "value is outside allowed range (0% - 100%)"
-        CONTINUE;
-    END IF
-
-    RETURN value;
-END LOOP
-```
-*/
 
 /**
  * @brief Prompt user for a valid percentage input (0 - 100)
@@ -167,29 +113,6 @@ float input_valid_percentage(void)
     }
 }
 
-/*
-```PSEUDOCODE
-InputParams params;
-
-PRINT "Please input number of parking spaces"
-params.park_num_spaces = input_valid_uint();
-
-PRINT "Please input maximum number of timesteps that cars will park for"
-params.park_max_time = input_valid_uint();
-
-PRINT "Please enter a percentage chance of cars arriving on a new timestep"
-float percentage = input_valid_percentage();
-params.park_chance_arrive = percentage / 100.0;
-
-PRINT "Please input how many timesteps should be simulated"
-params.total_time_steps = input_valid_uint();
-
-PRINT "Enter seed (leave empty for random seed)"
-params.rng_seed = input_valid_seed();
-
-RETURN params
-```
-*/
 InputParams get_user_input(void)
 {
     InputParams params;
