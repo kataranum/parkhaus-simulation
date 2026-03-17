@@ -52,6 +52,7 @@ void test_enqueue(void) {
 
     assert(q.length == 0);
 
+    // check enqueueing step by step
     const int AMOUNT_CARS = 10;
     for (int id = 0; id < AMOUNT_CARS; id++) {
         Car car;
@@ -62,7 +63,28 @@ void test_enqueue(void) {
 
         assert(q.p_front->car.id == 0);
         assert(q.p_back->car.id == id);
+
+        assert(q.p_back->p_behind == NULL);
     }
+
+    // check queue in final form
+    int id = 0;
+    CarNode *p_node = q.p_front;
+    while (p_node != NULL) {
+        assert(p_node->car.id == id);
+
+        if (id < AMOUNT_CARS - 1) {
+            assert(p_node->p_behind != NULL);
+        }
+        else {
+            assert(p_node->p_behind == NULL);
+        }
+
+        p_node = p_node->p_behind;
+        id++;
+    }
+
+    assert(id == AMOUNT_CARS);
 
     queue_delete(&q);
 }
