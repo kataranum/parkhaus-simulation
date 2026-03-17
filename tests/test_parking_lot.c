@@ -52,6 +52,7 @@ void test_get_occupancy_after_parking()
     ParkingLot lot = init_parking_lot(5);
 
     Car car;
+    car.id = 1;
 
     lot.p_array[0] = car;
 
