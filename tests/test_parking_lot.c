@@ -1,8 +1,8 @@
 #include <assert.h>
 #include <stdbool.h>
 #include <stdio.h>
-#include "../inc/parking_lot.h"
-#include "../inc/car.h"
+#include <parking_lot.h>
+#include <car.h>
 
 // Test init_parking_lot 
 void test_init_parking_lot()
