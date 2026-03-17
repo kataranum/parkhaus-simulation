@@ -47,7 +47,7 @@ unsigned int input_valid_uint(const char *prompt_str)
         unsigned int value = 0;
         if ( ! parse_uint(input, &value) )
         {
-            printf("invalid uint");
+            printf("invalid uint\n");
             continue;
         }
         
@@ -83,7 +83,7 @@ unsigned long input_valid_seed(const char *prompt_str)
         unsigned long value = 0;
         if ( ! parse_ulong(input, &value) )
         {
-            printf("invalid ulong");
+            printf("invalid ulong\n");
             continue;
         }
         
