@@ -36,7 +36,7 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
     //Funktions Variable
     float avg_waiting_time_timestep = 0.0;
     int current_occupancy = get_occupancy(simulation_data.parking_lot);
-    float occupancy_percent = ((float)current_occupancy / simulation_data.params.park_num_spaces) * 100.0;
+    float occupancy_percent = ((float)current_occupancy / (float)simulation_data.params.park_num_spaces) * 100.0;
 
     //Stats Variablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
@@ -54,7 +54,7 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
         stats->full_occupancy_steps += 1; 
     }
     //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
-    avg_waiting_time_timestep = stats->sum_waiting_time / stats->sum_occupancy;
+    avg_waiting_time_timestep = (float)stats->sum_waiting_time / (float)stats->sum_occupancy;
 
     //Erstelle Ausgabe-String
     char buffer[1024];
