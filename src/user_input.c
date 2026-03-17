@@ -29,9 +29,10 @@ bool read_user_text(char *text, size_t size)
  * @brief Prompt user for a valid unsigned int input
  *
  * @param prompt_str[in] Prompt to print
+ * @param min[in] Minimum valid value
  * @return unsigned int value entered by the user
  */
-unsigned int input_valid_uint(const char *prompt_str)
+unsigned int input_valid_uint(const char *prompt_str, unsigned int min)
 {
     while (true)
     {
@@ -48,6 +49,12 @@ unsigned int input_valid_uint(const char *prompt_str)
         if ( ! parse_uint(input, &value) )
         {
             printf("invalid uint\n");
+            continue;
+        }
+
+        if (value < min)
+        {
+            printf("Value needs to be at least %d.\n", min);
             continue;
         }
         
@@ -131,13 +138,13 @@ InputParams get_user_input(void)
 {
     InputParams params;
 
-    params.park_num_spaces = input_valid_uint("Please input number of parking spaces: ");   
-    params.park_max_time = input_valid_uint("Please input maximum number of timesteps that cars will park for: "); 
+    params.park_num_spaces = input_valid_uint("Please input number of parking spaces: ", 1);
+    params.park_max_time = input_valid_uint("Please input maximum number of timesteps that cars will park for: ", 0);
 
     float percentage = input_valid_percentage("Please enter a percentage chance of cars arriving on a new timestep (0 - 100): ");
     params.park_chance_arrive = percentage / 100.0;
 
-    params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ");
+    params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ", 0);
     params.rng_seed = input_valid_seed("Enter seed (leave empty for random seed): ");
 
     return params;
