@@ -83,6 +83,18 @@ keine Fehlercodes definiert haben, haben wir uns für Bools entschieden.
 Eine der größten Herausforderungen im Projekt war der Zeitdruck, da nicht alle Teammitglieder jeden Tag am Projekt arbeiten konnten. Dadurch haben sich manche Aufgaben etwas nach hinten verschoben, vor allem gegen Ende der Bearbeitungszeit.
 Außerdem haben Pull Requests teilweise länger gedauert, weil Änderungen nicht immer sofort geprüft und gemergt werden konnten. Das hat stellenweise den Arbeitsfluss gebremst, besonders wenn Aufgaben voneinander abhängig waren.
 
+Da das Projekt nicht iterativ entwickelt wurde, konnten wir erst gegen Ende die
+Funktionalität richtig überprüfen. Zum Glück waren keine großen Änderrungen
+nötig. Dadurch war auch zum Großteil kein gescheites Linting für uns möglich.
+
+Wegen fehlenden CMake Kenntnissen war die Bereitstellung von der Konfiguration
+auch ein wenig unordentlich, und konnte erst gegen Ende Ordnungsgemäß gemacht
+werden. Es gab sehr lang parallel zwei "Versionen" vom Projekt.
+Auf Branch `main` auf dem alle gearbeitet haben, und Branch `configure-cmake`
+der regelmäßig mit main synchronisiert wurde, und dort alle Kompilerfehler
+behoben wurden. Die CMake Konfiguration konnte erst am Ende in main gemerged
+werden.
+
 ## Was ist Ihnen im Team einfach gefallen bzw. sehr gut gelungen?
 
 Sehr gut funktioniert haben die regelmäßigen Team‑Besprechungen, in denen wir den aktuellen Stand, offene Aufgaben und Probleme besprochen haben. Dadurch waren alle immer auf dem gleichen Stand.
