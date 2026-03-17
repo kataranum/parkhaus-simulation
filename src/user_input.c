@@ -144,7 +144,7 @@ InputParams get_user_input(void)
     float percentage = input_valid_percentage("Please enter a percentage chance of cars arriving on a new timestep (0 - 100): ");
     params.park_chance_arrive = percentage / 100.0;
 
-    params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ", 0);
+    params.total_time_steps = input_valid_uint("Please input how many timesteps should be simulated: ", 1);
     params.rng_seed = input_valid_seed("Enter seed (leave empty for random seed): ");
 
     return params;
