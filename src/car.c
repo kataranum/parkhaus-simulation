@@ -1,18 +1,6 @@
 #include <car.h>
 #include <stdlib.h>
 
-/*
-```PSEUDOCODE
-Car car;
-
-car.id = get_unique_id();
-car.time_arrival_park = 0;
-car.time_arrival_queue = 0;
-car.time_park_duration = random_park_duration(params);
-
-RETURN car
-```
-*/
 Car init_new_car(InputParams params)
 {
     Car car;
