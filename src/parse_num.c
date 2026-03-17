@@ -47,8 +47,8 @@ bool parse_float(const char *str, float *p_val)
     char *end;
     float value = strtof(str, &end);
 
-    // ensure strtof succeeded
-    if (str == end)
+    // ensure strtof succeeded and value is a valid number (not NaN or INF)
+    if (str == end || !isfinite(value))
     {
         return false;
     }
@@ -56,12 +56,6 @@ bool parse_float(const char *str, float *p_val)
     // ensure whole string was parsed
     int parsed_len = (int) (end - str);
     if (strlen(str) != parsed_len)
-    {
-        return false;
-    }
-
-    // ensure float value is a number (not NaN or INF)
-    if (!isfinite(value))
     {
         return false;
     }
