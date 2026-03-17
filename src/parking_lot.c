@@ -5,7 +5,7 @@
 ParkingLot init_parking_lot(unsigned int length)
 {
     ParkingLot parking_lot;
-    parking_lot.p_array = malloc(length * sizeof(parking_lot.p_array));
+    parking_lot.p_array = malloc(length * sizeof(*parking_lot.p_array));
     if (parking_lot.p_array == NULL)
     {
         fprintf(stderr, "Error: Memory allocation failed for parking lot.\n");
