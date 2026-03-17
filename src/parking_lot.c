@@ -62,7 +62,7 @@ bool room_available(ParkingLot parking_lot)
     return false;
 }
 
-unsigned int find_empty_space(ParkingLot parking_lot)
+int find_empty_space(ParkingLot parking_lot)
 {
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {

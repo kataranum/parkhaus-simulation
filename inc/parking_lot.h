@@ -59,8 +59,8 @@ bool room_available(ParkingLot parking_lot);
  * a free spot.
  *
  * @param parking_lot[in] Given parking lot 
- * @return uint Index to a free parking space
+ * @return int Index to a free parking space
  */
-unsigned int find_empty_space(ParkingLot parking_lot);
+int find_empty_space(ParkingLot parking_lot);
 
 #endif
