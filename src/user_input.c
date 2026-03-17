@@ -11,7 +11,8 @@
  * @brief Read a line of text from stdin and remove the trailing newline character
  * @param text Buffer to store the input text
  * @param size Size of the buffer
- * @return 0 on success, 1 on failure
+ * @return true for valid input
+ * @return false for failed input
  */
 bool read_user_text(char *text, size_t size)
 {
@@ -26,6 +27,8 @@ bool read_user_text(char *text, size_t size)
 
 /**
  * @brief Prompt user for a valid unsigned int input
+ *
+ * @param prompt_str[in] Prompt to print
  * @return unsigned int value entered by the user
  */
 unsigned int input_valid_uint(const char *prompt_str)
@@ -55,6 +58,8 @@ unsigned int input_valid_uint(const char *prompt_str)
 
 /**
  * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
+ *
+ * @param prompt_str[in] Prompt to print
  * @return unsigned long seed value
  */
 unsigned long input_valid_seed(const char *prompt_str)
@@ -88,6 +93,8 @@ unsigned long input_valid_seed(const char *prompt_str)
 
 /**
  * @brief Prompt user for a valid percentage input (0 - 100)
+ *
+ * @param prompt_str[in] Prompt to print
  * @return float value entered by the user
  */
 float input_valid_percentage(const char *prompt_str)
