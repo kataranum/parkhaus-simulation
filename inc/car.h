@@ -38,6 +38,13 @@ typedef struct
 Car init_new_car(InputParams params);
 
 /**
+ * @brief Initialize a car flagged as empty
+ *
+ * @return Car Car with ID set to -1 and all other fields to reasonable defaults
+ */
+Car init_empty_car();
+
+/**
  * @brief Get a new unique ID for Car
  *
  * Should never return the same ID twice.
