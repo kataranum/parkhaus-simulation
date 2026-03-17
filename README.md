@@ -35,3 +35,18 @@ CMake sollte ebenfalls automatisch alle Unit-Tests kompilieren und ausführen.
 
 Die ausführbare Datei ist dann im Build-Ordner als `parkhaus` oder
 `parkhaus.exe` zu finden.
+
+## Anmerkung zu Versionierung & Teamverteilung
+
+Gegen Ende des Projekts war kataranum (Kevin Müller) zuständig für Kleinigkeiten
+wie Anpassen der Formattierung auf die Conventions der Vorlesung. Daher
+erscheint das Bild von `git blame` ein wenig verfälscht, als hätte kataranum
+mehr gemacht, als tatsächlich stimmt.
+
+Hier die gedachte Teamverteilung:
+
+**Bert-gg**: Car, CarQueue, ParkingLot, Util, User input
+
+**LuisDentler**: Statistics, Statistics & ParkingLot Unit tests, Ausgabe
+
+**kataranum**: Simulation, Parser, restliche Unit Tests, CMake, Fehlerbehebung
