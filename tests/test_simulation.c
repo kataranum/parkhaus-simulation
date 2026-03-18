@@ -139,6 +139,8 @@ void test_park_waiting_cars(void) {
         assert(car.time_arrival_park == TIMESTEP_DELTA);
     }
 
+    assert(data.p_stats->sum_waiting_time == TIMESTEP_DELTA * PARK_NUM_SPACES);
+
     // calling park_waiting_cars() again shouldn't change anything
     park_waiting_cars(&data);
     assert(data.waiting_cars.length == EXCESS_CARS_AMOUNT);
@@ -149,6 +151,8 @@ void test_park_waiting_cars(void) {
         assert(car.id < PARK_NUM_SPACES);
         assert(car.time_arrival_park == TIMESTEP_DELTA);
     }
+
+    assert(data.p_stats->sum_waiting_time == TIMESTEP_DELTA * PARK_NUM_SPACES);
 
     free_simdata(&data);
 }
