@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 #include <simulation.h>
+#include <statistics.h>
 #include <exit_codes.h>
 
 const long RNG_SEEDS[] = {
@@ -37,11 +38,15 @@ SimulationData get_simdata_default(long seed) {
     params.total_time_steps = TOTAL_TIME_STEPS;
     params.rng_seed = seed;
 
-    Statistics *p_stats = calloc(1, sizeof(*p_stats));
-
+    Statistics *p_stats = malloc(sizeof(*p_stats));
     if (p_stats == NULL)
     {
         exit(EXIT_FAIL_MALLOC);
+    }
+
+    if (init_statistics(p_stats, "test_log.txt") != 0)
+    {
+        exit(EXIT_FAIL_STATS);
     }
 
     SimulationData data;
