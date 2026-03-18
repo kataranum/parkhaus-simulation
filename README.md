@@ -12,15 +12,26 @@ Gruppenmitglieder:
 - Luis Dentler (LuisDentler)
 - Kevin Müller (kataranum)
 
-Wir haben alle nötigen Funktionen C-Headerdateien definiert und vollständig
-dokumentiert.
-
-Jede definierte Funktion hat ebenfalls im C-File ausführlichen Pseudocode.
+Wir habe den Pseudocode aus Teil 1 gelöscht, weil der C-Code jetzt vorhanden ist.
+Da der C-Code verbessert wurde, macht es keinen Sinn den veralteten Pseudocode zu behalten.
 
 Die Flowcharts sind unter `flowcharts/`
 
 Zusätzliche Dokumentation, die nicht spezifisch auf eine Funktion ist, ist unter
 `docs/`.
+
+## Unit tests
+
+So gut wie jede Funktion hat mindestens einen Unit Test. Ausnahmen sind User
+Input und Die Hauptsimulationsschleife `run_simulation`.
+
+User Input ist allgemein schwer automatisiert zu testen, aber Unterfunktionen
+wie die String-zu-Zahl Parser haben Unit tests. Nur die Nutzereingabe selbst
+nicht.
+
+Die Hauptschleife `run_simulation` ist praktisch das gesamte Programm und ruft
+nur andere von uns implementiere Funktionen auf. Die aufgerufenen Funktionen
+haben dahingegen eigene Unit Tests.
 
 ## Build mit CMake
 
