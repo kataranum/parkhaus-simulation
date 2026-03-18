@@ -12,10 +12,8 @@ Gruppenmitglieder:
 - Luis Dentler (LuisDentler)
 - Kevin Müller (kataranum)
 
-Wir haben alle nötigen Funktionen C-Headerdateien definiert und vollständig
-dokumentiert.
-
-Jede definierte Funktion hat ebenfalls im C-File ausführlichen Pseudocode.
+Wir habe den Pseudocode aus Teil 1 gelöscht, weil der C-Code jetzt vorhanden ist.
+Da der C-Code verbessert wurde, macht es keinen Sinn den veralteten Pseudocode zu behalten.
 
 Die Flowcharts sind unter `flowcharts/`
 
