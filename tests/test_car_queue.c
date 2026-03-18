@@ -24,7 +24,7 @@ void test_queue_delete(void) {
     // make long queue to increase chance of SEGFAULT triggering if something
     // wrong is going on
     const int QUEUE_LEN = 100;
-    for (int i = 0; QUEUE_LEN; i++) {
+    for (int i = 0; i < QUEUE_LEN; i++) {
         enqueue(&q, car);
     }
 
@@ -52,17 +52,39 @@ void test_enqueue(void) {
 
     assert(q.length == 0);
 
+    // check enqueueing step by step
     const int AMOUNT_CARS = 10;
     for (int id = 0; id < AMOUNT_CARS; id++) {
         Car car;
         car.id = id;
         enqueue(&q, car);
 
-        assert(q.length == id + 1),
+        assert((int)q.length == id + 1),
 
         assert(q.p_front->car.id == 0);
         assert(q.p_back->car.id == id);
+
+        assert(q.p_back->p_behind == NULL);
     }
+
+    // check queue in final form
+    int id = 0;
+    CarNode *p_node = q.p_front;
+    while (p_node != NULL) {
+        assert(p_node->car.id == id);
+
+        if (id < AMOUNT_CARS - 1) {
+            assert(p_node->p_behind != NULL);
+        }
+        else {
+            assert(p_node->p_behind == NULL);
+        }
+
+        p_node = p_node->p_behind;
+        id++;
+    }
+
+    assert(id == AMOUNT_CARS);
 
     queue_delete(&q);
 }
@@ -85,7 +107,7 @@ void test_dequeue(void) {
 
         assert(result);
         assert(dequeued.id == i);
-        assert(q.length == AMOUNT_CARS - i - 1);
+        assert((int)q.length == AMOUNT_CARS - i - 1);
     }
 
     const int SOME_ID = 123;

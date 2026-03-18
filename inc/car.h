@@ -20,7 +20,7 @@
  */
 typedef struct 
 {
-    unsigned int id;
+    int id;
     // The time of arrival at the parking lot, in timesteps.
     int time_arrival_park;
     // The time of arrival at the queue, in timesteps.

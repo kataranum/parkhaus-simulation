@@ -40,17 +40,17 @@ void free_parking_lot(ParkingLot *p_parking_lot);
  * @brief Get the amount of occupied parking spots
  * 
  * @param parking_lot[in] Given parking lot
- * @return int Amount of occupied parking spots
+ * @return uint Amount of occupied parking spots
  */
-int get_occupancy(ParkingLot parking_lot);
+unsigned int get_occupancy(ParkingLot parking_lot);
 
 /**
  * @brief Determine whether there are free spots in `parking_lot`
  * 
  * @param parking_lot[in] Given parking lot
- * @return int (boolean) whether there is at least one free spot
+ * @return bool whether there is at least one free spot
  */
-int room_available(ParkingLot parking_lot);
+bool room_available(ParkingLot parking_lot);
 
 /**
  * @brief Find any empty free spot in `parking_lot`

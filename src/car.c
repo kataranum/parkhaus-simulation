@@ -13,24 +13,22 @@ Car init_new_car(InputParams params)
 }
 
 int get_unique_id() {
-    // TODO
+    static int GLOBAL_ID = 0;
+
+    return GLOBAL_ID++;
 }
 
-/*
-```PSEUDOCODE
-RETURN (rand() % (params.max_park_duration - 1)) + 1
-```
-*/
 int random_park_duration(InputParams params)
 {
+    // return default for invalid values
+    if (params.park_max_time <= 1)
+    {
+        return 1;
+    }
+
     return (rand() % (params.park_max_time - 1)) + 1;
 }
 
-/*
-```PSEUDOCODE
-RETURN car.id == -1
-```
-*/
 bool car_empty(Car car) {
-    return car.id == -1;
+    return car.id < 0;
 }

@@ -106,7 +106,7 @@ float input_valid_percentage(void)
         
         if (value < 0.0 || value > 100.0)
         {
-            printf("value is outside allowed range (0\% - 100\%)\n");
+            printf("value is outside allowed range (0%% - 100%%)\n");
             continue;
         }
         

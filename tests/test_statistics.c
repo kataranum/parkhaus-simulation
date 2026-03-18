@@ -22,7 +22,7 @@ SimulationData get_simdata_default(long seed) {
     params.total_time_steps = TOTAL_TIME_STEPS;
     params.rng_seed = seed;
 
-    Statistics *p_stats = malloc(sizeof(p_stats));
+    Statistics *p_stats = malloc(sizeof(*p_stats));
 
     SimulationData data;
     data.params = params;
@@ -62,11 +62,14 @@ void test_init_statistics()
 void test_init_statistics_wrong()
 {
     //Init without stats
-    Statistics stats;
-    int result = init_statistics(NULL, "test_log.txt");
+    int result_1 = init_statistics(NULL, "test_log.txt");
 
-    assert(result == -1);
-    fclose(stats.log_file);
+    assert(result_1 == -1);
+
+    Statistics stats;
+    int result_2 = init_statistics(&stats, NULL);
+
+    assert(result_2 == -1);
 }
 
 void test_statistics_car_leave_once()

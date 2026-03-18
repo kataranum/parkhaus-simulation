@@ -24,7 +24,7 @@ typedef struct {
 
     /* Queue statistics */
     int sum_queue_length;
-    int max_queue_length;
+    unsigned int max_queue_length;
 
     /* Full occupancy */
     int full_occupancy_steps;
