@@ -20,6 +20,19 @@ Die Flowcharts sind unter `flowcharts/`
 Zusätzliche Dokumentation, die nicht spezifisch auf eine Funktion ist, ist unter
 `docs/`.
 
+## Unit tests
+
+So gut wie jede Funktion hat mindestens einen Unit Test. Ausnahmen sind User
+Input und Die Hauptsimulationsschleife `run_simulation`.
+
+User Input ist allgemein schwer automatisiert zu testen, aber Unterfunktionen
+wie die String-zu-Zahl Parser haben Unit tests. Nur die Nutzereingabe selbst
+nicht.
+
+Die Hauptschleife `run_simulation` ist praktisch das gesamte Programm und ruft
+nur andere von uns implementiere Funktionen auf. Die aufgerufenen Funktionen
+haben dahingegen eigene Unit Tests.
+
 ## Build mit CMake
 
 Das Projekt kann mit CMake kompiliert werden. Dafür folgende Befehle ausführen:
