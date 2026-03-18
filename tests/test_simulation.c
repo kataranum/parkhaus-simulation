@@ -37,7 +37,7 @@ SimulationData get_simdata_default(long seed) {
     params.total_time_steps = TOTAL_TIME_STEPS;
     params.rng_seed = seed;
 
-    Statistics *p_stats = malloc(sizeof(*p_stats));
+    Statistics *p_stats = calloc(1, sizeof(*p_stats));
 
     if (p_stats == NULL)
     {
@@ -117,13 +117,16 @@ void test_park_waiting_cars(void) {
     SimulationData data = get_simdata_default(0);
 
     const unsigned int EXCESS_CARS_AMOUNT = 5;
+    const int TIMESTEP_DELTA = 5;
     
     // make parking lot completely full
     for (unsigned int i = 0; i < PARK_NUM_SPACES + EXCESS_CARS_AMOUNT; i++) {
         Car car = init_new_car(data.params);
         car.id = i;
+        car.time_arrival_queue = 0;
         enqueue(&data.waiting_cars, car);
     }
+    data.current_step = TIMESTEP_DELTA;
     park_waiting_cars(&data);
 
     // all spots should be full now
@@ -133,7 +136,10 @@ void test_park_waiting_cars(void) {
 
         assert( ! car_empty(car) );
         assert(car.id < PARK_NUM_SPACES);
+        assert(car.time_arrival_park == TIMESTEP_DELTA);
     }
+
+    assert(data.p_stats->sum_waiting_time == TIMESTEP_DELTA * PARK_NUM_SPACES);
 
     // calling park_waiting_cars() again shouldn't change anything
     park_waiting_cars(&data);
@@ -143,7 +149,10 @@ void test_park_waiting_cars(void) {
 
         assert( ! car_empty(car) );
         assert(car.id < PARK_NUM_SPACES);
+        assert(car.time_arrival_park == TIMESTEP_DELTA);
     }
+
+    assert(data.p_stats->sum_waiting_time == TIMESTEP_DELTA * PARK_NUM_SPACES);
 
     free_simdata(&data);
 }

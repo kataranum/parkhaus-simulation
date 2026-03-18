@@ -74,6 +74,8 @@ void park_waiting_cars(SimulationData *p_simulation_data)
 
         new_car.time_arrival_park = p_simulation_data->current_step;
 
+        statistics_car_arrive(p_simulation_data->p_stats, new_car);
+
         int available_spot = find_empty_space(*p_parking_lot);
         p_parking_lot->p_array[available_spot] = new_car;
     }
