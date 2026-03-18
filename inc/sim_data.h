@@ -32,6 +32,10 @@ typedef struct
 
     /* Finished cars */
     int finished_cars;
+
+    /*Arrived cars*/
+    int sum_arrived_cars;
+
 } Statistics;
 
 /**
