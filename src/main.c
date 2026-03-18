@@ -1,6 +1,7 @@
 #include <user_input.h>
 #include <statistics.h>
 #include <simulation.h>
+#include <exit_codes.h>
 
 int main(void) {
     InputParams params = get_user_input();
@@ -9,12 +10,12 @@ int main(void) {
     if ( init_statistics(&stats, "output.txt") != 0)
     {
         printf("Could not initialize statistics.\n");
-        return 1;
+        return EXIT_FAIL_STATS;
     }
 
     run_simulation(params, &stats);
 
     output_total_statistics(&stats, params);
 
-    return 0;
+    return EXIT_SUCCESS;
 }

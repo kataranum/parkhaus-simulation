@@ -53,7 +53,7 @@ void remove_due_cars(SimulationData *p_simulation_data)
         }
 
         statistics_car_leave(p_simulation_data->p_stats);
-        p_parking_lot->p_array[i].id = -1; // TODO: Put this in function or something
+        p_parking_lot->p_array[i] = init_empty_car();
     }
 }
 

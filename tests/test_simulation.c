@@ -3,6 +3,7 @@
 #include <stdbool.h>
 #include <assert.h>
 #include <simulation.h>
+#include <exit_codes.h>
 
 const long RNG_SEEDS[] = {
     123,
@@ -37,6 +38,11 @@ SimulationData get_simdata_default(long seed) {
     params.rng_seed = seed;
 
     Statistics *p_stats = malloc(sizeof(*p_stats));
+
+    if (p_stats == NULL)
+    {
+        exit(EXIT_FAIL_MALLOC);
+    }
 
     SimulationData data;
     data.params = params;

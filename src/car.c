@@ -12,6 +12,15 @@ Car init_new_car(InputParams params)
     return car;
 }
 
+Car init_empty_car()
+{
+    Car car = { 0 };
+
+    car.id = -1;
+
+    return car;
+}
+
 int get_unique_id() {
     static int GLOBAL_ID = 0;
 
