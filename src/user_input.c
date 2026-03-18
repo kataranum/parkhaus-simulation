@@ -9,10 +9,10 @@
 
 /**
  * @brief Read a line of text from stdin and remove the trailing newline character
- * @param text Buffer to store the input text
- * @param size Size of the buffer
- * @return true for valid input
- * @return false for failed input
+ *
+ * @param[out] text Buffer to store the input text
+ * @param[in]  size Size of the buffer
+ * @return          Success
  */
 bool read_user_text(char *text, size_t size)
 {
@@ -28,9 +28,9 @@ bool read_user_text(char *text, size_t size)
 /**
  * @brief Prompt user for a valid unsigned int input
  *
- * @param prompt_str[in] Prompt to print
- * @param min[in] Minimum valid value
- * @return unsigned int value entered by the user
+ * @param[in] prompt_str Prompt to print
+ * @param[in] min        Minimum valid value
+ * @return               Value entered by the user
  */
 unsigned int input_valid_uint(const char *prompt_str, unsigned int min)
 {
@@ -66,8 +66,8 @@ unsigned int input_valid_uint(const char *prompt_str, unsigned int min)
 /**
  * @brief Prompt user for a valid seed input (unsigned long) or use current time if empty
  *
- * @param prompt_str[in] Prompt to print
- * @return unsigned long seed value
+ * @param[in] prompt_str Prompt to print
+ * @return               Seed value
  */
 unsigned long input_valid_seed(const char *prompt_str)
 {
@@ -101,8 +101,8 @@ unsigned long input_valid_seed(const char *prompt_str)
 /**
  * @brief Prompt user for a valid percentage input (0 - 100)
  *
- * @param prompt_str[in] Prompt to print
- * @return float value entered by the user
+ * @param[in] prompt_str Prompt to print
+ * @return               Value entered by the user
  */
 float input_valid_percentage(const char *prompt_str)
 {

@@ -6,6 +6,7 @@
 ParkingLot init_parking_lot(unsigned int length)
 {
     ParkingLot parking_lot;
+    
     parking_lot.p_array = malloc(length * sizeof(*parking_lot.p_array));
     if (parking_lot.p_array == NULL)
     {
@@ -34,6 +35,7 @@ void free_parking_lot(ParkingLot *p_parking_lot)
 unsigned int get_occupancy(ParkingLot parking_lot)
 {
     unsigned int occupancy = 0;
+
     for (unsigned int i = 0; i < parking_lot.length; i++)
     {
         Car car = parking_lot.p_array[i];
@@ -42,6 +44,7 @@ unsigned int get_occupancy(ParkingLot parking_lot)
             occupancy++;
         }
     }
+
     return occupancy;
 }
 
@@ -55,6 +58,7 @@ bool room_available(ParkingLot parking_lot)
             return true;
         }
     }
+
     return false;
 }
 
@@ -68,6 +72,6 @@ int find_empty_space(ParkingLot parking_lot)
             return i;
         }
     }
+
     return -1;
-    
 }

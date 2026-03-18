@@ -7,7 +7,6 @@
 #define CAR_H
 
 #include <user_input.h>
-
 #include <stdbool.h>
 
 /**
@@ -20,27 +19,28 @@
  */
 typedef struct 
 {
+    /// ID of car; "-1" indicating an invalid or "empty" car (in the context of parking_lot)
     int id;
-    // The time of arrival at the parking lot, in timesteps.
+    /// The time of arrival at the parking lot, in timesteps.
     int time_arrival_park;
-    // The time of arrival at the queue, in timesteps.
+    /// The time of arrival at the queue, in timesteps.
     int time_arrival_queue;
-    // The duration of parking, in timesteps.
+    /// The duration of parking, in timesteps.
     int time_park_duration;
 } Car;
 
 /**
  * @brief Initialize a new car with random ID and park duration
  * 
- * @param params[in] Input parameters
- * @return Car Newly initialized car
+ * @param[in] params Input parameters
+ * @return           Newly initialized car
  */
 Car init_new_car(InputParams params);
 
 /**
  * @brief Initialize a car flagged as empty
  *
- * @return Car Car with ID set to -1 and all other fields to reasonable defaults
+ * @return Car with ID set to -1 and all other fields to reasonable defaults
  */
 Car init_empty_car();
 
@@ -52,7 +52,7 @@ Car init_empty_car();
  * Internally, a static variable is incremented and returned every call, so the
  * returned value will always increase.
  * 
- * @return int New unique ID
+ * @return New unique ID
  */
 int get_unique_id();
 
@@ -62,18 +62,18 @@ int get_unique_id();
  * Returns a random int between 1 and MAX_PARK_TIME. The latter being the
  * maximum allowed park time for a car defined by the input parameters
  * 
- * @param params[in] Input parameters
- * @return int Number of timesteps that the car wants to park for
+ * @param[in] params Input parameters
+ * @return           Number of timesteps that the car wants to park for
  */
 int random_park_duration(InputParams params);
 
 /**
  * @brief Determine whether a parking space is empty
  * 
- * A parking space is empty if the id of the car is -1.
+ * A parking space is empty if the id of the car is negative.
  * 
- * @param car[in] Car to check
- * @return bool whether the parking space is empty
+ * @param[in] car Car to check
+ * @return        Whether car is invalid and interpreted as empty
  */
 bool car_empty(Car car);
 

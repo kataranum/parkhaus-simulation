@@ -8,19 +8,22 @@
 
 int init_statistics(Statistics *stats, const char *filename)
 {
-    //Richtige Parameterübergabe sicherstellen 
-    if ((stats == NULL) ||(filename == NULL))
+    // Richtige Parameterübergabe sicherstellen 
+    if ( (stats == NULL) || (filename == NULL) )
     {
         return -1;
     }
-    //Datei öffnen
+
+    // Datei öffnen
     stats->log_file = fopen(filename, "w");
-    //Überprüfen ob öffnen funktioniert hat 
+
+    // Überprüfen ob öffnen funktioniert hat 
     if (stats->log_file == NULL)
     {
         return -1;
     }
-    //VAriablen zurücksetzen 
+
+    // Variablen zurücksetzen 
     stats->sum_occupancy = 0;
     stats->sum_waiting_time = 0;
     stats->sum_queue_length = 0;
@@ -33,12 +36,12 @@ int init_statistics(Statistics *stats, const char *filename)
 
 void output_timestep_statistics(Statistics *stats, SimulationData simulation_data)
 {
-    //Funktions Variable
+    // Funktions Variable
     float avg_waiting_time_timestep = 0.0;
     int current_occupancy = get_occupancy(simulation_data.parking_lot);
     float occupancy_percent = ((float)current_occupancy / (float)simulation_data.params.park_num_spaces) * 100.0;
 
-    //Stats Variablen mit Werten von Timestep befüllen
+    // Stats Variablen mit Werten von Timestep befüllen
     stats->sum_occupancy += current_occupancy;
     stats->sum_queue_length += simulation_data.waiting_cars.length;
     
@@ -53,17 +56,20 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
     {
         stats->full_occupancy_steps += 1; 
     }
-    //Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
-    if (stats->sum_occupancy == 0) {
+    // Berechnung durchschnitliche Wartezeit(Gesamtwartezeit aller bisher
+    // geparkten Autos(sum_waiting_time) / Anzahl aller geparkten autos (sum_occupancy))
+    if (stats->sum_occupancy == 0)
+    {
         avg_waiting_time_timestep = 0.0;
     }
-    else {
+    else
+    {
         avg_waiting_time_timestep = (float)stats->sum_waiting_time / (float)stats->sum_occupancy;
     }
 
-    //Erstelle Ausgabe-String
+    // Erstelle Ausgabe-String
     char buffer[1024];
-    sprintf(buffer,
+    snprintf(buffer, sizeof(buffer),
         "------------------------------------------------------------\n"
         "SIMULATIONS-SCHRITT: %d / %d\n"
         "------------------------------------------------------------\n"
@@ -92,12 +98,12 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
 
         "Gesamt-Durchsatz:",
         stats->finished_cars
-        );
+    );
 
-    //Konselenausgabe
+    // Konselenausgabe
     printf("%s", buffer);
 
-    //File Ausgabe
+    // File Ausgabe
     if (stats->log_file != NULL)
     {
         fprintf(stats->log_file, "%s", buffer);
@@ -106,19 +112,22 @@ void output_timestep_statistics(Statistics *stats, SimulationData simulation_dat
 
 void output_total_statistics(Statistics *stats, InputParams params)
 {
-    //Funktionsvariablen 
+    // Funktionsvariablen 
     float avg_occupancy_percentage = 0.0;
     float avg_queue_length = 0.0;
     float avg_waiting_time = 0.0;
     float full_occupancy_percentage = 0.0;
 
-    //Berechnung der gesamten durchschnittlichen Auslastung ( ((Summe der Auslastungen(sum_occupancy) / Anzahl der Timesteps(total_time_steps)) / Anzahl gesamt Parkplätze(park_num_spaces) ) *100)
+    // Berechnung der gesamten durchschnittlichen Auslastung
+    // ( (Summe der Auslastungen / Anzahl der Timesteps) / Anzahl gesamt Parkplätze ) * 100
     avg_occupancy_percentage = ((stats->sum_occupancy / params.total_time_steps)/params.park_num_spaces)*100;
 
-    //Berechne durschnittliche Warteschlangenlänge(Länge der gesamten Wartenschlange(sum_queue_length) / Anzahl der gesamten Timesteps(total_time_steps))
+    // Berechne durschnittliche Warteschlangenlänge
+    // Länge der gesamten Wartenschlange / Anzahl der gesamten Timesteps
     avg_queue_length = stats->sum_queue_length / params.total_time_steps;
 
-    //Berechne durschnittliche Wartezeit (Summe aller Wartezeiten(sum_waiting_time) / Anzahl geparkter Autos (sum_occupancy))
+    // Berechne durschnittliche Wartezeit
+    // Summe aller Wartezeiten / Anzahl geparkter Autos
     if (stats->sum_occupancy == 0)
     {
         avg_waiting_time = 0.0;
@@ -131,11 +140,8 @@ void output_total_statistics(Statistics *stats, InputParams params)
     // Zeit mit Vollbelegung (stats.full_occupancy_steps) und prozentaler Anteil an gesamter Dauer(total_time_steps)
     full_occupancy_percentage = (stats->full_occupancy_steps / params.total_time_steps) *100;
 
-    // Ausgabe der Daten über Konsole
-   
-        
+    // Ausgabe der Daten über Konsole      
     char buffer[2048];
-
     snprintf(buffer, sizeof(buffer),
     "==================================================\n"
     "              PARKHAUS-SIMULATION\n"
@@ -195,27 +201,26 @@ void output_total_statistics(Statistics *stats, InputParams params)
     stats->finished_cars
     );
 
-    //Konsolenausgabe
+    // Konsolenausgabe
     printf("%s", buffer);
 
-    //Dateiausgabe
+    // Dateiausgabe
     if (stats->log_file != NULL)
     {
         fprintf(stats->log_file, "%s", buffer);
     }
 
-    //File ordnungsgemäß schließen
+    // File ordnungsgemäß schließen
     if (stats->log_file != NULL)
     {
         fclose(stats->log_file);
         stats->log_file = NULL;
     }
-
 }
 
 void statistics_car_leave(Statistics *stats)
 {
-    stats->finished_cars ++;
+    stats->finished_cars++;
 }
 
 void statistics_car_arrive(Statistics *stats, Car new_car)

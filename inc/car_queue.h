@@ -18,9 +18,9 @@
  * one car more in back of the queue. The backmost car has NULL for p_next.
  */
 typedef struct CarNode {
-    /** The car */
+    /// The car
     Car car;
-    /** Pointer to the car in back, NULL if backmost car */
+    /// Pointer to the car in back, NULL if backmost car
     struct CarNode *p_behind;
 } CarNode;
 
@@ -35,11 +35,11 @@ typedef struct CarNode {
  * p_back points to the back of the queue, where enqueueing will add cars to.
  */
 typedef struct {
-    /** Pointer to frontmost car node */
+    /// Pointer to frontmost car node
     CarNode *p_front;
-    /** Pointer to backmost car node */
+    /// Pointer to backmost car node
     CarNode *p_back;
-    /** Length of the queue */
+    /// Length of the queue
     unsigned int length;
 } CarQueue;
 
@@ -56,24 +56,24 @@ CarQueue queue_init();
  * Frees all memory allocated by the queue. The struct can be reused without
  * calling `queue_init()` a second time.
  *
- * @param[in/out] p_queue Pointer to queue
+ * @param[inout] p_queue Pointer to queue
  */
 void queue_delete(CarQueue *p_queue);
 
 /**
  * @brief Enqueue a new car to the back of the queue
  *
- * @param[in/out] p_queue Pointer to queue
- * @param[in] car Car to enqueue
+ * @param[inout] p_queue Pointer to queue
+ * @param[in]    car     Car to enqueue
  */
 void enqueue(CarQueue *p_queue, Car car);
 
 /**
  * @brief Pop the frontmost car off the queue and return it.
  * 
- * @param[in/out] p_queue Pointer to queue
- * @param[out] p_car Pointer to where dequeued car should be written
- @ return bool true if dequeue was successful, false if not
+ * @param[inout] p_queue Pointer to queue
+ * @param[out]   p_car   Pointer to where dequeued car should be written
+ * @return               Whether a car popped of successfully. False if queue was empty
  */
 bool dequeue(CarQueue *p_queue, Car *p_car);
 
@@ -81,7 +81,7 @@ bool dequeue(CarQueue *p_queue, Car *p_car);
  * @brief Check if the queue is empty
  *
  * @param[in] queue Given queue
- * @return bool whether the queue is empty
+ * @return          Whether queue is empty
  */
 bool queue_empty(CarQueue queue);
 

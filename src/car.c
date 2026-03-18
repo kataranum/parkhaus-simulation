@@ -38,6 +38,7 @@ int random_park_duration(InputParams params)
     return (rand() % (params.park_max_time - 1)) + 1;
 }
 
-bool car_empty(Car car) {
+bool car_empty(Car car)
+{
     return car.id < 0;
 }
